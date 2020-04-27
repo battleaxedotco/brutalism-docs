@@ -9,9 +9,16 @@ async function init() {
     return /\.md$/.test(entry);
   });
 
-  let result = '';
-
-  fs.writeFileSync(`${root}/src/template.json`, result);
+  let result = [];
+  files.forEach(file => {
+    result.push({
+      name: file.replace(/\.md$/, ''),
+      data: fs.readFileSync(`${root}/${file}`, "utf8")
+    })
+  })
+  const target = `${path.resolve('./')}/src/template.json`
+  fs.writeFileSync(target, JSON.stringify(result));
+  console.log(`Template rewritten to ${target}`);
 }
 
 function exists(thispath) {

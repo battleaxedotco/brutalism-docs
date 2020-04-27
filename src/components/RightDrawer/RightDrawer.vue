@@ -64,21 +64,27 @@ export default {
       return style;
     },
     init(val) {
-      this.anchors = val.map((value, i) => {
-        console.log(i)
-        return {
+      const self = this;
+      this.anchors = val.map((value, i, a) => {
+        let child = {
           name: decodeURI(value).replace(/\_/g, ' '),
           id: value,
           index: i,
           active: i == 0,
-          yPos: document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed(),
-          fakePos: document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed()
+          yPos: +document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed(),
+          fakePos: +document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed(),
         }
+        return child;
       });
+      this.createRanges();
       this.isMounted = true;
       // this.checkScroll(0)
     },
-  }
+    createRanges() {
+      console.log(this.anchors)
+    }
+  },
+  
 }
 </script>
 
