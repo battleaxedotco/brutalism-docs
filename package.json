@@ -5,15 +5,15 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "gh-pages-deploy": "node scripts/gh-pages-deploy.js"
+    "gh-pages-deploy": "node scripts/gh-pages-deploy.js",
+    "convert": "node scripts/convert.js"
   },
   "dependencies": {
     "commonmark": "^0.29.1",
     "core-js": "^3.6.4",
-    "markdown": "^0.5.0",
-    "prismjs": "^1.20.0",
     "vue": "^2.6.11",
-    "vue-router": "^3.1.6"
+    "vue-router": "^3.1.6",
+    "vue-scrollto": "^2.18.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^4.3.0",

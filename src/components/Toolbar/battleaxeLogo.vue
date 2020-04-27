@@ -56,7 +56,7 @@ export default {
   cursor: pointer;
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 950px) {
   .svg-wrapper {
     width: 30px;
   }

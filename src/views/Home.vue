@@ -3,9 +3,9 @@
     <div class="title-wrapper">
       <h1 class="title">{{$route.name}}</h1>
     </div>
-    <Markdown-Preview :text="testText" />
-    <Left-Drawer />
-    <Right-Drawer />
+    <Markdown-Preview ref="content" :text="testText" @convertedAnchors="buildPageNav" />
+    <Left-Drawer ref="drawerL" />
+    <Right-Drawer ref="drawerR" />
   </div>
 </template>
 
@@ -80,6 +80,11 @@ export default {
 \`\`\`
 `
   }),
+  methods: {
+    buildPageNav(val) {
+      this.$refs.drawerR.init(val)
+    }
+  }
 }
 </script>
 
@@ -110,9 +115,10 @@ export default {
   font-size: 60px;
   text-transform: uppercase;
   letter-spacing: .25ch;
+  font-weight: 400;
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 950px) {
   .title {
     margin: -2px 0px 0px 20px;
     font-size: 40px;

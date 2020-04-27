@@ -29,10 +29,13 @@ export default {
   methods: {
     replaceH2WithAnchors() {
       let targets = document.querySelectorAll('h2');
-      console.log('Found h2 tags:', targets)
+      let results = [];
       targets.forEach(target => {
-        target.outerHTML = `<a name="${encodeURI(target.innerHTML)}" data-sourcepos="${target.dataset.sourcepos}" class="h2-mock">${target.innerHTML}</a>`
+        let sanitized = target.innerHTML.replace(/\s/g, '_');
+        results.push(encodeURI(sanitized));
+        target.outerHTML = `<a name="${encodeURI(sanitized)}" id="${encodeURI(sanitized)}" data-sourcepos="${target.dataset.sourcepos}" class="h2-mock">${target.innerHTML}</a>`;
       })
+      this.$emit('convertedAnchors', results);
     }
   }
 }
@@ -50,7 +53,7 @@ h2 {
   padding: 10px 20px;
   max-width: 800px;
   width: 100%;
-  background: var(--frost);
+  /* background: var(--frost); */
 }
 .markdown-content {
   box-sizing: border-box;
@@ -68,10 +71,17 @@ h2 {
   padding-top: 20px;
 }
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 950px) {
   h2, .h2-mock {
-    padding-left: 20px;
+    padding-left: 50px;
+  }.h2-mock {
+    position: sticky;
+    top: 0px;
+    left: 50px;
   }
+
+  
+
   .markdown-wrapper {
     box-sizing: border-box;
     margin: 80px 0px 0px 0px;

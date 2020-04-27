@@ -40,7 +40,7 @@ export default {
 }
 
 
-@media screen and (max-width: 870px) {
+@media screen and (max-width: 950px) {
   .toolbar-wrapper {
     background-color: rgb(243, 247, 249, 0.85);
     z-index: 3;
