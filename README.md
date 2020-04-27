@@ -16,9 +16,7 @@
   }
 ```
 
-### 2) Run `npm install` and commit this to save the package.json contents
-
-### 3) Create `./.github/workflows/gh-pages-deploy.yml` with the following:
+### 2) Create `./.github/workflows/gh-pages-deploy.yml` with the following:
 
 ```yml
   name: Deploy to github pages
@@ -49,7 +47,7 @@
 
 > Notice in the last two lines, I'm using my GitHub account and associated email. Replace with your own
 
-### 4) Create `./scripts/gh-pages-deploy.js` with the following:
+### 3) Create `./scripts/gh-pages-deploy.js` with the following:
 
 ```js
 const execa = require("execa");
@@ -76,4 +74,15 @@ const fs = require("fs");
 })();
 ```
 
-### 5) Commit and push this to any repo. GitHub will detect the action and automatically perform it.
+### 4) Create a `./vue.config.js` file with the following:
+
+```js
+module.exports = {
+  // Notice content is the name of the repo in question:
+  publicPath: '/brutalism-docs/'
+}
+```
+
+### 5) Run `npm install` and commit this to save the package.json contents
+
+### 6) Push this to any repo. GitHub will detect the action and automatically perform it.
