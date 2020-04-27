@@ -1,0 +1,1 @@
+export default require('./RightDrawer.vue').default

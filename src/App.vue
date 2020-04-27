@@ -11,21 +11,28 @@ export default {
     'Toolbar': require('./components/Toolbar').default
   },
   mounted() {
-    let iframes = document.querySelectorAll('iframe');
-    const self = this;
-    iframes.forEach(frame => {
-      const target = frame;
-      frame.onload = () => {
-        let realSrc = frame.src
-        setTimeout(() => {
-          self.$nextTick(() => {
-            let frameRoute = frame.src.replace(/.*\#/).replace('undefined', '');
-            frame.contentWindow.postMessage(frameRoute, '*');
-            console.log('Forcing frame to reload:', frame.src);           
-          })
-        }, 100);
-      }
-    })
+    if (!/localhost.*\#|\#.*\#/.test(window.location.href)) {
+      this.reloadIframes()
+    }
+  },
+  methods: {
+    reloadIframes() {
+      let iframes = document.querySelectorAll('iframe');
+      const self = this;
+      iframes.forEach(frame => {
+        const target = frame;
+        frame.onload = () => {
+          let realSrc = frame.src
+          setTimeout(() => {
+            self.$nextTick(() => {
+              let frameRoute = frame.src.replace(/.*\#/).replace('undefined', '');
+              frame.contentWindow.postMessage(frameRoute, '*');
+              console.log('Forcing frame to reload:', frame.src);           
+            })
+          }, 100);
+        }
+      })
+    }
   }
 }
 </script>>
@@ -37,7 +44,10 @@ export default {
 	--quint: cubic-bezier(0.84, 0, 0.16, 1);
   --bg: rgb(243, 247, 249);
   --frost: rgba(245, 249, 251, 0.9);
-  --faded-text: rgba(44, 62, 80, 0.25);
+  --text-faded: rgba(44, 62, 80, 0.25);
+  --text: #2c3e50;
+
+  color: var(--text);
 }
 
 #app {
@@ -45,7 +55,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
-  color: #2c3e50;
   background: var(--bg);
   margin: 0px;
   padding: 0px;

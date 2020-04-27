@@ -4,6 +4,8 @@
       <h1 class="title">{{$route.name}}</h1>
     </div>
     <Markdown-Preview :text="testText" />
+    <Left-Drawer />
+    <Right-Drawer />
   </div>
 </template>
 
@@ -12,7 +14,9 @@
 export default {
   name: 'Home',
   components: {
-    'Markdown-Preview': require('../components/Markdown.vue').default
+    'Markdown-Preview': require('../components/Markdown.vue').default,
+    'Left-Drawer': require('../components/LeftDrawer').default,
+    'Right-Drawer': require('../components/RightDrawer').default,
   },
   data: () => ({
     testText: `## Styles
@@ -101,7 +105,7 @@ export default {
 }
 
 .title {
-  color: var(--faded-text);
+  color: var(--text-faded);
   margin: 0px 0px 0px 30px;
   font-size: 60px;
   text-transform: uppercase;

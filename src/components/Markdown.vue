@@ -22,6 +22,18 @@ export default {
       var parsed = reader.parse(this.text);
       return writer.render(parsed);
     }
+  },
+  mounted() {
+    this.replaceH2WithAnchors()
+  },
+  methods: {
+    replaceH2WithAnchors() {
+      let targets = document.querySelectorAll('h2');
+      console.log('Found h2 tags:', targets)
+      targets.forEach(target => {
+        target.outerHTML = `<a name="${encodeURI(target.innerHTML)}" data-sourcepos="${target.dataset.sourcepos}" class="h2-mock">${target.innerHTML}</a>`
+      })
+    }
   }
 }
 </script>
@@ -43,6 +55,17 @@ h2 {
 .markdown-content {
   box-sizing: border-box;
   max-width: 100vw;
+}
+
+.h2-mock {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  padding-top: 20px;
 }
 
 @media screen and (max-width: 870px) {
