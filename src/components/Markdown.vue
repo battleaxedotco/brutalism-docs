@@ -69,7 +69,7 @@ h2 {
 }
 
 @media screen and (max-width: 870px) {
-  h2 {
+  h2, .h2-mock {
     padding-left: 20px;
   }
   .markdown-wrapper {
