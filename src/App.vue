@@ -1,32 +1,53 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+    <Toolbar />
     <router-view/>
   </div>
 </template>
 
+<script>
+export default {
+  components: {
+    'Toolbar': require('./components/Toolbar').default
+  }
+}
+</script>>
+
 <style>
+:root {
+  --quad: cubic-bezier(0.48, 0.04, 0.52, 0.96);
+	--quart: cubic-bezier(0.76, 0, 0.24, 1);
+	--quint: cubic-bezier(0.84, 0, 0.16, 1);
+  --bg: rgb(243, 247, 249);
+  --frost: rgba(245, 249, 251, 0.9);
+  --faded-text: rgba(44, 62, 80, 0.25);
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
+  background: var(--bg);
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
 }
 
-#nav {
-  padding: 30px;
+:root, html, body {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  margin: 0px;
+  padding: 0px;
+  min-height: 100%;
 }
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+.centered {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+
 </style>
