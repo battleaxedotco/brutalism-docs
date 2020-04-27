@@ -9,6 +9,23 @@
 export default {
   components: {
     'Toolbar': require('./components/Toolbar').default
+  },
+  mounted() {
+    let iframes = document.querySelectorAll('iframe');
+    const self = this;
+    iframes.forEach(frame => {
+      const target = frame;
+      frame.onload = () => {
+        let realSrc = frame.src
+        setTimeout(() => {
+          self.$nextTick(() => {
+            let frameRoute = frame.src.replace(/.*\#/).replace('undefined', '');
+            frame.contentWindow.postMessage(frameRoute, '*');
+            console.log('Forcing frame to reload:', frame.src);           
+          })
+        }, 100);
+      }
+    })
   }
 }
 </script>>

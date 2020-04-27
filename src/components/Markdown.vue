@@ -1,7 +1,6 @@
 <template>
   <div class="markdown-wrapper">
     <div class="markdown-content" v-html="renderedText"></div>
-    <!-- <Snippet /> -->
   </div>
   
 </template>
@@ -15,9 +14,6 @@ export default {
       type: String,
       default: '# Hello world'
     }
-  },
-  components: {
-    'Snippet': require('./Snippet.vue').default
   },
   computed: {
     renderedText() {
