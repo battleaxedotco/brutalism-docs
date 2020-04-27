@@ -2,15 +2,7 @@
   <div class="right-drawer" v-if="isMounted">
     <div v-for="anchor in anchors" :key="anchor.name" class="right-drawer-item" :style="checkItemStatus(anchor)">
       <a v-scroll-to="{ el: `#${anchor.id}`, offset: 0 }" class="right-drawer-item-label">{{`${anchor.name} ${anchor.yPos}`}}</a>
-      <!-- <div  
-        class="fake-anchor" 
-        :style="setFakeAnchor(anchor)" 
-        v-appear="{
-          offset: 100,
-          delay: 10,
-          class: 'show',
-          callback: onShow,
-        }" /> -->
+      <div class="fake-anchor" :style="setFakeAnchor(anchor)" />
     </div>
   </div>
 </template>
@@ -99,7 +91,8 @@ a:-webkit-any-link {
 .fake-anchor {
   width: 50px;
   height: 10px;
-  border: 2px solid red;
+  /* border: 2px solid red; */
+  background: rgba(0,0,0,0.2);
   position: absolute;
   right: 0px;
   z-index: 10;

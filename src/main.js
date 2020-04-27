@@ -4,9 +4,6 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-import VueAppear from 'vue-appear'
-Vue.use(VueAppear)
-
 const VueScrollTo = require('vue-scrollto');
 Vue.use(VueScrollTo, {
   container: "body",
