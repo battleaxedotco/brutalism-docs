@@ -37,7 +37,6 @@ export default {
         target.outerHTML = `<a name="${encodeURI(sanitized)}" id="${encodeURI(sanitized)}" data-sourcepos="${target.dataset.sourcepos}" class="h2-mock">${target.innerHTML}</a>`;
       })
       this.$emit('convertedAnchors', results);
-      console.log('Anchors replaced')
     }
   }
 }
