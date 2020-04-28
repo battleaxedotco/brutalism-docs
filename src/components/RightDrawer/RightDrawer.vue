@@ -1,10 +1,9 @@
 <template>
   <div class="right-drawer" v-if="isMounted">
+    <div class="mini-scrollbar" :style="getMiniScrollPos()"></div>
     <div v-for="anchor in anchors" :key="anchor.name" class="right-drawer-item" :style="checkItemStatus(anchor)">
-      <span v-scroll-to="{ el: `#${anchor.id}`, offset: 0 }" class="right-drawer-item-label">{{`${anchor.name} ${anchor.yPos}`}}</span>
-      <div class="fake-anchor" :style="setFakeAnchor(anchor)">{{anchor.fakePos}}</div>
+      <span v-scroll-to="{ el: `#${anchor.id}`, offset: 0 }" class="right-drawer-item-label">{{anchor.name}}</span>
     </div>
-    <div class="real-scroll-pos">{{realPos}}</div>
   </div>
 </template>
 
@@ -14,12 +13,39 @@ export default {
     realPos: 0,
     scrollOffset: 400,
     anchors: [],
+    miniScrollTop: 0,
+    scrollPercentage: 0,
     isMounted: false
   }),
   watch: {
     realPos(val) {
-      console.log(val)
-    }
+      let targetRange = this.anchors.find(anchor => {
+        return val >= anchor.range[0] && val <= anchor.range[1]
+      })
+      if (!targetRange && val < this.anchors[0].range[0]) {
+        targetRange = this.anchors[0];
+      }
+      if (this.activeAnchor !== targetRange) this.activeAnchor = targetRange;
+      if (this.anchors.length) {
+        this.calculateScrollPercentage();
+      }
+    },
+  },
+  computed: {
+    activeAnchor: {
+      get() {
+        return this.anchors.find(anchor => {
+          return anchor.active
+        })
+      },
+      set(val) {
+        this.anchors.forEach(anchor => {
+          anchor.active = anchor !== val 
+            ? false
+            : true
+        })
+      }
+    },
   },
   mounted() {
     const self = this;
@@ -37,29 +63,24 @@ export default {
     });
   },
   methods: {
-    onShow(value) {
-      console.log('Showing:', value)
+    calculateScrollPercentage() {
+      if (this.activeAnchor.index !== this.anchors.length - 1 && this.realPos > this.anchors[0].range[0]) {
+        this.scrollPercentage = Math.floor(((this.realPos - this.activeAnchor.range[0]) / (this.activeAnchor.range[1] - this.activeAnchor.range[0])) * 100);
+        this.miniScrollTop = (this.activeAnchor.index * 40) + (40 * this.scrollPercentage / 100);
+      } else {
+        this.scrollPercentage = 0;
+        this.miniScrollTop = (this.activeAnchor.index * 40) + (40 * this.scrollPercentage / 100);
+      }
     },
     checkScroll(value) {
-      this.anchors.forEach(anchor => {
-        return anchor.fakePos = anchor.yPos - +value + this.scrollOffset;
-      })
       this.realPos = +value;
     },  
-    setFakeAnchor(anchor) {
-      return `top: ${anchor.fakePos}px;`
-    },
-    clearActiveAnchors() {
-      this.anchors.forEach(anchor => {
-        anchor.active = false;
-      })
-    },
     checkItemStatus(item) {
+      if (item.active) return `color: var(--text)`
+    },
+    getMiniScrollPos() {
       let style = '';
-      style += `
-        border-color: ${item.active ? '#5978f3' : 'transparent'};
-        color: var(--text${item.active ? '' : '-faded' });  
-      `
+      style += `top: ${this.miniScrollTop}px;`
       return style;
     },
     init(val) {
@@ -71,8 +92,9 @@ export default {
           index: i,
           active: i == 0,
           yPos: +document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed(),
-          fakePos: +document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed() + this.scrollOffset,
-          range: []
+          fakePos: 0,
+          range: [],
+          increment: 0
         }
         return child;
       });
@@ -80,22 +102,46 @@ export default {
       this.isMounted = true;
     },
     createRanges() {
-      this.anchors.forEach((anchor, i, a) => {
-        if (i < 1 && a.length > 1) {
-          // first anchor
-
-        } else if (i == a.length - 1 && a.length > 1) {
-          // last anchor
-          
-        } else if (a.length == 1) {
-          // only anchor
-
-        } else {
-          // normal anchor
-
-        }
+      window.scrollTo(0, 0)
+      this.$nextTick(() => {
+        this.anchors.forEach((anchor, i, a) => {
+          if (i < 1 && a.length > 1) {
+            // first anchor
+            anchor.range.push(anchor.yPos);
+            anchor.range.push(a[i + 1].yPos);
+            // anchor.range.push((a[i + 1].yPos - anchor.yPos) / 2 + anchor.yPos)
+            anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
+  
+          } else if (i == a.length - 1 && a.length > 1) {
+            // last anchor
+            // anchor.range.push(a[i - 1].range[1] + 1)
+            anchor.range.push(anchor.yPos);
+            anchor.range.push(document.documentElement.scrollHeight)
+            anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
+  
+          } else if (a.length == 1) {
+            // only anchor
+            anchor.range.push(0);
+            anchor.range.push(document.documentElement.scrollHeight);
+            anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
+  
+          } else {
+            // normal anchor
+            // anchor.range.push((a[i - 1].yPos - anchor.yPos) / 2 + anchor.yPos)
+            anchor.range.push(anchor.yPos);
+            anchor.range.push(a[i + 1].yPos);
+            // anchor.range.push((a[i + 1].yPos - anchor.yPos) / 2 + anchor.yPos)
+            anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
+          }
+          // Add centerpoint
+          // anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
+          // console.log(anchor.range)
+          anchor.range = anchor.range.map(item => {
+            return Math.floor(item)
+          })
+          anchor.fakePos = anchor.range[2] + anchor.range[0];
+        })
       })
-      console.log(this.anchors)
     }
   },
   
@@ -112,14 +158,35 @@ export default {
   font-size: 1.5em;
 }
 
-.fake-anchor {
-  width: 50px;
-  height: 10px;
-  /* border: 2px solid red; */
-  background: rgba(0,0,0,0.2);
+.mini-scroll-pos {
+  position: absolute;
+  top: 40px;
+  right: 0px;
+  padding: 10px 20px;
+  font-size: 1.5em;
+}
+
+.mini-anno {
   position: absolute;
   right: 0px;
-  z-index: 10;
+  padding: 10px 20px;
+  font-size: 1em;
+}
+
+.mini-anno.top {
+  top: 90px;
+}
+
+.mini-anno.bottom {
+  top: 120px;
+}
+
+.mini-scrollbar {
+  position: absolute;
+  left: 0px;
+  height: 40px;
+  width: 5px;
+  background: #5978f3;
 }
 
 .right-drawer {
@@ -136,11 +203,19 @@ export default {
 }
 
 .right-drawer-item {
+  box-sizing: border-box;
   padding: 4px 0px;
-  margin: 3px 0px;
   border-width: 0px 0px 0px 4px;
+  border-color: transparent;
+  height: 40px;
+  color: var(--text-faded);
+  transition: color 120ms var(--quint) 20ms;
   border-style: solid;
   cursor: pointer;
+}
+
+.right-drawer-item:hover {
+  color: var(--text);
 }
 
 .right-drawer-item-label {

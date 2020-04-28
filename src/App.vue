@@ -2,52 +2,64 @@
   <div id="app">
     <Toolbar />
     <router-view @checkIframes="appendIframeRefreshes" @mounted="refreshPrism"/>
+    <!-- <refresh-button v-for="frame in frames" :key="frame" :frameid="frame" :ref="frame" /> -->
   </div>
 </template>
 
 <script>
 export default {
   components: {
-    'Toolbar': require('./components/Toolbar').default
+    'Toolbar': require('./components/Toolbar').default,
+    'refresh-button': require('./components/Iframe/Refresh.vue').default
   },
+  data: () => ({
+    frames: []
+  }),
   mounted() {
-    if (!/localhost.*\#|\#.*\#/.test(window.location.href)) {
-      this.reloadIframes()
-    };
-    window.scrollTo(0, 0);
-    console.log('App mounted')
+    this.resetScroll()
+  },
+  watch: {
+    '$route.path'() {
+      this.resetScroll();
+
+    }
   },
   methods: {
+    resetScroll() {
+      window.scrollTo(0, 0);
+    },
     refreshPrism() {
       this.$nextTick(() => {
-        console.log('Refreshing prism')
         Prism.highlightAll();
+        this.reloadIframes()
       })
     },
-    appendIframeRefreshes() {
-      console.log('Hello')
-    },
+    appendIframeRefreshes() {},
     // This is very sloppy but I can't figure out what goes wrong.
     // Even after these particular iframe's onload events are called,
     // the SRC attribute doesn't match the content with > 2 instances.
     // 
     // SRC is correct but the "true" URL of the iframe is not
     reloadIframes() {
-      let iframes = document.querySelectorAll('iframe');
-      const self = this;
-      iframes.forEach(frame => {
-        const target = frame;
-        frame.onload = () => {
-          let realSrc = frame.src
-          setTimeout(() => {
-            self.$nextTick(() => {
-              let frameRoute = frame.src.replace(/.*\#/).replace('undefined', '');
-              frame.contentWindow.postMessage(frameRoute, '*');
-              console.log('Forcing frame to reload:', frame.src);           
-            })
-          }, 100);
-        }
-      })
+      // let iframes = document.querySelectorAll('iframe');
+      // const self = this;
+      // this.frames = [];
+      // iframes.forEach((frame, i) => {
+      //   frame.id = `iframe-${i}`
+      //   const target = frame;
+      //   frame.onload = () => {
+      //     let realSrc = frame.src
+      //     setTimeout(() => {
+      //       self.$nextTick(() => {
+      //         console.log(frame.id, i)
+      //         self.frames.push(`iframe-${i}`)
+      //         let frameRoute = frame.src.replace(/.*\#/).replace('undefined', '');
+      //         frame.contentWindow.postMessage(frameRoute, '*');
+      //       })
+      //     }, 100);
+      //   }
+      // })
+      // console.log('Done')
     }
   }
 }

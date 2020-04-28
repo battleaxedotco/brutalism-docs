@@ -89,7 +89,9 @@ export default {
 
 .left-drawer-item {
   padding: 4px 0px;
-  margin: 3px 0px;
+  /* margin: 3px 0px; */
+  height: 40px;
+  box-sizing: border-box;
 }
 
 .left-drawer-item-label {

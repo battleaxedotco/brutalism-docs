@@ -31,7 +31,7 @@ async function init() {
           else return a.localeCompare(b)
         } else return a.localeCompare(b)
       } else return a.localeCompare(b)
-      // Otherwise compare alphanumerically
+      // Otherwise compare alphanumerically in any other case
     }
   })
 
@@ -73,10 +73,6 @@ async function init() {
   console.log('')
   console.log(`${chalk.black.bgGreen(` ALL DONE `)}`)
   console.log('')
-}
-
-function exists(thispath) {
-  return fs.existsSync(thispath);
 }
 
 async function readDir(thispath) {
