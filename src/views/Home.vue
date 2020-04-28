@@ -3,7 +3,7 @@
     <div class="title-wrapper">
       <h1 class="title">{{$route.params.component || $route.name}}</h1>
     </div>
-    <Markdown-Preview ref="content" :text="testText" @convertedAnchors="buildPageNav" />
+    <Markdown-Preview ref="content" @convertedAnchors="buildPageNav" />
     <Left-Drawer ref="drawerL" />
     <Right-Drawer ref="drawerR" />
   </div>
@@ -20,19 +20,18 @@ export default {
     'Right-Drawer': require('../components/RightDrawer').default,
   },
   data: () => ({
-    testText: '',
+    // testText: '',
   }),
   mounted() {
-    console.log(templates)
-    this.detectCorrectRoute()
-
+    // console.log(templates)
+    // this.detectCorrectRoute()
   },
-  watch: {
-    '$route.path'() {
-      console.log(this.$route.path)
-      this.detectCorrectRoute()
-    }
-  },
+  // watch: {
+  //   '$route.path'() {
+  //     console.log(this.$route.path)
+  //     this.detectCorrectRoute()
+  //   }
+  // },
   methods: {
     detectCorrectRoute() {
       if (this.$route.params.component) {

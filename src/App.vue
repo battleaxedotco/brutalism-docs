@@ -54,7 +54,6 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
   background: var(--bg);
   margin: 0px;
   padding: 0px;
@@ -75,5 +74,57 @@ export default {
   width: 100%;
 }
 
+/* Markdown specific */
+h2 {
+  padding-top: 20px;
+}
+
+h3 code {
+  padding: 0px 5px;
+  background: rgba(0,0,0,0.075);
+}
+
+.markdown-wrapper {
+  z-index: 1;
+  box-sizing: border-box;
+  margin: 80px 0px 40px 0px;
+  padding: 10px 20px;
+  max-width: 800px;
+  width: 100%;
+}
+.markdown-content {
+  box-sizing: border-box;
+  max-width: 100vw;
+}
+
+.h2-mock {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+  padding-top: 20px;
+}
+
+@media screen and (max-width: 950px) {
+  h2, .h2-mock {
+    padding-left: 50px;
+  }.h2-mock {
+    position: sticky;
+    top: 0px;
+    left: 50px;
+  }
+  .markdown-wrapper {
+    box-sizing: border-box;
+    margin: 80px 0px 0px 0px;
+    padding: 10px 0px;
+    width: 100%;
+  }
+  code[class*="language-"], pre[class*="language-"] {
+    font-size: 12px;
+  }
+}
 
 </style>
