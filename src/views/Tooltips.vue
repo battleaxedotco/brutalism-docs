@@ -11,7 +11,7 @@
 export default {
   mounted() {
     this.$nextTick(() => {
-      Prism.highlightAll()
+      this.$emit('mounted');
     })
   },
   components: {

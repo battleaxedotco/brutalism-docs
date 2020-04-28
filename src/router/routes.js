@@ -5,14 +5,14 @@ export default [
       component: () => import("@/views/Home.vue")
     },
     {
-      path: "/Button-Group",
-      name: "Button-Group",
-      component: () => import("@/views/Button-Group.vue")
-    },
-    {
       path: "/Button",
       name: "Button",
       component: () => import("@/views/Button.vue")
+    },
+    {
+      path: "/Button-Group",
+      name: "Button-Group",
+      component: () => import("@/views/Button-Group.vue")
     },
     {
       path: "/Tooltips",

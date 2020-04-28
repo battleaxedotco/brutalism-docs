@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Toolbar />
-    <router-view/>
+    <router-view @checkIframes="appendIframeRefreshes" @mounted="refreshPrism"/>
   </div>
 </template>
 
@@ -13,9 +13,20 @@ export default {
   mounted() {
     if (!/localhost.*\#|\#.*\#/.test(window.location.href)) {
       this.reloadIframes()
-    }
+    };
+    window.scrollTo(0, 0);
+    console.log('App mounted')
   },
   methods: {
+    refreshPrism() {
+      this.$nextTick(() => {
+        console.log('Refreshing prism')
+        Prism.highlightAll();
+      })
+    },
+    appendIframeRefreshes() {
+      console.log('Hello')
+    },
     // This is very sloppy but I can't figure out what goes wrong.
     // Even after these particular iframe's onload events are called,
     // the SRC attribute doesn't match the content with > 2 instances.

@@ -35,7 +35,7 @@
 
 ## Props
 
-<div class="centered"><iframe style="overflow: scroll;" width="600" height="700" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/buttons/button-group/props"> </iframe></div>
+<div class="centered"><iframe style="overflow: scroll;" width="600" height="500" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/buttons/button-group/props"> </iframe></div>
 
 ```html
 <Fold label="Props" :open="open">
@@ -91,7 +91,7 @@
 
 ## Events
 
-<div class="centered"><iframe style="overflow: scroll;" width="480" height="700" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/buttons/button-group/events"> </iframe></div>
+<div class="centered"><iframe style="overflow: scroll;" width="480" height="450" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/buttons/button-group/events"> </iframe></div>
 
 ```html
 <Fold label="Events" :open="true">

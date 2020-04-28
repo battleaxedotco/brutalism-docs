@@ -5,19 +5,34 @@ const chalk = require('chalk')
 
 async function init() {
   console.log('\r\nConverting MD files to routes and views...\r\n')
+
   const root = `${path.resolve("./")}/pages/`;
   let files = await readDir(root);
+
+  // Only include .md files
   files = files.filter(entry => {
     return /\.md$/.test(entry);
   }).sort((a, b) => {
+    // Always sort 'Home.md' as first item
     if (/home/i.test(a)) return -1;
     else if (/home/i.test(b)) return 1;
     else {
-      return a.localeCompare(b)
+      // If items have same first word, sort shorter before longer:
+      if (/.*\-/.test(a) || /.*\-/.test(b)) {
+        let matchesA = a.match(/(.*)\-[^\.]*/);
+        let matchesB = b.match(/(.*)\-[^\.]*/);
+        if (matchesA.length) {
+          let comparator = new RegExp(matchesA[1])
+          if (comparator.test(b)) return 1;
+          else return a.localeCompare(b)
+        } else if (matchesB.length) {
+          let comparator = new RegExp(matchesB[1])
+          if (comparator.test(a)) return -1;
+          else return a.localeCompare(b)
+        } else return a.localeCompare(b)
+      } else return a.localeCompare(b)
+      // Otherwise compare alphanumerically
     }
-  })
-  let resultingNames = files.map(item => {
-    return item
   })
 
   let result = [];
@@ -29,7 +44,6 @@ async function init() {
   })
 
   let routerFile = 'export default [';
-  let routesArray = [];
   const viewsFolder = `${path.resolve("./")}/src/views`;
   const routerFolder = `${path.resolve("./")}/src/router`;
   const templateView = fs.readFileSync(`${viewsFolder}/Template.vue`, "utf8")

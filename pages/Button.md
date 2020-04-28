@@ -32,7 +32,7 @@
 
 ## Props and Events
 
-<div class="centered"><iframe style="overflow: scroll;" width="440" height="360" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/buttons/button/props"> </iframe></div>
+<div class="centered"><iframe style="overflow: scroll;" width="440" height="460" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/buttons/button/props"> </iframe></div>
 
 ```html
 <Fold label="Props" :open="true">
@@ -56,4 +56,6 @@
 <Fold label="Events" :open="true">
   <Button @click="testClick" label='@click="testClick"' />
 </Fold>
+
+test
 ```
