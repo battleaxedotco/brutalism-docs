@@ -1,8 +1,8 @@
 <template>
   <div class="right-drawer" v-if="isMounted">
-    <div class="mini-scrollbar" :style="getMiniScrollPos()"></div>
+    <div v-if="showScrollbar" class="mini-scrollbar" :style="getMiniScrollPos()"></div>
     <div v-for="anchor in anchors" :key="anchor.name" class="right-drawer-item" :style="checkItemStatus(anchor)">
-      <span v-scroll-to="{ el: `#${anchor.id}`, offset: 0 }" class="right-drawer-item-label">{{anchor.name}}</span>
+      <span v-scroll-to="{ el: `#${anchor.id}`, offset: 6 }" class="right-drawer-item-label">{{anchor.name}}</span>
     </div>
   </div>
 </template>
@@ -10,6 +10,7 @@
 <script>
 export default {
   data: () => ({
+    showScrollbar: false,
     realPos: 0,
     scrollOffset: 400,
     anchors: [],
@@ -19,15 +20,21 @@ export default {
   }),
   watch: {
     realPos(val) {
-      let targetRange = this.anchors.find(anchor => {
-        return val >= anchor.range[0] && val <= anchor.range[1]
-      })
-      if (!targetRange && val < this.anchors[0].range[0]) {
-        targetRange = this.anchors[0];
-      }
-      if (this.activeAnchor !== targetRange) this.activeAnchor = targetRange;
-      if (this.anchors.length) {
-        this.calculateScrollPercentage();
+      try {
+        let targetRange = this.anchors.find(anchor => {
+          return val >= anchor.range[0] && val <= anchor.range[1]
+        })
+        if (!targetRange && val < this.anchors[0].range[0]) {
+          targetRange = this.anchors[0];
+        } else if (!targetRange && val > this.anchors[this.anchors.length - 1].range[0]) {
+          targetRange = this.anchors[this.anchors.length - 1];
+        }
+        if (this.activeAnchor !== targetRange) this.activeAnchor = targetRange;
+        if (this.anchors.length) {
+          this.calculateScrollPercentage();
+        }
+      } catch(err) {
+        return null;
       }
     },
   },
@@ -64,12 +71,20 @@ export default {
   },
   methods: {
     calculateScrollPercentage() {
-      if (this.activeAnchor.index !== this.anchors.length - 1 && this.realPos > this.anchors[0].range[0]) {
-        this.scrollPercentage = Math.floor(((this.realPos - this.activeAnchor.range[0]) / (this.activeAnchor.range[1] - this.activeAnchor.range[0])) * 100);
-        this.miniScrollTop = (this.activeAnchor.index * 40) + (40 * this.scrollPercentage / 100);
-      } else {
-        this.scrollPercentage = 0;
-        this.miniScrollTop = (this.activeAnchor.index * 40) + (40 * this.scrollPercentage / 100);
+      try {
+        if (this.activeAnchor.index !== this.anchors.length - 1 && this.realPos > this.anchors[0].range[0]) {
+          this.scrollPercentage = Math.floor(((this.realPos - this.activeAnchor.range[0]) / (this.activeAnchor.range[1] - this.activeAnchor.range[0])) * 100);
+          this.miniScrollTop = (this.activeAnchor.index * 40) + (40 * this.scrollPercentage / 100);
+        } else if (this.realPos > this.anchors[this.anchors.length - 1].range[0]) {
+          this.scrollPercentage = 0;
+          this.miniScrollTop = (this.activeAnchor.index * 40) + (40 * this.scrollPercentage / 100);
+          this.activeAnchor = this.anchors[this.anchors.length - 1];
+        } else {
+          this.scrollPercentage = 0;
+          this.miniScrollTop = (this.activeAnchor.index * 40) + (40 * this.scrollPercentage / 100);
+        }
+      } catch(err) {
+        return null;
       }
     },
     checkScroll(value) {
@@ -102,7 +117,6 @@ export default {
       this.isMounted = true;
     },
     createRanges() {
-      window.scrollTo(0, 0)
       this.$nextTick(() => {
         this.anchors.forEach((anchor, i, a) => {
           if (i < 1 && a.length > 1) {
@@ -211,7 +225,7 @@ export default {
   color: var(--text-faded);
   transition: color 120ms var(--quint) 20ms;
   border-style: solid;
-  cursor: pointer;
+  
 }
 
 .right-drawer-item:hover {
@@ -220,6 +234,7 @@ export default {
 
 .right-drawer-item-label {
   padding-left: 10px;
+  cursor: pointer;
 }
 
 

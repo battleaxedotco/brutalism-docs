@@ -3,8 +3,7 @@
     <div 
       v-for="anchor in anchors" 
       :key="anchor.name" 
-      class="left-drawer-item" 
-      :style="checkItemStatus(anchor)"
+      :class="[ 'left-drawer-item', anchor.active ? 'active' : 'idle']" 
     >
       <span @click="toRoute(anchor)" class="left-drawer-item-label">{{anchor.name}}</span>
     </div>
@@ -57,13 +56,6 @@ export default {
           })
       })
     },
-    checkItemStatus(item) {
-      let style = '';
-      style += `
-        color: var(--text${item.active ? '' : '-faded' });  
-      `
-      return style;
-    },
     toRoute(anchor) {
       this.$router.push({ name: anchor.name }, () => {
         window.scrollTo(0, 0)
@@ -90,8 +82,18 @@ export default {
 .left-drawer-item {
   padding: 4px 0px;
   /* margin: 3px 0px; */
+  color: var(--text-faded);
+  transition: color 120ms var(--quint) 20ms;
   height: 40px;
   box-sizing: border-box;
+}
+
+.left-drawer-item.active {
+  color: var(--text);
+}
+
+.left-drawer-item:hover {
+  color: var(--text);
 }
 
 .left-drawer-item-label {

@@ -96,6 +96,17 @@ export default {
   min-height: 100%;
 }
 
+hr {
+  margin: 24px 0px;
+  border-color: #e1e4e8;
+  border-width: 4px;
+  border-style: solid;
+}
+
+img {
+  max-width: 100%;
+}
+
 .centered {
   display: flex;
   justify-content: center;
@@ -121,9 +132,17 @@ h2 {
   padding-top: 20px;
 }
 
-h3 code {
+h3 code, h4 code {
   padding: 0px 5px;
   background: rgba(0,0,0,0.075);
+}
+
+h4 code {
+  font-size: 1.25em;
+}
+
+.token.property {
+  color: #7ec699;
 }
 
 .markdown-wrapper {
