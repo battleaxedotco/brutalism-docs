@@ -20,7 +20,9 @@ export default {
     this.text = content ? content.data : '# 404'
     this.renderedText = this.getRenderedText()
     console.log('Render mounted')
-    this.replaceH2WithAnchors()
+    this.$nextTick(() => {
+      this.replaceH2WithAnchors()
+    })
   },
   computed: {
     // renderedText() {
@@ -36,6 +38,7 @@ export default {
     },  
     replaceH2WithAnchors() {
       let targets = document.querySelectorAll('h2');
+      console.log('Getting targets', targets)
       let results = [];
       targets.forEach(target => {
         let sanitized = target.innerHTML.replace(/\s/g, '_');

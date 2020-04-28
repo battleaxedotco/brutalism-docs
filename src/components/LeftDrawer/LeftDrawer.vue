@@ -1,12 +1,14 @@
 <template>
   <div class="left-drawer">
     <div v-for="anchor in anchors" :key="anchor.name" class="left-drawer-item" :style="checkItemStatus(anchor)">
-      <span @click="$router.push({ name: anchor.name })" class="left-drawer-item-label">{{anchor.name}}</span>
+      <span @click="toRoute(anchor)" class="left-drawer-item-label">{{anchor.name}}</span>
     </div>
   </div>
 </template>
 
 <script>
+import routes from '@/router/routes.js'
+
 export default {
   data: () => ({
     anchors: [
@@ -49,15 +51,59 @@ export default {
       
     ]
   }),
+  mounted() {
+    this.buildRoutes();
+    this.checkRoutes();
+  },
+  computed: {
+    activeAnchor: {
+      get() {
+        return this.anchors.find(anchor => {
+          return anchor.active
+        })
+      },
+      set(val) {
+        this.anchors.forEach(anchor => {
+          anchor.active = anchor !== val 
+            ? false
+            : true
+        })
+      }
+    },
+    correctAnchor() {
+      return this.anchors.find(anchor => {
+        return anchor.name == this.$route.name
+      })
+    }
+  },
   methods: {
+    checkRoutes() {
+      this.activeAnchor = this.correctAnchor;      
+    },
+    buildRoutes() {
+      this.anchors = [];
+      routes.forEach(route => {
+        if (route.name !== '404')
+          this.anchors.push({
+            name: route.name,
+            active: this.$route.name == route.name
+          })
+      })
+    },
     checkItemStatus(item) {
       let style = '';
       style += `
         color: var(--text${item.active ? '' : '-faded' });  
       `
       return style;
+    },
+    toRoute(anchor) {
+      this.$router.push({ name: anchor.name }, () => {
+        // this.$scrollTo('.toolbar-wrapper', 0)
+        window.scrollTo(0, 0)
+      })
     }
-  }
+  },
 }
 </script>
 

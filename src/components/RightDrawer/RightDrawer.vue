@@ -2,27 +2,25 @@
   <div class="right-drawer" v-if="isMounted">
     <div v-for="anchor in anchors" :key="anchor.name" class="right-drawer-item" :style="checkItemStatus(anchor)">
       <span v-scroll-to="{ el: `#${anchor.id}`, offset: 0 }" class="right-drawer-item-label">{{`${anchor.name} ${anchor.yPos}`}}</span>
-      <div class="fake-anchor" :style="setFakeAnchor(anchor)" />
+      <div class="fake-anchor" :style="setFakeAnchor(anchor)">{{anchor.fakePos}}</div>
     </div>
+    <div class="real-scroll-pos">{{realPos}}</div>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    scrollOffset: 210,
-    anchors: [
-      {
-        name: 'Styles',
-        active: true
-      },
-      {
-        name: 'Props and Events',
-        active: false
-      }
-    ],
+    realPos: 0,
+    scrollOffset: 400,
+    anchors: [],
     isMounted: false
   }),
+  watch: {
+    realPos(val) {
+      console.log(val)
+    }
+  },
   mounted() {
     const self = this;
     window.addEventListener('scroll', function(e) {
@@ -44,8 +42,9 @@ export default {
     },
     checkScroll(value) {
       this.anchors.forEach(anchor => {
-        return anchor.fakePos = anchor.yPos - +value;
+        return anchor.fakePos = anchor.yPos - +value + this.scrollOffset;
       })
+      this.realPos = +value;
     },  
     setFakeAnchor(anchor) {
       return `top: ${anchor.fakePos}px;`
@@ -72,15 +71,30 @@ export default {
           index: i,
           active: i == 0,
           yPos: +document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed(),
-          fakePos: +document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed(),
+          fakePos: +document.querySelector(`#${value}`).getBoundingClientRect().y.toFixed() + this.scrollOffset,
+          range: []
         }
         return child;
       });
       this.createRanges();
       this.isMounted = true;
-      // this.checkScroll(0)
     },
     createRanges() {
+      this.anchors.forEach((anchor, i, a) => {
+        if (i < 1 && a.length > 1) {
+          // first anchor
+
+        } else if (i == a.length - 1 && a.length > 1) {
+          // last anchor
+          
+        } else if (a.length == 1) {
+          // only anchor
+
+        } else {
+          // normal anchor
+
+        }
+      })
       console.log(this.anchors)
     }
   },
@@ -89,10 +103,14 @@ export default {
 </script>
 
 <style>
-/* a:-webkit-any-link {
-  color: inherit;
-  text-decoration: none;
-} */
+
+.real-scroll-pos {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px 20px;
+  font-size: 1.5em;
+}
 
 .fake-anchor {
   width: 50px;
@@ -105,7 +123,6 @@ export default {
 }
 
 .right-drawer {
-  /* border: 2px solid red; */
   min-width: 20px;
   min-height: 20px;
   position: fixed;

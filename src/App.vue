@@ -92,34 +92,6 @@ export default {
   min-height: 100vh;
 }
 
-.title-wrapper {
-  z-index: 4;
-  left: 80px;
-  top: 0px;
-  position: absolute;
-  max-width: 800px;
-  width: 100%;
-}
-
-.title {
-  color: var(--text-faded);
-  margin: 0px 0px 0px 30px;
-  font-size: 60px;
-  text-transform: uppercase;
-  letter-spacing: .25ch;
-  font-weight: 400;
-}
-
-@media screen and (max-width: 950px) {
-  .title {
-    margin: -2px 0px 0px 20px;
-    font-size: 40px;
-  }
-  .title-wrapper {
-    left: 40px;
-  }
-}
-
 
 /* Markdown specific */
 h2 {

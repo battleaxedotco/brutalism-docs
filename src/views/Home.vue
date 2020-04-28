@@ -22,6 +22,8 @@ export default {
   },
   methods: {
     buildPageNav(val) {
+      console.log('Hello?')
+      console.log(val)
       this.$refs.drawerR.init(val)
     }
   }

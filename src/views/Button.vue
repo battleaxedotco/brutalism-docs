@@ -8,6 +8,7 @@
 </template>
 
 <script>
+const VueScrollTo = require('vue-scrollto'); 
 export default {
   mounted() {
     this.$nextTick(() => {
