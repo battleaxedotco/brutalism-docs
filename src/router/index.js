@@ -6,8 +6,8 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
-    name: 'Buttons',
+    path: '/:component?',
+    name: 'Home',
     component: Home
   },
   {

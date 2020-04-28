@@ -12,8 +12,15 @@ export default {
   props: {
     text: {
       type: String,
-      default: '# Hello world'
+      default: ''
     }
+  },
+  data: () => ({
+    // renderedText: ''
+  }),
+  mounted() {
+    // this.getRenderedText()
+    this.replaceH2WithAnchors()
   },
   computed: {
     renderedText() {
@@ -23,10 +30,29 @@ export default {
       return writer.render(parsed);
     }
   },
-  mounted() {
-    this.replaceH2WithAnchors()
+  watch: {
+    text(val) {
+      console.log('Text value is:', val)
+      const self = this;
+      this.renderedText = this.getRenderedText();
+      if (val) {
+        setTimeout(() => {
+          self.replaceH2WithAnchors();
+        }, 100);
+      }
+    }
   },
   methods: {
+    // getRenderedText() {
+    //   if (this.text) {
+    //     var reader = new commonmark.Parser({smart: true});
+    //     var writer = new commonmark.HtmlRenderer({sourcepos: true});
+    //     var parsed = reader.parse(this.text);
+    //     return writer.render(parsed);
+    //   } else {
+    //     console.log('No text')
+    //   }
+    // },
     replaceH2WithAnchors() {
       let targets = document.querySelectorAll('h2');
       let results = [];
@@ -36,6 +62,7 @@ export default {
         target.outerHTML = `<a name="${encodeURI(sanitized)}" id="${encodeURI(sanitized)}" data-sourcepos="${target.dataset.sourcepos}" class="h2-mock">${target.innerHTML}</a>`;
       })
       this.$emit('convertedAnchors', results);
+      console.log('Anchors replaced')
     }
   }
 }
@@ -44,6 +71,11 @@ export default {
 <style>
 h2 {
   padding-top: 20px;
+}
+
+h3 code {
+  padding: 0px 5px;
+  background: rgba(0,0,0,0.075);
 }
 
 .markdown-wrapper {

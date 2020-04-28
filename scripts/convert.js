@@ -7,7 +7,16 @@ async function init() {
   let files = await readDir(root);
   files = files.filter(entry => {
     return /\.md$/.test(entry);
-  });
+  }).sort((a, b) => {
+    if (/home/i.test(a)) return -1;
+    else if (/home/i.test(b)) return 1;
+    else {
+      return a.localeCompare(b)
+    }
+  })
+  let resultingNames = files.map(item => {
+    return item
+  })
 
   let result = [];
   files.forEach(file => {
@@ -16,7 +25,10 @@ async function init() {
       data: fs.readFileSync(`${root}/${file}`, "utf8")
     })
   })
+
   const target = `${path.resolve('./')}/src/template.json`
+
+  console.log(resultingNames)
   fs.writeFileSync(target, JSON.stringify(result));
   console.log(`Template rewritten to ${target}`);
 }

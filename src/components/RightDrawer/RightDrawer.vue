@@ -1,7 +1,7 @@
 <template>
   <div class="right-drawer" v-if="isMounted">
     <div v-for="anchor in anchors" :key="anchor.name" class="right-drawer-item" :style="checkItemStatus(anchor)">
-      <a v-scroll-to="{ el: `#${anchor.id}`, offset: 0 }" class="right-drawer-item-label">{{`${anchor.name} ${anchor.yPos}`}}</a>
+      <span v-scroll-to="{ el: `#${anchor.id}`, offset: 0 }" class="right-drawer-item-label">{{`${anchor.name} ${anchor.yPos}`}}</span>
       <div class="fake-anchor" :style="setFakeAnchor(anchor)" />
     </div>
   </div>
@@ -89,10 +89,10 @@ export default {
 </script>
 
 <style>
-a:-webkit-any-link {
+/* a:-webkit-any-link {
   color: inherit;
   text-decoration: none;
-}
+} */
 
 .fake-anchor {
   width: 50px;
