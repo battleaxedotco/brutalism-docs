@@ -1,6 +1,11 @@
 <template>
   <div class="left-drawer">
-    <div v-for="anchor in anchors" :key="anchor.name" class="left-drawer-item" :style="checkItemStatus(anchor)">
+    <div 
+      v-for="anchor in anchors" 
+      :key="anchor.name" 
+      class="left-drawer-item" 
+      :style="checkItemStatus(anchor)"
+    >
       <span @click="toRoute(anchor)" class="left-drawer-item-label">{{anchor.name}}</span>
     </div>
   </div>
@@ -11,45 +16,7 @@ import routes from '@/router/routes.js'
 
 export default {
   data: () => ({
-    anchors: [
-      {
-        name: 'Home',
-        active: true,
-      },
-      {
-        name: 'Button',
-        active: true
-      },
-      {
-        name: 'Button-Group',
-        active: true
-      },
-      {
-        name: 'Tooltips',
-        active: false
-      },
-      {
-        name: 'Input-Scroll',
-        active: false
-      },
-      {
-        name: 'Input',
-        active: false
-      },
-      {
-        name: 'TextArea',
-        active: false
-      },
-      {
-        name: 'Toggle',
-        active: false
-      },
-      {
-        name: 'Dropdown',
-        active: false
-      },
-      
-    ]
+    anchors: []
   }),
   mounted() {
     this.buildRoutes();
@@ -99,7 +66,6 @@ export default {
     },
     toRoute(anchor) {
       this.$router.push({ name: anchor.name }, () => {
-        // this.$scrollTo('.toolbar-wrapper', 0)
         window.scrollTo(0, 0)
       })
     }
@@ -109,7 +75,6 @@ export default {
 
 <style>
 .left-drawer {
-  /* border: 2px solid red; */
   min-width: 20px;
   min-height: 20px;
   position: fixed;

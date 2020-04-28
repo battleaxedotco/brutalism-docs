@@ -19,6 +19,7 @@
     "@vue/cli-plugin-babel": "^4.3.0",
     "@vue/cli-plugin-router": "^4.3.0",
     "@vue/cli-service": "^4.3.0",
+    "chalk": "^4.0.0",
     "execa": "^4.0.0",
     "vue-template-compiler": "^2.6.11"
   },
