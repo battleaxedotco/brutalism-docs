@@ -16,6 +16,11 @@ export default {
     }
   },
   methods: {
+    // This is very sloppy but I can't figure out what goes wrong.
+    // Even after these particular iframe's onload events are called,
+    // the SRC attribute doesn't match the content with > 2 instances.
+    // 
+    // SRC is correct but the "true" URL of the iframe is not
     reloadIframes() {
       let iframes = document.querySelectorAll('iframe');
       const self = this;
