@@ -23,9 +23,9 @@
 </Fold>
 ```
 
-## Props
+## Props and Events
 
-<div class="centered"><iframe style="overflow: scroll;" width="440" height="430" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/inputs/input-scroll/props"> </iframe></div>
+<div class="centered"><iframe style="overflow: scroll;" width="440" height="480" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/inputs/input-scroll/props"> </iframe></div>
 
 ```html
 <Fold label="Props" :open="true">
@@ -77,14 +77,10 @@
     />
     <Input-Scroll label="lazy" lazy :value="29.97" suffix="fps" />
     <Input-Scroll label="disabled" :value="20" disabled />
-  </Fold>
-```
+</Fold>
 
-## Events
+<!-- Open the console to see -->
 
-<div class="centered"><iframe style="overflow: scroll;" width="440" height="320" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/inputs/input-scroll/events"> </iframe></div>
-
-```html
 <Fold label="Events" :open="true">
     <Input-Scroll
         label="Change/Update"
@@ -100,5 +96,4 @@
     />
     <Input-Scroll label="debug" debug />
 </Fold>
-
 ```

@@ -20,11 +20,6 @@ export default [
       component: () => import("@/views/Input-Scroll.vue")
     },
     {
-      path: "/Sample",
-      name: "Sample",
-      component: () => import("@/views/Sample.vue")
-    },
-    {
       path: "/Tooltips",
       name: "Tooltips",
       component: () => import("@/views/Tooltips.vue")
