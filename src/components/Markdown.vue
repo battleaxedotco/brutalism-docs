@@ -10,24 +10,30 @@ const commonmark = require('commonmark');
 
 export default {
   data: () => ({
-    text: ''
+    text: '',
+    renderedText: ''
   }),
   mounted() {
     let content = templates.find(template => {
       return template.name == this.$route.name
     });
     this.text = content ? content.data : '# 404'
+    this.renderedText = this.getRenderedText()
+    console.log('Render mounted')
     this.replaceH2WithAnchors()
   },
   computed: {
-    renderedText() {
+    // renderedText() {
+      
+    // }
+  },
+  methods: {
+    getRenderedText() {
       var reader = new commonmark.Parser({smart: true});
       var writer = new commonmark.HtmlRenderer({sourcepos: true});
       var parsed = reader.parse(this.text);
       return writer.render(parsed);
-    }
-  },
-  methods: {
+    },  
     replaceH2WithAnchors() {
       let targets = document.querySelectorAll('h2');
       let results = [];

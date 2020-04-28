@@ -4,9 +4,6 @@ import router from './router'
 
 Vue.config.productionTip = false
 
-require('../public/prism.css');
-// require('../public/prism.js')
-
 const VueScrollTo = require('vue-scrollto');
 Vue.use(VueScrollTo, {
   container: "body",

@@ -1,7 +1,7 @@
 <template>
   <div class="left-drawer">
     <div v-for="anchor in anchors" :key="anchor.name" class="left-drawer-item" :style="checkItemStatus(anchor)">
-      <span class="left-drawer-item-label">{{anchor.name}}</span>
+      <span @click="$router.push({ name: anchor.name })" class="left-drawer-item-label">{{anchor.name}}</span>
     </div>
   </div>
 </template>
@@ -11,12 +11,16 @@ export default {
   data: () => ({
     anchors: [
       {
-        name: 'Buttons',
+        name: 'Home',
+        active: true,
+      },
+      {
+        name: 'Button',
         active: true
       },
       {
-        name: 'Button-Groups',
-        active: false
+        name: 'Button-Group',
+        active: true
       },
       {
         name: 'Tooltips',
