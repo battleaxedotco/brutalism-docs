@@ -69,4 +69,20 @@ export default {
     width: 100%;
   }
 }
+
+#app::-webkit-scrollbar {
+	display: block;
+}
+textarea::-webkit-scrollbar {
+	background-color: transparent !important;
+  width: 10px !important;
+  height: 100% !important;
+}
+textarea::-webkit-scrollbar-thumb {
+	background: var(--color-scrollbar-thumb) !important;
+	border-radius: 15px;
+}
+textarea::-webkit-scrollbar-thumb:hover {
+	background: var(--color-scrollbar-thumb-hover) !important;
+}
 </style>

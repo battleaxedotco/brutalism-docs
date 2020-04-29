@@ -3,8 +3,8 @@
       <h2>Styles</h2>
       <Display>
         <Input label="Default" value="value" />
-        <Input label="Flat" value="value" flat />
-        <Input label="Filled" value="value" filled />
+         <Input label="Flat" value="value" flat />
+         <Input label="Filled" value="value" filled />
       </Display>
       <Coder :content="getChildByName('Styles').data" />
       <Table :content="tableData.styles" />
@@ -15,9 +15,19 @@
            label='placeholder="Display if no value"'
            placeholder="Display if no value"
          />
-         <Input value="This text is automatically selected on focus" label="auto-select" auto-select />
-         <Input value="This text is always uppercase" label="uppercase" uppercase />
          <Input placeholder="disabled" disabled />
+         <Input placeholder='color="red"' color="red" flat />
+         <Input 
+           value="This text is automatically selected on focus" 
+           label="auto-select" 
+           auto-select 
+         />
+         <Input value="This text is always uppercase" label="uppercase" uppercase />
+         <Input value="Warn of mispelings" label='spellcheck' spellcheck />
+         <Input
+           label="truncate" truncate 
+           value="Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris."
+         />
          <Input
            placeholder='underline-size="2px" left'
            underline-size="2px"
@@ -53,16 +63,22 @@
          <Input value="@update" @update="message" />
          <Input value="@submit" @submit="message" />
          <Input
-             value="@focus/blur"
-             @focus="message('Focused!')"
-             @blur="message('Blur!')"
+           value="@focus/blur"
+           @focus="message('Focused!')"
+           @blur="message('Blur!')"
          />
-         <Input value="@append-outer-click content" append-outer-icon="find-replace" @append-outer-click="message" />
+         <Input 
+           value="@append-outer-click" 
+           append-outer-icon="find-replace" 
+           @append-outer-click="message" 
+         />
       </Display>
       <Coder :content="getChildByName('Events').data" />
       <Table :content="tableData.events" />
   </Content>
+  
 </template>
+
 
 <script>
 import template from '@/template.json'
@@ -85,8 +101,8 @@ export default {
         return item.name == name;
       })
     },
-    message(val) {
-      console.log(val)
+    message(value) {
+      console.log(value)
     }
   },
   components: {

@@ -2,7 +2,9 @@
   <Content>
 $CHILD$
   </Content>
+  <!-- <Table :content="tableData.properties" /> -->
 </template>
+
 
 <script>
 import template from '@/template.json'

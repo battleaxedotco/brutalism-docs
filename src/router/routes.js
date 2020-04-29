@@ -28,5 +28,10 @@ export default [
       path: "/Panel",
       name: "Panel",
       component: () => import("@/views/multi/Panel.vue")
+    },
+    {
+      path: "/TextArea",
+      name: "TextArea",
+      component: () => import("@/views/multi/TextArea.vue")
     }
 ]
