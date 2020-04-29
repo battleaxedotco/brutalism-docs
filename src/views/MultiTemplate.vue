@@ -32,7 +32,8 @@ export default {
     Content: require('@/components/Content.vue').default,
     Display: require('@/components/Display.vue').default,
     Coder: require('@/components/Codeking.vue').default,
-    Table: require('@/components/Table.vue').default
+    Table: require('@/components/Table.vue').default,
+    UIFold: require('@/components/UIFold.vue').default
   }
 }
 </script>

@@ -2,4 +2,6 @@
       <Display>
         $CONTENT$
       </Display>
-      <Coder :content="getChildByName('$NAME$').data" />
+      <UIFold>
+        <Coder :content="getChildByName('$NAME$').data" />
+      </UIFold>

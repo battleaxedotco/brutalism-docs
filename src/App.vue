@@ -57,6 +57,8 @@ export default {
   --frost: rgba(245, 249, 251, 0.9);
   --text-faded: rgba(44, 62, 80, 0.25);
   --text: #2c3e50;
+  --code-bg: #eaeeef;
+  --code-inline-bg: rgba(0,0,0,0.075);
   color: var(--text) !important;
 
   font-size: 16px !important;
@@ -125,7 +127,7 @@ h2 {
 
 h3 code, h4 code, p code {
   padding: 0px 5px;
-  background: rgba(0,0,0,0.075);
+  background: var(--code-inline-bg);
 }
 
 h4 code {
@@ -140,13 +142,13 @@ pre[class*="language-"]:before, pre[class*="language-"]:after {
   box-shadow: none;
 }
 
-pre[class*="language-"] {
-
+.code-toolbar {
   margin: 2em 0px;
 }
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
-	background-color: rgba(200,200,200,.2);
+	background-color: var(--code-bg);
+  margin: 0px 0px;
 }
 
 .token.property {

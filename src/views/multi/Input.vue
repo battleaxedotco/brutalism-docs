@@ -6,7 +6,9 @@
          <Input label="Flat" value="value" flat />
          <Input label="Filled" value="value" filled />
       </Display>
-      <Coder :content="getChildByName('Styles').data" />
+      <UI-Fold>
+        <Coder :content="getChildByName('Styles').data" />
+      </UI-Fold>
       <Table :content="tableData.styles" />
       <h2>Props</h2>
       <Display>
@@ -55,7 +57,9 @@
            placeholder='append-outer-icon="find-replace"'
          />
       </Display>
-      <Coder :content="getChildByName('Props').data" />
+      <UI-Fold>
+        <Coder :content="getChildByName('Props').data" />
+      </UI-Fold>
       <Table :content="tableData.properties" />
       <h2>Events</h2>
       <Display>
@@ -73,7 +77,9 @@
            @append-outer-click="message" 
          />
       </Display>
-      <Coder :content="getChildByName('Events').data" />
+      <UI-Fold>
+        <Coder :content="getChildByName('Events').data" />
+      </UI-Fold>
       <Table :content="tableData.events" />
   </Content>
   
@@ -109,7 +115,8 @@ export default {
     Content: require('@/components/Content.vue').default,
     Display: require('@/components/Display.vue').default,
     Coder: require('@/components/Codeking.vue').default,
-    Table: require('@/components/Table.vue').default
+    Table: require('@/components/Table.vue').default,
+    UIFold: require('@/components/UIFold.vue').default
   }
 }
 </script>

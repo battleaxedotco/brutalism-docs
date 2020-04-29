@@ -22,7 +22,9 @@
          </Row>
          <Button block label="Block button (fill horizontal space)"/>
       </Display>
-      <Coder :content="getChildByName('Styles').data" />
+      <UI-Fold>
+        <Coder :content="getChildByName('Styles').data" />
+      </UI-Fold>
       <Table :content="tableData.styles" />
       <h2>Props</h2>
       <Display>
@@ -41,7 +43,9 @@
            <Button block right>block right</Button>				
          </Row>
       </Display>
-      <Coder :content="getChildByName('Props').data" />
+      <UI-Fold>
+        <Coder :content="getChildByName('Props').data" />
+      </UI-Fold>      
       <Table :content="tableData.properties" />
       <h2>Events</h2>
       <Display>
@@ -50,7 +54,9 @@
           <Button evalscript="anyJSXFunction()" label='@evalscript' />
         </Button-Group>
       </Display>
-      <Coder :content="getChildByName('Events').data" />
+      <UI-Fold>
+        <Coder :content="getChildByName('Events').data" />
+      </UI-Fold>
       <Table :content="tableData.events" />
       <h2>Tooltips</h2>
       <Display>
@@ -102,7 +108,9 @@
             >
         </Button-Group>
       </Display>
-      <Coder :content="getChildByName('Tooltips').data" />
+      <UI-Fold>
+        <Coder :content="getChildByName('Tooltips').data" />
+      </UI-Fold>
       <Table :content="tableData.tooltips" />
   </Content>
 </template>
@@ -139,7 +147,8 @@ export default {
     Content: require('@/components/Content.vue').default,
     Display: require('@/components/Display.vue').default,
     Coder: require('@/components/Codeking.vue').default,
-    Table: require('@/components/Table.vue').default
+    Table: require('@/components/Table.vue').default,
+    UIFold: require('@/components/UIFold.vue').default
   },
 
 }

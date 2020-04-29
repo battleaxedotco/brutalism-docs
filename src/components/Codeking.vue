@@ -34,15 +34,5 @@ export default {
 </script>
 
 <style>
-
-/* code:focus-within {
-  outline: none;
-}
-code {
-  cursor: text;
-} */
-
-
-
 </style>
 

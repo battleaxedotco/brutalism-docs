@@ -76,7 +76,9 @@ Redress flyout menu contents based on a property:
 The above could be done much better with a computed property like so, which will automatically rebuild itself any time the property value is changed:
 
 ```html
-<Menu :flyout="flyoutMenu" />
+<template>
+  <Menu :flyout="flyoutMenu" />
+<template>
 ```
 
 ```html
