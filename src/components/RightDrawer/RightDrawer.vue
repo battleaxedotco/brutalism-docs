@@ -67,6 +67,7 @@ export default {
         });
         ticking = true;
       }
+
     });
   },
   methods: {
@@ -115,6 +116,29 @@ export default {
       });
       this.createRanges();
       this.isMounted = true;
+      
+
+      // Throws a missing parameter (expected "0" to be defined) error on / with an /* route path
+      // if (this.$route.hash) {
+      //   let realHash = this.$route.hash.replace('#', '');
+      //   let target = document.querySelector(`#${realHash}`)
+      //   setTimeout(() => {
+          
+      //     if (target) this.scrollTo(target)
+      //   }, 500);
+      // } 
+      
+    },
+    scrollTo(elt) {
+      let opts = {
+        container: 'body',
+        offset: 6,
+        force: true,
+        cancelable: true,
+        x: false,
+        y: true
+      }
+      this.$scrollTo(elt, 500, opts)
     },
     createRanges() {
       this.$nextTick(() => {

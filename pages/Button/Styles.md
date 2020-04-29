@@ -1,5 +1,5 @@
 <Row>
-  <Button label="Normal" />
+  <Button label="Default" />
   <Button primary>Primary</Button>
   <Button flat label="Flat" />
   <Button filled label="Filled" />

@@ -22,6 +22,8 @@ Bombino includes various commands and utilities for ease of development -- you c
 
 ### Manual - Global components
 
+> ***NOTE:*** Components rely on the [starlette utility](https://github.com/Inventsable/starlette) for themes and color. If not using a template, you must use the Panel component or install starlette and run `require('starlette').default.init()` on panel launch.
+
 #### Within `./src/main.js` (to use anywhere in project with no need to import per component file):
 
 ```js

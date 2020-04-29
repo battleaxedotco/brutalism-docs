@@ -13,5 +13,15 @@ export default [
       path: "/Button-Group",
       name: "Button-Group",
       component: () => import("@/views/multi/Button-Group.vue")
+    },
+    {
+      path: "/Menus",
+      name: "Menus",
+      component: () => import("@/views/multi/Menus.vue")
+    },
+    {
+      path: "/Panel",
+      name: "Panel",
+      component: () => import("@/views/multi/Panel.vue")
     }
 ]

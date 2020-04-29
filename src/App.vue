@@ -16,7 +16,7 @@ export default {
     frames: []
   }),
   mounted() {
-    this.resetScroll();
+    // this.resetScroll();
     require('starlette').default.initAs('ILST', 'darkest');
     this.setCSS('color-scrollbar', 'rgba(44, 62, 80, 0.25)');
     this.setCSS('color-scrollbar-thumb', 'rgba(44, 62, 80, 0.25)')
@@ -24,7 +24,6 @@ export default {
   watch: {
     '$route.path'() {
       this.resetScroll();
-
     }
   },
   methods: {
@@ -89,6 +88,12 @@ hr {
   border-style: solid;
 }
 
+blockquote {
+  margin: 0px;
+  padding: 1px 5px;
+  background: rgba(200,200,200,.2);
+}
+
 img {
   max-width: 100%;
 }
@@ -118,13 +123,17 @@ h2 {
   padding-top: 20px;
 }
 
-h3 code, h4 code {
+h3 code, h4 code, p code {
   padding: 0px 5px;
   background: rgba(0,0,0,0.075);
 }
 
 h4 code {
-  font-size: 1.25em;
+  font-size: 1em;
+}
+
+.token.operator, .token.entity, .token.url, .language-css .token.string, .style .token.string {
+  background: rgba(0,0,0,0);
 }
 
 pre[class*="language-"]:before, pre[class*="language-"]:after {
