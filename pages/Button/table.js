@@ -11,43 +11,43 @@ export default {
         property: 'primary',
         type: 'Boolean',
         default: 'false',
-        description: ''
+        description: 'Sharp border and active state'
       },
       {
         property: 'flat',
         type: 'Boolean',
         default: 'false',
-        description: 'lorem ipsum'
+        description: 'Subtle appearance and active state'
       },
       {
         property: 'filled',
         type: 'Boolean',
         default: 'false',
-        description: 'lorem ipsum'
+        description: 'Primary button with no idle border'
       },
       {
         property: 'disabled',
         type: 'Boolean',
         default: 'false',
-        description: 'lorem ipsum'
+        description: 'Prevent all mouse events'
       },
       {
         property: 'tall',
         type: 'Boolean',
         default: 'false',
-        description: 'lorem ipsum'
+        description: 'Add extra padding and min-height'
       },
       {
         property: 'toolbar',
         type: 'Boolean',
         default: 'false',
-        description: 'lorem ipsum'
+        description: 'Fixed proportional size'
       },
       {
         property: 'block',
         type: 'Boolean',
         default: 'false',
-        description: 'lorem ipsum'
+        description: 'Greedy space fill alone, flexible in Button-Group'
       }
     ]
   },
@@ -115,7 +115,7 @@ export default {
         class: 'functional'
       },
       {
-        property: 'evalScript',
+        property: 'evalscript',
         type: 'String',
         default: '',
         description: 'EvalScript to execute on click',
@@ -146,6 +146,11 @@ export default {
         event: '@click',
         arguments: 'callback()',
         description: 'Method to execute on native click event'
+      },
+      {
+        event: '@evalscript',
+        arguments: 'callback( value )',
+        description: 'Returns auto-parsed JSON value of evalscript prop'
       }
     ]
   },

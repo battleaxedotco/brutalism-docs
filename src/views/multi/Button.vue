@@ -46,7 +46,10 @@
       <Table :content="tableData.properties" />
       <h2>Events</h2>
       <Display>
-        <Button @click="testClick" label='@click="testClick"' />
+        <Button-Group grid>
+          <Button @click="testClick" label='@click="testClick"' />
+          <Button evalscript="anyJSXFunction()" label='@evalscript' />
+        </Button-Group>
       </Display>
       <Coder :content="getChildByName('Events').data" />
       <Table :content="tableData.events" />
