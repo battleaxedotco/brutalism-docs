@@ -1,0 +1,102 @@
+<template>
+  <Content>
+      <h2>Styles</h2>
+      <Display>
+        <Input label="Default" value="value" />
+        <Input label="Flat" value="value" flat />
+        <Input label="Filled" value="value" filled />
+      </Display>
+      <Coder :content="getChildByName('Styles').data" />
+      <Table :content="tableData.styles" />
+      <h2>Props</h2>
+      <Display>
+        <Input label="I am a label" />
+         <Input
+           label='placeholder="Display if no value"'
+           placeholder="Display if no value"
+         />
+         <Input value="This text is automatically selected on focus" label="auto-select" auto-select />
+         <Input value="This text is always uppercase" label="uppercase" uppercase />
+         <Input placeholder="disabled" disabled />
+         <Input
+           placeholder='underline-size="2px" left'
+           underline-size="2px"
+           flat
+           left
+         />
+         <Input
+           filled
+           prepend-icon="magnify"
+           placeholder='prepend-icon="magnify"'
+         />
+         <Input
+           filled
+           append-icon="find-replace"
+           placeholder='prepend-icon="find-replace"'
+         />
+         <Input
+           filled
+           prepend-outer-icon="magnify"
+           placeholder='prepend-outer-icon="magnify"'
+         />
+         <Input
+           filled
+           append-outer-icon="find-replace"
+           placeholder='append-outer-icon="find-replace"'
+         />
+      </Display>
+      <Coder :content="getChildByName('Props').data" />
+      <Table :content="tableData.properties" />
+      <h2>Events</h2>
+      <Display>
+        <Input value="@change" @change="message" />
+         <Input value="@update" @update="message" />
+         <Input value="@submit" @submit="message" />
+         <Input
+             value="@focus/blur"
+             @focus="message('Focused!')"
+             @blur="message('Blur!')"
+         />
+         <Input value="@append-outer-click content" append-outer-icon="find-replace" @append-outer-click="message" />
+      </Display>
+      <Coder :content="getChildByName('Events').data" />
+      <Table :content="tableData.events" />
+  </Content>
+</template>
+
+<script>
+import template from '@/template.json'
+import tableData from '../../../pages/Input/table'
+
+export default {
+  computed: {
+    tableData() {
+      return tableData;
+    },
+    target() {
+      return template.find(item => {
+        return item.name == this.$route.name;
+      })
+    }
+  },
+  methods: {
+    getChildByName(name) {
+      return this.target.children.find(item => {
+        return item.name == name;
+      })
+    },
+    message(val) {
+      console.log(val)
+    }
+  },
+  components: {
+    Content: require('@/components/Content.vue').default,
+    Display: require('@/components/Display.vue').default,
+    Coder: require('@/components/Codeking.vue').default,
+    Table: require('@/components/Table.vue').default
+  }
+}
+</script>
+
+<style>
+</style>
