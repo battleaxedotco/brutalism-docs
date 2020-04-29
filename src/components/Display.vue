@@ -1,0 +1,71 @@
+<template>
+  <div class="brutalism-wrapper">
+    <div class="display-header"></div>
+
+    <div class="brutalism-display">
+      <slot />
+    </div>
+    <div class="display-footer"></div>
+  </div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+.brutalism-wrapper {
+  /* width: calc(100% - 40px); */
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.brutalism-wrapper .annotation {
+  font-size: 14px;
+  margin-bottom: 1ch;
+}
+
+.brutalism-wrapper .divider {
+  height: 1.5px;
+  background-color: var(--color-default); 
+  opacity: .5;
+  border-width: 0px;
+  /* height: 0px; */
+  padding: 0;
+  margin: 10px 0px 15px 0px;
+}
+
+.brutalism-display {
+  box-sizing: border-box;
+  font-size: 12px !important;
+  background-color: var(--color-bg) !important;
+  color: var(--color-default) !important;
+  padding: 10px 20px;
+  width: 100%;
+}
+
+.display-header {
+  background: var(--color-bg);
+  height: 6px;
+  width: 100%;
+  justify-content: flex-end;
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0 0 1.5px 0;
+  border-radius: 3px 3px 0 0;
+  /* border: 2px solid red; */
+}
+
+.display-footer {
+  width: 100%;
+  height: 8px;
+  border: 2px solid red;
+  background: var(--color-header);
+  border-style: solid;
+  border-color: #000;
+  border-width: 1.5px 0 0 0;
+}
+
+</style>

@@ -1,0 +1,1 @@
+<Button @click="testClick" label='@click="testClick"' />

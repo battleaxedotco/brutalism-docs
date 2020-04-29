@@ -6,11 +6,15 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "gh-pages-deploy": "node scripts/gh-pages-deploy.js",
-    "convert": "node scripts/convert.js"
+    "convert": "node scripts/convert.js",
+    "generate": "node scripts/generate.js"
   },
   "dependencies": {
+    "brutalism": "^1.2.9",
     "commonmark": "^0.29.1",
     "core-js": "^3.6.4",
+    "sanitize-html": "^1.23.0",
+    "starlette": "^1.0.3",
     "vue": "^2.6.11",
     "vue-router": "^3.1.6",
     "vue-scrollto": "^2.18.1"

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Toolbar />
-    <router-view @checkIframes="appendIframeRefreshes" @mounted="refreshPrism"/>
+    <router-view @mounted="refreshPrism"/>
     <!-- <refresh-button v-for="frame in frames" :key="frame" :frameid="frame" :ref="frame" /> -->
   </div>
 </template>
@@ -16,7 +16,10 @@ export default {
     frames: []
   }),
   mounted() {
-    this.resetScroll()
+    this.resetScroll();
+    require('starlette').default.initAs('ILST', 'darkest');
+    this.setCSS('color-scrollbar', 'rgba(44, 62, 80, 0.25)');
+    this.setCSS('color-scrollbar-thumb', 'rgba(44, 62, 80, 0.25)')
   },
   watch: {
     '$route.path'() {
@@ -31,35 +34,16 @@ export default {
     refreshPrism() {
       this.$nextTick(() => {
         Prism.highlightAll();
-        this.reloadIframes()
       })
     },
-    appendIframeRefreshes() {},
-    // This is very sloppy but I can't figure out what goes wrong.
-    // Even after these particular iframe's onload events are called,
-    // the SRC attribute doesn't match the content with > 2 instances.
-    // 
-    // SRC is correct but the "true" URL of the iframe is not
-    reloadIframes() {
-      // let iframes = document.querySelectorAll('iframe');
-      // const self = this;
-      // this.frames = [];
-      // iframes.forEach((frame, i) => {
-      //   frame.id = `iframe-${i}`
-      //   const target = frame;
-      //   frame.onload = () => {
-      //     let realSrc = frame.src
-      //     setTimeout(() => {
-      //       self.$nextTick(() => {
-      //         console.log(frame.id, i)
-      //         self.frames.push(`iframe-${i}`)
-      //         let frameRoute = frame.src.replace(/.*\#/).replace('undefined', '');
-      //         frame.contentWindow.postMessage(frameRoute, '*');
-      //       })
-      //     }, 100);
-      //   }
-      // })
-      // console.log('Done')
+    setCSS(prop, data) {
+      // Sets value of CSS variable
+      // prop == typeof String as name of variable, with or without leading dashes:
+      // this.setCSS('color-bg', 'rgba(25,25,25,1)') || this.setCSS('--scrollbar-width', '20px')
+      document.documentElement.style.setProperty(
+        `${/^\-\-/.test(prop) ? prop : "--" + prop}`,
+        data
+      );
     }
   }
 }
@@ -74,8 +58,10 @@ export default {
   --frost: rgba(245, 249, 251, 0.9);
   --text-faded: rgba(44, 62, 80, 0.25);
   --text: #2c3e50;
+  color: var(--text) !important;
 
-  color: var(--text);
+  font-size: 16px !important;
+
 }
 
 #app {
@@ -141,8 +127,21 @@ h4 code {
   font-size: 1.25em;
 }
 
+pre[class*="language-"]:before, pre[class*="language-"]:after {
+  box-shadow: none;
+}
+
+pre[class*="language-"] {
+
+  margin: 2em 0px;
+}
+
+:not(pre) > code[class*="language-"], pre[class*="language-"] {
+	background-color: rgba(200,200,200,.2);
+}
+
 .token.property {
-  color: #7ec699;
+  color: #07a;
 }
 
 .markdown-wrapper {
@@ -186,6 +185,25 @@ h4 code {
   code[class*="language-"], pre[class*="language-"] {
     font-size: 12px;
   }
+}
+
+#app::-webkit-scrollbar {
+  display: block;
+}
+body::-webkit-scrollbar, #app::-webkit-scrollbar, ::-webkit-scrollbar {
+	background-color: var(--bg) !important;
+  width: 15px;
+}
+pre::-webkit-scrollbar {
+  background-color: transparent !important;
+}
+
+body::-webkit-scrollbar-thumb, #app::-webkit-scrollbar-thumb, ::-webkit-scrollbar-thumb {
+	background: rgba(44, 62, 80, 0.25) !important;
+	border-radius: 2px !important;
+}
+body::-webkit-scrollbar-thumb:hover, #app::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:hover {
+	background: rgba(44, 62, 80, 0.25) !important;
 }
 
 </style>

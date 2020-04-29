@@ -83,16 +83,19 @@ export default {
   padding: 4px 0px;
   /* margin: 3px 0px; */
   color: var(--text-faded);
-  transition: color 120ms var(--quint) 20ms;
   height: 40px;
   box-sizing: border-box;
+}
+
+.left-drawer-item-label {
+  transition: color 120ms var(--quint) 20ms;
 }
 
 .left-drawer-item.active {
   color: var(--text);
 }
 
-.left-drawer-item:hover {
+.left-drawer-item-label:hover {
   color: var(--text);
 }
 

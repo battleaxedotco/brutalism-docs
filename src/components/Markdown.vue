@@ -38,7 +38,6 @@ export default {
     },  
     replaceH2WithAnchors() {
       let targets = document.querySelectorAll('h2');
-      // console.log('Getting targets', targets)
       let results = [];
       targets.forEach(target => {
         let sanitized = target.innerHTML.replace(/\s/g, '_');
