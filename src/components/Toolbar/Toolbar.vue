@@ -61,7 +61,7 @@ export default {
   height: 70px;
   position: fixed;
   transition: height 120ms var(--quart) 0ms;
-  background-color: var(--frost);
+  background-color: transparent;
   z-index: 0;
 }
 .toolbar-blur {
@@ -124,7 +124,7 @@ export default {
   
   .toolbar-content {
     box-sizing: border-box;
-    max-width: calc(100% - 30px)
+    max-width: calc(100% - 30px);
   }
   .component-title {
 
@@ -162,6 +162,9 @@ export default {
 @media screen and (max-width: 950px) {
   .component-title {
     display: block;
+  }
+  .toolbar-wrapper {
+    background-color: var(--frost);
   }
 }
 </style>
