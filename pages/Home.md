@@ -1,7 +1,3 @@
-## Demo
-
-<div class="centered"><iframe style="overflow: scroll;" width="500" height="710" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/"> </iframe></div>
-
 ## Getting Started
 
 ### [Bombino](https://github.com/Inventsable/bombino) - supercharged Adobe generator for Vue-CLI and Quasar-CLI with dynamic template support:

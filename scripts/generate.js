@@ -114,7 +114,8 @@ async function init() {
       let targetMultiPath = `${viewsFolder}/multi/${file.name}.vue`
       if (!exists(targetMultiPath)) fs.writeFileSync(targetMultiPath, multiContent);
     } else {
-      fs.writeFileSync(`${viewsFolder}/${file.name}.vue`, templateView);
+      let targetPath = `${viewsFolder}/${file.name}.vue`;
+      if (!exists(targetMultiPath)) fs.writeFileSync(targetPath, templateView);
     }
   })
   console.log(` ✔ ${chalk.black.bgBlue(`./src/pages/ `)}`)
