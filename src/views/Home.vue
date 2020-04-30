@@ -13,7 +13,10 @@
           <iframe style="overflow: scroll;" width="500" height="320" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/"> </iframe>
         </div>
         <div class="main-demo mobile">
-          <iframe style="overflow: scroll;" width="360" height="540" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/"> </iframe>
+          <iframe style="overflow: scroll; 
+            width: 100vw;
+            padding: 0px;
+            margin: 0px;" width="380" height="540" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/"> </iframe>
         </div>
       </div>
     </div>
