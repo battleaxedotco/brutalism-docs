@@ -15,6 +15,11 @@ export default [
       component: () => import("@/views/multi/Button-Group.vue")
     },
     {
+      path: "/Dropdown",
+      name: "Dropdown",
+      component: () => import("@/views/multi/Dropdown.vue")
+    },
+    {
       path: "/Input",
       name: "Input",
       component: () => import("@/views/multi/Input.vue")

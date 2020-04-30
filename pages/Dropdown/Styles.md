@@ -1,0 +1,1 @@
+<Dropdown label="Default" :items="['Item 1', 'Item 2']" :active="0" />
