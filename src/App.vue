@@ -2,7 +2,6 @@
   <div id="app">
     <Toolbar />
     <router-view @mounted="refreshPrism"/>
-    <!-- <refresh-button v-for="frame in frames" :key="frame" :frameid="frame" :ref="frame" /> -->
   </div>
 </template>
 
@@ -10,7 +9,6 @@
 export default {
   components: {
     'Toolbar': require('./components/Toolbar').default,
-    'refresh-button': require('./components/Iframe/Refresh.vue').default
   },
   data: () => ({
     frames: [],
