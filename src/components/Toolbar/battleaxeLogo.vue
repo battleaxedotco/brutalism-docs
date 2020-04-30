@@ -48,7 +48,7 @@ export default {
   fill: #231f20;
 }
 .logo-wrapper {
-  margin-top: 10px;
+  padding-top: 10px;
   padding-left: 20px;
   display: flex;
   justify-content: center;
@@ -61,7 +61,7 @@ export default {
     width: 30px;
   }
   .logo-wrapper {
-    margin-top: 5px;
+    padding-top: 5px;
     padding-left: 0px;
   }
 }

@@ -19,6 +19,9 @@ Vue.use(VueScrollTo, {
   y: true
 })
 
+import vOutsideEvents from 'vue-outside-events'
+Vue.use(vOutsideEvents)
+
 import {
   Alert,
   ButtonGroup,
