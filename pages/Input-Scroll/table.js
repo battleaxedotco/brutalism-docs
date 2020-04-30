@@ -39,61 +39,73 @@ export default {
         property: 'label',
         type: 'String',
         default: '',
-        description: 'Persistent text to display above input'
+        description: 'Text to display beside input'
       },
       {
-        property: 'placeholder',
+        property: 'min',
+        type: 'Number',
+        default: 'null',
+        description: 'Minimum value allowed'
+      },
+      {
+        property: 'max',
+        type: 'Number',
+        default: 'null',
+        description: 'Maximum value allowed'
+      },
+      {
+        property: 'color',
         type: 'String',
-        default: '',
-        description: 'Text to display when value is null'
-      },
-      {
-        property: 'auto-select',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Select contents on focus'
-      },
-      {
-        property: 'uppercase',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Text content is always uppercase'
+        default: 'var(--color-selection)',
+        description: 'Color on focus'
       },
       {
         property: 'disabled',
         type: 'Boolean',
         default: 'false',
-        description: 'If true, input cannot be focused'
+        description: 'If true, prevents all mouse events'
       },
       {
-        property: 'truncate',
+        property: 'step',
+        type: 'Number',
+        default: '1',
+        description: 'Amount to increment per event'
+      },
+      {
+        property: 'steps',
+        type: 'Array',
+        default: '[0.1, 1, 10]',
+        description: 'Control, default, shift key increment'
+      },
+      {
+        property: 'toFixed',
+        type: 'Number',
+        default: 'null',
+        description: 'Strict digits to appear after decimal'
+      },
+      {
+        property: 'reset-value',
+        type: 'Number',
+        default: '0',
+        description: 'Value to insert when left empty'
+      },
+      {
+        property: 'lazy',
         type: 'Boolean',
         default: 'false',
-        description: 'Display ellipses on content overflow'
+        description: 'Non-strict, any decimals or value'
       },
       {
-        property: 'left',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Flat line animation starts at left'
-      },
-      {
-        property: 'right',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Flat line animation starts at right'
-      },
-      {
-        property: 'uppercase',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Sets transform-text to uppercase'
-      },
-      {
-        property: 'prepend-icon',
+        property: 'suffix',
         type: 'String',
         default: '',
-        description: 'Material icon to prepend inside input'
+        description: 'Text to append to value'
+      },
+      {
+        property: 'prefix',
+        type: 'String',
+        default: '',
+        description: 'Text to prepend to value'
       }
     ]
   },
@@ -117,7 +129,7 @@ export default {
       {
         event: '@submit',
         arguments: 'callback( value )',
-        description: 'Fires on form submission and control + enter key'
+        description: 'Fires on form submission and enter key'
       },
       {
         event: '@focus',

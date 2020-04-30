@@ -20,6 +20,11 @@ export default [
       component: () => import("@/views/multi/Input.vue")
     },
     {
+      path: "/Input-Scroll",
+      name: "Input-Scroll",
+      component: () => import("@/views/multi/Input-Scroll.vue")
+    },
+    {
       path: "/Menus",
       name: "Menus",
       component: () => import("@/views/multi/Menus.vue")
@@ -33,5 +38,10 @@ export default [
       path: "/TextArea",
       name: "TextArea",
       component: () => import("@/views/multi/TextArea.vue")
+    },
+    {
+      path: "/Toggle",
+      name: "Toggle",
+      component: () => import("@/views/multi/Toggle.vue")
     }
 ]

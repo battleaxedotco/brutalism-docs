@@ -6,6 +6,7 @@
 
       <h2>Props</h2>
       <Coder :content="getChildByName('Props').data" />
+      <div class="spacer" />
       <Table :content="tableData.properties" />
 
       <Markdown-Snippet content="> ***NOTE:*** To include callbacks into `:context` or `:flyout` within the same file, you must use `this.callback` with `data: { return {} }` syntax, or `callback` with `data: () => ({})` syntax. Do not initialize functions ( e.g. use `this.callback` and not `this.callback()` )." />
@@ -127,6 +128,11 @@ export default {
         return item.name == name;
       })
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      Prism.highlightAll();
+    })
   },
   components: {
     Content: require('@/components/Content.vue').default,

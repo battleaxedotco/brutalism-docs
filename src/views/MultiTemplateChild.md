@@ -5,3 +5,4 @@
       <UIFold>
         <Coder :content="getChildByName('$NAME$').data" />
       </UIFold>
+      <!-- <Table :content="tableData.$LNAME$" /> -->

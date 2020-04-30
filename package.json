@@ -10,7 +10,7 @@
     "generate": "node scripts/generate.js"
   },
   "dependencies": {
-    "brutalism": "^1.2.9",
+    "brutalism": "^1.3.2",
     "commonmark": "^0.29.1",
     "core-js": "^3.6.4",
     "sanitize-html": "^1.23.0",

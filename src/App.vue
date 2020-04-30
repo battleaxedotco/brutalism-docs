@@ -119,6 +119,12 @@ img {
   min-height: 100vh;
 }
 
+pre {
+  /* border: 2px solid red; */
+  margin-bottom: 2em;
+}
+
+
 
 /* Markdown specific */
 h2 {
@@ -148,7 +154,7 @@ pre[class*="language-"]:before, pre[class*="language-"]:after {
 
 :not(pre) > code[class*="language-"], pre[class*="language-"] {
 	background-color: var(--code-bg);
-  margin: 0px 0px;
+  margin: 0px;
 }
 
 .token.property {
@@ -166,6 +172,12 @@ pre[class*="language-"]:before, pre[class*="language-"]:after {
 .markdown-content {
   box-sizing: border-box;
   max-width: 100vw;
+}
+
+.spacer {
+  margin: 2em 0px 0px 0px;
+  width: 100%;
+  height: 0px;
 }
 
 .h2-mock {

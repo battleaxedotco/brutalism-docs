@@ -38,7 +38,7 @@
            <Button tooltip="I'm a tooltip">tooltip="I'm a tooltip"</Button>
            <Button uppercase label="uppercase" />
            <Button goto="https://battleaxe.co" label='goto="https://battleaxe.co"'/>
-           <Button evalscript="someJSXFunction()" label='evalscript="someJSXFunction()"'/>
+           <Button evalScript="someJSXFunction()" label='evalScript="someJSXFunction()"'/>
            <Button block left>block left</Button>
            <Button block right>block right</Button>				
          </Row>
@@ -51,7 +51,10 @@
       <Display>
         <Button-Group grid>
           <Button @click="testClick" label='@click="testClick"' />
-          <Button evalscript="anyJSXFunction()" label='@evalscript' />
+          <Button evalScript="testEvalScript()" @evalScript="reportEval" label='@evalScript' />
+          <Button 
+            :evalScript="`testEvalScript('${ JSON.stringify({ msg: 'data' }) }')`" 
+            @evalScript="reportEval" label='template literal evalScript' />
         </Button-Group>
       </Display>
       <UI-Fold>
@@ -130,9 +133,6 @@ export default {
       })
     }
   },
-  mounted() {
-    console.log(tableData)
-  },
   methods: {
     getChildByName(name) {
       return this.target.children.find(item => {
@@ -141,6 +141,9 @@ export default {
     },
     testClick() {
       console.log('Click!')
+    },
+    reportEval() {
+      console.log('Host app will return a value here')
     }
   },
   components: {

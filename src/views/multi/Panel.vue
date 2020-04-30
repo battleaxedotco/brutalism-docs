@@ -7,12 +7,14 @@
       <Markdown-Snippet content=' - [cluecumber](https://github.com/Inventsable/cluecumber) - Browser-friendly utilities for using CSInterface, opening links, async evalScript, and more.'/>
 
       <div class="centered"><iframe style="overflow: scroll;" width="500" height="310" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/"> </iframe></div>
+      <div class="spacer" />
       <Coder content='<Panel>
     <router-view />
   </Panel>' />
 
       <h2>Props</h2>
       <Coder :content="getChildByName('Props').data" />
+      <div class="spacer" />
       <Table :content="tableData.properties" />
 
       <h2>Examples</h2>
@@ -81,6 +83,11 @@ export default {
         return item.name == name;
       })
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      Prism.highlightAll();
+    })
   },
   components: {
     Content: require('@/components/Content.vue').default,

@@ -1,4 +1,13 @@
 <Button-Group grid>
   <Button @click="testClick" label='@click="testClick"' />
-  <Button evalscript="anyJSXFunction()" @evalscript="returnResult" label='@evalscript' />
+  <Button 
+    evalScript="testEvalScript()" 
+    @evalScript="reportEval" 
+    label='@evalScript' 
+  />
+  <Button 
+    :evalScript="`testEvalScript('${ JSON.stringify({ msg: 'data' }) }')`" 
+    @evalScript="reportEval" 
+    label='template literal evalScript' 
+  />
 </Button-Group>

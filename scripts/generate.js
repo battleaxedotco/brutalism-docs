@@ -100,11 +100,11 @@ async function init() {
       // I don't have a good way of handing more detailed sections other than generating the base code,
       // then manually tweaking the resulting file to get a better match.
 
-      let multiContent = fs.readFileSync(`${viewsFolder}/MultiTemplate.vue`, "utf8").replace(/\$NAME\$/gm, file.name);
+      let multiContent = fs.readFileSync(`${viewsFolder}/MultiTemplate.vue`, "utf8").replace(/\$NAME\$/gm, file.name).replace(/\$LNAME\$/gm, file.name.toLowerCase());
 
       let totalChildrenContent = ''
       file.children.forEach((child, i) => {
-        let codeBlock = childTemplate.replace(/\$NAME\$/gm, child.name).replace('$CONTENT$', child.data
+        let codeBlock = childTemplate.replace(/\$NAME\$/gm, child.name).replace(/\$LNAME\$/gm, file.name.toLowerCase()).replace('$CONTENT$', child.data
           .replace(/[\r\n]+/g, "\r\n       "))
 
         totalChildrenContent += codeBlock
