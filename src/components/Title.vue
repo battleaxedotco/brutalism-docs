@@ -30,6 +30,7 @@
 
 @media screen and (max-width: 950px) {
   .title {
+    display: none;
     margin: -2px 0px 0px 20px;
     font-size: 40px;
   }

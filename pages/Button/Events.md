@@ -1,4 +1,4 @@
-<Button-Group grid>
+<Button-Group grid column>
   <Button @click="testClick" label='@click="testClick"' />
   <Button 
     evalScript="testEvalScript()" 

@@ -126,6 +126,18 @@ span.type, span.property, span.default, span.event, span.arguments {
   /* font-weight: bold; */
 }
 
-
+@media screen and (max-width: 950px) {
+  .table-container {
+    font-size: 12px;
+  }
+  .table-column-cell, .table-column-cell.default {
+    padding: 6px 20px 6px 10px;
+    min-height: 28px;
+  }
+  .table-column-label, .table-column-label.default {
+    padding: 8px 20px 8px 10px;
+  }
+  
+}
 
 </style>

@@ -1,6 +1,5 @@
 <template>
   <div class="right-drawer" v-if="isMounted">
-    <div v-if="showScrollbar" class="mini-scrollbar" :style="getMiniScrollPos()"></div>
     <div v-for="anchor in anchors" :key="anchor.name" class="right-drawer-item" :style="checkItemStatus(anchor)">
       <span v-scroll-to="{ el: `#${anchor.id}`, offset: 6 }" class="right-drawer-item-label">{{anchor.name}}</span>
     </div>
@@ -16,7 +15,8 @@ export default {
     anchors: [],
     miniScrollTop: 0,
     scrollPercentage: 0,
-    isMounted: false
+    isMounted: false,
+    stickyAnchors: []
   }),
   watch: {
     realPos(val) {
@@ -39,6 +39,9 @@ export default {
     },
   },
   computed: {
+    app() {
+      return this.$root.$children[0];
+    },
     activeAnchor: {
       get() {
         return this.anchors.find(anchor => {
@@ -51,15 +54,28 @@ export default {
             ? false
             : true
         })
+        this.app.activeAnchor = val
+        // console.log('Active anchor is:', val)
       }
     },
   },
   mounted() {
     const self = this;
-    window.addEventListener('scroll', function(e) {
+
+    // Switched most of this to <Content> to attempt sticky CSS toolbar titles.
+    // Didn't work. Just settle for simple and funcitonal, change the toolbar title.
+    if (this.$route.name == 'Home')
+      window.addEventListener('scroll', this.measureScrollEvents)
+  },
+  beforeDestroy() {
+    if (this.$route.name == 'Home')
+      window.removeEventListener('scroll', this.measureScrollEvents)
+  },
+  methods: {
+    measureScrollEvents() {
+      const self = this;
       let ticking;
       let last_known_scroll_position = window.scrollY;
-
       if (!ticking) {
         window.requestAnimationFrame(function() {
           self.checkScroll(last_known_scroll_position.toFixed());
@@ -67,10 +83,7 @@ export default {
         });
         ticking = true;
       }
-
-    });
-  },
-  methods: {
+    },
     calculateScrollPercentage() {
       try {
         if (this.activeAnchor.index !== this.anchors.length - 1 && this.realPos > this.anchors[0].range[0]) {
@@ -89,7 +102,10 @@ export default {
       }
     },
     checkScroll(value) {
+      // console.log(value)
       this.realPos = +value;
+      // console.log(this.stickyAnchors[0].getBoundingClientRect())
+      // console.log(this.stickyAnchors[0].style)
     },  
     checkItemStatus(item) {
       if (item.active) return `color: var(--text)`
@@ -112,12 +128,13 @@ export default {
           range: [],
           increment: 0
         }
+        // this.stickyAnchors.push(document.querySelector(`#${value}`))
         return child;
       });
+      this.app.anchors = this.anchors;
+      this.activeAnchor = this.anchors[0]
       this.createRanges();
       this.isMounted = true;
-      
-
       // Throws a missing parameter (expected "0" to be defined) error on / with an /* route path
       // if (this.$route.hash) {
       //   let realHash = this.$route.hash.replace('#', '');

@@ -3,7 +3,7 @@
     <Title />
     <div class="api-wrapper">
       <div class="api-content">
-        <slot />
+        <slot ref="content" @mounted="replaceH2WithAnchors" />
       </div>
     </div>
     <Left-Drawer ref="drawerL" />
@@ -18,13 +18,42 @@ export default {
     'Left-Drawer': require('../components/LeftDrawer').default,
     'Right-Drawer': require('../components/RightDrawer').default,
   },
+  data: () => ({
+    stickyAnchors: []
+  }),
   mounted() {
     this.$nextTick(() => {
-      this.replaceH2WithAnchors()
+      this.replaceH2WithAnchors();
     })
+    window.addEventListener('scroll', this.measureScrollEvents);
+    this.stickyAnchors = this.$slots.default.filter(item => {
+      return /sticky\-anchor/i.test(item.tag)
+    })    
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.measureScrollEvents)
   },
   methods: {
-    replaceH2WithAnchors() {
+    measureScrollEvents() {
+      const self = this;
+      let ticking;
+      let last_known_scroll_position = window.scrollY;
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          let temp = +last_known_scroll_position.toFixed();
+          self.$refs.drawerR.checkScroll(temp);
+          if (self.$route.name == 'Button') self.checkAnchors(temp)
+          ticking = false;
+        });
+        ticking = true;
+      }
+    },
+    checkAnchors(number) {
+      this.stickyAnchors.forEach(anchor => {
+        anchor.componentInstance.checkElt(number)
+      })
+    },
+    replaceH2WithAnchors(val) {
       let targets = document.querySelectorAll('h2');
       let results = [];
       targets.forEach(target => {
@@ -42,32 +71,16 @@ export default {
 .api-wrapper {
   z-index: 1;
   box-sizing: border-box;
-  margin: 80px 0px 40px 0px;
+  margin: 40px 0px 40px 0px;
   padding: 10px 20px;
   max-width: 800px;
   width: 100%;
   /* background: rgba(0,0,0,0.025); */
 }
 .api-content {
+  padding: 40px 0px 0px 0px;
   box-sizing: border-box;
   max-width: 100vw;
-}
-
-
-@media screen and (max-width: 950px) {
-  h2, .h2-mock {
-    padding-left: 50px;
-  }.h2-mock {
-    position: sticky;
-    top: 0px;
-    left: 50px;
-  }
-  .api-wrapper {
-    box-sizing: border-box;
-    margin: 80px 0px 0px 0px;
-    padding: 10px 0px;
-    width: 100%;
-  }
 }
 
 #app::-webkit-scrollbar {

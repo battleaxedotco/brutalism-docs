@@ -49,7 +49,7 @@
       <Table :content="tableData.properties" />
       <h2>Events</h2>
       <Display>
-        <Button-Group grid>
+        <Button-Group grid column>
           <Button @click="testClick" label='@click="testClick"' />
           <Button evalScript="testEvalScript()" @evalScript="reportEval" label='@evalScript' />
           <Button 
@@ -134,6 +134,9 @@ export default {
     }
   },
   methods: {
+    test(value) {
+      console.log('Testing:', value)
+    },
     getChildByName(name) {
       return this.target.children.find(item => {
         return item.name == name;
@@ -151,7 +154,8 @@ export default {
     Display: require('@/components/Display.vue').default,
     Coder: require('@/components/Codeking.vue').default,
     Table: require('@/components/Table.vue').default,
-    UIFold: require('@/components/UIFold.vue').default
+    UIFold: require('@/components/UIFold.vue').default,
+    "Sticky-Anchor": require('@/components/StickyAnchor.vue').default
   },
 
 }

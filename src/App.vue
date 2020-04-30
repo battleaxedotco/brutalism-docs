@@ -13,7 +13,9 @@ export default {
     'refresh-button': require('./components/Iframe/Refresh.vue').default
   },
   data: () => ({
-    frames: []
+    frames: [],
+    anchors: [],
+    activeAnchor: null
   }),
   mounted() {
     // this.resetScroll();
@@ -60,16 +62,21 @@ export default {
   --code-bg: #eaeeef;
   --code-inline-bg: rgba(0,0,0,0.075);
   color: var(--text) !important;
-
   font-size: 16px !important;
+}
 
+a.h2-mock {
+  position: -webkit-sticky; /* Safari */
+  position: sticky !important;
+  top: 0;
+  z-index: 100;
 }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--bg);
+  background: var(--bg) !important;
   margin: 0px;
   padding: 0px;
   height: 100%;
@@ -81,6 +88,7 @@ export default {
   margin: 0px;
   padding: 0px;
   min-height: 100%;
+  background: var(--bg) !important;
 }
 
 hr {
@@ -117,6 +125,7 @@ img {
   height: auto;
   position: relative;
   min-height: 100vh;
+  /* margin-top: 40px; */
 }
 
 pre {
@@ -165,8 +174,9 @@ pre[class*="language-"]:before, pre[class*="language-"]:after {
   z-index: 1;
   box-sizing: border-box;
   margin: 80px 0px 40px 0px;
-  padding: 10px 20px;
-  max-width: 800px;
+
+  padding: 10px 0px 0px 0px;
+  max-width: 760px;
   width: 100%;
 }
 .markdown-content {
@@ -192,17 +202,35 @@ pre[class*="language-"]:before, pre[class*="language-"]:after {
 }
 
 @media screen and (max-width: 950px) {
-  h2, .h2-mock {
-    padding-left: 50px;
-  }.h2-mock {
-    position: sticky;
-    top: 0px;
-    left: 50px;
+  .api-content {
+    padding: 0px !important;
+  }
+  .api-wrapper {
+    box-sizing: border-box;
+    padding: 10px 0px;
+    width: 100%;
+  }
+  .markdown-content, .api-wrapper {
+    margin-top: 40px;
+  }
+
+  .markdown-content {
+    padding: 0px 20px 10px 20px;
+  }
+  iframe {
+    max-width: 100% !important;
+    overflow: auto;
+  }
+  h2:first-child {
+    border: 2px solid red;
+  }
+  h2, a.h2-mock {
+    margin-top: 0px;
   }
   .markdown-wrapper {
     box-sizing: border-box;
-    margin: 80px 0px 0px 0px;
-    padding: 10px 0px;
+    margin: 0px 0px 0px 0px;
+    /* padding: 10px 0px; */
     width: 100%;
   }
   code[class*="language-"], pre[class*="language-"] {
