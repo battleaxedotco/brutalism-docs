@@ -148,10 +148,12 @@ export default {
   .toolbar-wrapper {
     z-index: 3;
     height: 42px;
+    background-color: var(--bg);
   }
   .toolbar-blur {
     backdrop-filter: blur(10px);
   }
+  
 }
 
 @media screen and (min-width: 1451px) {
