@@ -40,6 +40,11 @@ export default [
       component: () => import("@/views/multi/Panel.vue")
     },
     {
+      path: "/Tabs",
+      name: "Tabs",
+      component: () => import("@/views/multi/Tabs.vue")
+    },
+    {
       path: "/TextArea",
       name: "TextArea",
       component: () => import("@/views/multi/TextArea.vue")

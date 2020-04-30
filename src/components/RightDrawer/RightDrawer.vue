@@ -55,15 +55,11 @@ export default {
             : true
         })
         this.app.activeAnchor = val
-        // console.log('Active anchor is:', val)
       }
     },
   },
   mounted() {
     const self = this;
-
-    // Switched most of this to <Content> to attempt sticky CSS toolbar titles.
-    // Didn't work. Just settle for simple and funcitonal, change the toolbar title.
     if (this.$route.name == 'Home')
       window.addEventListener('scroll', this.measureScrollEvents)
   },
@@ -102,10 +98,7 @@ export default {
       }
     },
     checkScroll(value) {
-      // console.log(value)
       this.realPos = +value;
-      // console.log(this.stickyAnchors[0].getBoundingClientRect())
-      // console.log(this.stickyAnchors[0].style)
     },  
     checkItemStatus(item) {
       if (item.active) return `color: var(--text)`
@@ -128,23 +121,12 @@ export default {
           range: [],
           increment: 0
         }
-        // this.stickyAnchors.push(document.querySelector(`#${value}`))
         return child;
       });
       this.app.anchors = this.anchors;
       this.activeAnchor = this.anchors[0]
       this.createRanges();
       this.isMounted = true;
-      // Throws a missing parameter (expected "0" to be defined) error on / with an /* route path
-      // if (this.$route.hash) {
-      //   let realHash = this.$route.hash.replace('#', '');
-      //   let target = document.querySelector(`#${realHash}`)
-      //   setTimeout(() => {
-          
-      //     if (target) this.scrollTo(target)
-      //   }, 500);
-      // } 
-      
     },
     scrollTo(elt) {
       let opts = {
@@ -164,12 +146,10 @@ export default {
             // first anchor
             anchor.range.push(anchor.yPos);
             anchor.range.push(a[i + 1].yPos);
-            // anchor.range.push((a[i + 1].yPos - anchor.yPos) / 2 + anchor.yPos)
             anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
   
           } else if (i == a.length - 1 && a.length > 1) {
             // last anchor
-            // anchor.range.push(a[i - 1].range[1] + 1)
             anchor.range.push(anchor.yPos);
             anchor.range.push(document.documentElement.scrollHeight)
             anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
@@ -182,15 +162,11 @@ export default {
   
           } else {
             // normal anchor
-            // anchor.range.push((a[i - 1].yPos - anchor.yPos) / 2 + anchor.yPos)
             anchor.range.push(anchor.yPos);
             anchor.range.push(a[i + 1].yPos);
-            // anchor.range.push((a[i + 1].yPos - anchor.yPos) / 2 + anchor.yPos)
             anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
           }
           // Add centerpoint
-          // anchor.range.push((anchor.range[1] + anchor.range[0]) / 2)
-          // console.log(anchor.range)
           anchor.range = anchor.range.map(item => {
             return Math.floor(item)
           })

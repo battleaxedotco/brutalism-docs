@@ -18,17 +18,11 @@ export default {
     'Left-Drawer': require('../components/LeftDrawer').default,
     'Right-Drawer': require('../components/RightDrawer').default,
   },
-  data: () => ({
-    stickyAnchors: []
-  }),
   mounted() {
     this.$nextTick(() => {
       this.replaceH2WithAnchors();
     })
-    window.addEventListener('scroll', this.measureScrollEvents);
-    this.stickyAnchors = this.$slots.default.filter(item => {
-      return /sticky\-anchor/i.test(item.tag)
-    })    
+    window.addEventListener('scroll', this.measureScrollEvents);  
   },
   beforeDestroy() {
     window.removeEventListener('scroll', this.measureScrollEvents)
@@ -47,11 +41,6 @@ export default {
         });
         ticking = true;
       }
-    },
-    checkAnchors(number) {
-      this.stickyAnchors.forEach(anchor => {
-        anchor.componentInstance.checkElt(number)
-      })
     },
     replaceH2WithAnchors(val) {
       let targets = document.querySelectorAll('h2');
