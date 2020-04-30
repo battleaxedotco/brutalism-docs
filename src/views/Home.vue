@@ -109,6 +109,9 @@ export default {
   .home-anno {
     padding: 0px;
   }
+  .desktop {
+    display: block;
+  }
   .landscape {
     display: none;
   }
