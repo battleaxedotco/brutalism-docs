@@ -16,7 +16,7 @@
           <iframe style="overflow: scroll; 
             width: 100vw;
             padding: 0px;
-            margin: 0px;" width="380" height="540" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/"> </iframe>
+            margin: 0px;" width="380" height="620" seamless frameborder="0" scrolling="yes" src="https://brutalism.netlify.app/#/"> </iframe>
         </div>
       </div>
     </div>
