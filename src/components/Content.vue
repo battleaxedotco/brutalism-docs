@@ -61,7 +61,7 @@ export default {
 
 <style>
 .api-wrapper {
-  z-index: 1;
+  z-index: 2;
   box-sizing: border-box;
   margin: 40px 0px 40px 0px;
   padding: 10px 20px;

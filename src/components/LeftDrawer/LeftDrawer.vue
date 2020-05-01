@@ -72,10 +72,10 @@ export default {
   position: fixed;
   left: 50px;
   top: 126px;
-  z-index: 10;
+  z-index: 1;
   font-weight: bold;
   font-size: 1.5em;
-  width: 350px;
+  /* width: 350px; */
   user-select: none;
 }
 
