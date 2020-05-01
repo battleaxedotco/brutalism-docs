@@ -24,6 +24,7 @@ Vue.use(vOutsideEvents)
 
 import {
   Alert,
+  Anno,
   ButtonGroup,
   Button,
   Col,
@@ -49,6 +50,7 @@ import {
 } from "brutalism";
 
 Vue.component("Alert", Alert);
+Vue.component("Anno", Anno);
 Vue.component("Button-Group", ButtonGroup);
 Vue.component("Button", Button);
 Vue.component("Col", Col);

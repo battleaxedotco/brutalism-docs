@@ -25,6 +25,11 @@ export default [
       component: () => import("@/views/multi/Fold.vue")
     },
     {
+      path: "/Icon",
+      name: "Icon",
+      component: () => import("@/views/multi/Icon.vue")
+    },
+    {
       path: "/Input",
       name: "Input",
       component: () => import("@/views/multi/Input.vue")

@@ -1,0 +1,1 @@
+<Icon name="github-circle" @click="testClick" />

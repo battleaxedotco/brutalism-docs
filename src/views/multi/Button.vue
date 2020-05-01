@@ -63,7 +63,7 @@
       <Table :content="tableData.events" />
       <h2>Tooltips</h2>
       <Display>
-        <div class="annotation">Positioning</div>
+        <Anno strikethrough>Positioning Test</Anno>
         <Button-Group grid>
             <Button block tooltip="Default">Default tooltip</Button>
             <Button block no-bold tooltip="Default">No bold tooltip</Button>
@@ -80,7 +80,7 @@
             >
         </Button-Group>
         <div class="divider" />
-        <div class="annotation">Timing</div>
+        <Anno>Timing</Anno>
         <Button-Group grid>
             <Button block left
                 tooltip="cubic-bezier(0.48, 0.04, 0.52, 0.96)"
