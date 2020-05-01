@@ -92,7 +92,7 @@ export default {
   float: right;
 	margin-top: 2px;
 	fill: var(--color-icon);
-	height: 18px;
+	height: 16px;
 	transform-origin: 50% 50%;
 	transition: all 0.15s cubic-bezier(0, 0, 0.2, 1);
 }
