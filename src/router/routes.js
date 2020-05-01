@@ -25,6 +25,11 @@ export default [
       component: () => import("@/views/multi/Dropdown.vue")
     },
     {
+      path: "/Dropzone",
+      name: "Dropzone",
+      component: () => import("@/views/multi/Dropzone.vue")
+    },
+    {
       path: "/Fold",
       name: "Fold",
       component: () => import("@/views/multi/Fold.vue")
