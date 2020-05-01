@@ -1,9 +1,16 @@
 <Tabs 
   dummy 
-  @update="msg"
-  @click="msg"
+  @click="testClick"
   :routes='[
-    { label: "Home", path: "/" },
-    { label: "About", path: "/about" }
+    { label: "Click Route 1", path: "/" },
+    { label: "Click Route 2", path: "/about" }
+  ]' 
+/>
+<Tabs 
+  dummy 
+  @update="showUpdate"
+  :routes='[
+    { label: "Update Route 1", path: "/home" },
+    { label: "Update Route 2", path: "/about" }
   ]' 
 />

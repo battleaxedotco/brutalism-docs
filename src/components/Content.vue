@@ -51,6 +51,9 @@ export default {
         target.outerHTML = `<a name="${encodeURI(sanitized)}" id="${encodeURI(sanitized)}" data-sourcepos="${target.dataset.sourcepos || null}" class="h2-mock">${target.innerHTML}</a>`;
       });
       this.$refs.drawerR.init(results);
+    },
+    checkAnchors() {
+      // 
     }
   }
 }

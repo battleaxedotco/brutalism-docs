@@ -115,10 +115,10 @@ export default {
         class: 'functional'
       },
       {
-        property: 'evalscript',
+        property: 'evalScript',
         type: 'String',
         default: '',
-        description: 'EvalScript to execute on click',
+        description: 'async evalScript to execute on click',
         class: 'functional'
       },
       {
@@ -148,9 +148,9 @@ export default {
         description: 'Method to execute on native click event'
       },
       {
-        event: '@evalscript',
+        event: '@evalScript',
         arguments: 'callback( value )',
-        description: 'Returns auto-parsed JSON value of evalscript prop'
+        description: 'returns auto-parsed JSON value of evalScript prop'
       }
     ]
   },

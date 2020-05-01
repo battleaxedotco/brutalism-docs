@@ -8,10 +8,10 @@ export default {
     ],
     data: [
       {
-        property: 'primary',
+        property: 'filled',
         type: 'Boolean',
         default: 'false',
-        description: 'Sharp border and active state'
+        description: 'No active line animation, adapts to host app UI'
       },
     ]
   },
@@ -24,11 +24,47 @@ export default {
     ],
     data: [
       {
-        property: 'primary',
+        property: 'routes',
+        type: 'Array',
+        default: '[ ]',
+        description: 'Array of items with Vue Router paths/names'
+      },
+      {
+        property: 'disabled',
         type: 'Boolean',
         default: 'false',
-        description: 'Sharp border and active state'
+        description: 'If true, prevents all mouse events'
       },
+      {
+        property: 'invert',
+        type: 'Boolean',
+        default: 'false',
+        description: 'If true active line appears above tab'
+      },
+      {
+        property: 'delay',
+        type: 'String',
+        default: '20ms',
+        description: 'Any valid CSS transition delay'
+      },
+      {
+        property: 'duration',
+        type: 'String',
+        default: '200ms',
+        description: 'Any valid CSS transition duration'
+      },
+      {
+        property: 'timing',
+        type: 'String',
+        default: 'var(--quad)',
+        description: 'Any valid CSS transition timing'
+      },
+      {
+        property: 'dummy',
+        type: 'Boolean',
+        default: 'false',
+        description: "If true, display only and does not push $router"
+      }
     ]
   },
   events: {
@@ -42,6 +78,11 @@ export default {
         event: '@click',
         arguments: 'callback()',
         description: 'Method to execute on native click event'
+      },
+      {
+        event: '@update',
+        arguments: 'callback( item )',
+        description: 'Returns the new active item after any change'
       }
     ]
   }
