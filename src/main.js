@@ -37,6 +37,7 @@ import {
   Icon,
   InputScroll,
   Input,
+  Link,
   Menus,
   PanelInfo,
   Panel,
@@ -63,6 +64,7 @@ Vue.component("Footer", Footer);
 Vue.component("Icon", Icon);
 Vue.component("Input-Scroll", InputScroll);
 Vue.component("Input", Input);
+Vue.component("Link", Link);
 Vue.component("Menus", Menus);
 Vue.component("Panelify", Panel);
 Vue.component("Panel-Info", PanelInfo);

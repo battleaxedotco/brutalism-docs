@@ -30,16 +30,16 @@ export default {
     ],
     data: [
       {
-        property: 'value',
-        type: 'String',
-        default: '',
-        description: 'Current text within input'
-      },
-      {
         property: 'label',
         type: 'String',
         default: '',
         description: 'Text to display beside input'
+      },
+      {
+        property: 'value',
+        type: 'Number',
+        default: '0',
+        description: 'Current value within input'
       },
       {
         property: 'min',

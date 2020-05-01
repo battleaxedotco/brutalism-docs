@@ -30,16 +30,22 @@ export default {
     ],
     data: [
       {
-        property: 'value',
-        type: 'String',
-        default: '',
-        description: 'Current text within input'
-      },
-      {
         property: 'label',
         type: 'String',
         default: '',
         description: 'Persistent text to display above input'
+      },
+      {
+        property: 'v-model',
+        type: 'String',
+        default: '',
+        description: 'Two-way binding of value prop'
+      },
+      {
+        property: 'value',
+        type: 'String',
+        default: '',
+        description: 'Current text within input'
       },
       {
         property: 'placeholder',
@@ -70,6 +76,12 @@ export default {
         type: 'Boolean',
         default: 'false',
         description: 'Display ellipses on content overflow'
+      },
+      {
+        property: 'copy-content',
+        type: 'Boolean',
+        default: 'false',
+        description: 'Copies value with append-outer-icon'
       },
       {
         property: 'left',
@@ -146,6 +158,11 @@ export default {
         event: '@blur',
         arguments: 'callback()',
         description: 'Fires on blur event of element'
+      },
+      {
+        event: '@clipboard',
+        arguments: 'callback( Bool )',
+        description: 'Returns confirmation of copy-content prop'
       }
     ]
   }

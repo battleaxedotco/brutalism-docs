@@ -2,7 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes.js'
 routes.push({
-  path: '*',
+  path: '/Sandbox',
   name: '404',
   component: () => import("@/views/404.vue")
 })

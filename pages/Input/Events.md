@@ -11,3 +11,8 @@
   append-outer-icon="find-replace" 
   @append-outer-click="message" 
 />
+<Input 
+  value="@clipboard"
+  copy-content
+  @clipboard="message" 
+/>

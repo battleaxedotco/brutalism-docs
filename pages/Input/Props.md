@@ -1,4 +1,5 @@
 <Input label="I am a label" />
+<Input v-model="twoWayBinding" :label="twoWayBinding" />
 <Input
   label='placeholder="Display if no value"'
   placeholder="Display if no value"
@@ -15,6 +16,10 @@
 <Input
   label="truncate" truncate 
   value="Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris."
+/>
+<Input
+  label="copy-content" copy-content 
+  value="I'm automatically copied on click"
 />
 <Input
   placeholder='underline-size="2px" left'

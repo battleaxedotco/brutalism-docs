@@ -8,10 +8,11 @@ export default {
     ],
     data: [
       {
-        property: '',
-        type: '',
-        default: '',
-        description: ''
+        property: 'name',
+        type: 'String',
+        default: 'home',
+        description: 'The fa-[name] for Font Awesome icon',
+        todo: true
       },
     ]
   },
@@ -24,28 +25,29 @@ export default {
     ],
     data: [
       {
-        property: 'label',
+        property: 'name',
+        type: 'String',
+        default: 'home',
+        description: 'The mdi-[name] for Material Design icon',
+        todo: true
+      },
+      {
+        property: 'color',
+        type: 'String',
+        default: 'var(--default-color)',
+        description: 'Valid CSS color value of icon'
+      },
+      {
+        property: 'size',
+        type: 'String',
+        default: '24px',
+        description: 'Size of icon component'
+      },
+      {
+        property: 'url',
         type: 'String',
         default: '',
-        description: 'Text to appear before folding icon'
-      },
-      {
-        property: 'open',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Reactive prop to open and shut component'
-      },
-      {
-        property: 'persistent',
-        type: 'Boolean',
-        default: 'true',
-        description: 'If false, contents are destroyed when shut'
-      },
-      {
-        property: 'inner-padding',
-        type: 'String',
-        default: '',
-        description: 'Padding assigned between parent and slot'
+        description: 'URL to launch on click'
       }
     ]
   },
@@ -59,8 +61,8 @@ export default {
       {
         event: '@click',
         arguments: 'callback()',
-        description: 'Method to execute on native click event'
-      },
+        description: 'Fires on all clicks to element'
+      }
     ]
   }
 }

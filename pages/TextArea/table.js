@@ -36,6 +36,12 @@ export default {
         description: 'Current text within input'
       },
       {
+        property: 'v-model',
+        type: 'String',
+        default: '',
+        description: 'Two-way binding of the value prop'
+      },
+      {
         property: 'label',
         type: 'String',
         default: '',

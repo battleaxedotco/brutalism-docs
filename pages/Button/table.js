@@ -122,6 +122,13 @@ export default {
         class: 'functional'
       },
       {
+        property: 'copy',
+        type: 'String',
+        default: '',
+        description: 'Text to copy on clicking the element',
+        class: 'functional'
+      },
+      {
         property: 'left',
         type: 'Boolean',
         default: 'false',
@@ -150,7 +157,12 @@ export default {
       {
         event: '@evalScript',
         arguments: 'callback( value )',
-        description: 'returns auto-parsed JSON value of evalScript prop'
+        description: 'Returns auto-parsed JSON value of evalScript prop'
+      },
+      {
+        event: '@clipboard',
+        arguments: 'callback( Bool )',
+        description: 'Returns confirmation of copy prop'
       }
     ]
   },

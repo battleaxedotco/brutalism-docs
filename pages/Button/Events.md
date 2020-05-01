@@ -10,4 +10,9 @@
     @evalScript="reportEval" 
     label='template literal evalScript' 
   />
+  <Button 
+    copy="Copy this text on click" 
+    label='@clipboard="reportClipboardSuccess"'
+    @clipboard="reportClipboardSuccess"
+  />
 </Button-Group>

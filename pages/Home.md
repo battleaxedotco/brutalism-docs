@@ -61,14 +61,14 @@ export default {
 
 Quickstart templates with [bombino](https://github.com/Inventsable/bombino) to get you up and running in less than a minute:
 
-### Brutalism Basic [Demo]() | [GitHub](https://github.com/battleaxedotco/bombino-brutalism-basic)
+### Brutalism Basic [Demo](https://brutalism.netlify.app/#/basic) | [GitHub](https://github.com/battleaxedotco/bombino-brutalism-basic)
 
 ![](https://github.com/battleaxedotco/bombino-brutalism-basic/blob/master/src/assets/template.png?raw=true)
 
-### Brutalism Router [Demo]() | [GitHub](https://github.com/battleaxedotco/bombino-brutalism-router)
+### Brutalism Router [Demo](https://brutalism.netlify.app/#/router) | [GitHub](https://github.com/battleaxedotco/bombino-brutalism-router)
 
 ![](https://github.com/battleaxedotco/bombino-brutalism-router/blob/master/src/assets/template.png?raw=true)
 
-### Brutalism Vuex [Demo]() | [GitHub](https://github.com/battleaxedotco/bombino-brutalism-vuex)
+### Brutalism Vuex [Demo](https://brutalism.netlify.app/#/vuex) | [GitHub](https://github.com/battleaxedotco/bombino-brutalism-vuex)
 
 ![](https://github.com/battleaxedotco/bombino-brutalism-vuex/blob/master/src/assets/template.png?raw=true)

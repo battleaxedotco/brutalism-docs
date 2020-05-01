@@ -9,6 +9,7 @@
   <Button uppercase label="uppercase" />
   <Button goto="https://battleaxe.co" label='goto="https://battleaxe.co"'/>
   <Button evalScript="someJSXFunction()" label='evalScript="someJSXFunction()"'/>
+  <Button copy="Copy this text on click" label='copy="Copy this text on click"'/>
   <Button block left>block left</Button>
   <Button block right>block right</Button>				
 </Row>

@@ -27,7 +27,7 @@ export default {
         property: 'routes',
         type: 'Array',
         default: '[ ]',
-        description: 'Array of items with Vue Router paths/names'
+        description: 'Array of items with Router paths/names'
       },
       {
         property: 'disabled',
@@ -63,7 +63,13 @@ export default {
         property: 'dummy',
         type: 'Boolean',
         default: 'false',
-        description: "If true, display only and does not push $router"
+        description: "If true, does not push new route"
+      },
+      {
+        property: 'emit-to-parent',
+        type: 'Boolean',
+        default: 'false',
+        description: "Sends relative route to parent if in iframe"
       }
     ]
   },

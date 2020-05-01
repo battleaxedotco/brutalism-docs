@@ -5,6 +5,11 @@ export default [
       component: () => import("@/views/Home.vue")
     },
     {
+      path: "/Anno",
+      name: "Anno",
+      component: () => import("@/views/multi/Anno.vue")
+    },
+    {
       path: "/Button",
       name: "Button",
       component: () => import("@/views/multi/Button.vue")

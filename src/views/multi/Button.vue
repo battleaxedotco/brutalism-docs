@@ -39,6 +39,7 @@
            <Button uppercase label="uppercase" />
            <Button goto="https://battleaxe.co" label='goto="https://battleaxe.co"'/>
            <Button evalScript="someJSXFunction()" label='evalScript="someJSXFunction()"'/>
+           <Button copy="Copy this text on click" label='copy="Copy this text on click"'/>
            <Button block left>block left</Button>
            <Button block right>block right</Button>				
          </Row>
@@ -55,6 +56,11 @@
           <Button 
             :evalScript="`testEvalScript('${ JSON.stringify({ msg: 'data' }) }')`" 
             @evalScript="reportEval" label='template literal evalScript' />
+          <Button 
+            copy="Copy this text on click" 
+            label='@clipboard="reportClipboardSuccess"'
+            @clipboard="reportClipboardSuccess"
+          />
         </Button-Group>
       </Display>
       <UI-Fold>
@@ -63,7 +69,7 @@
       <Table :content="tableData.events" />
       <h2>Tooltips</h2>
       <Display>
-        <Anno strikethrough>Positioning Test</Anno>
+        <Anno>Positioning Test</Anno>
         <Button-Group grid>
             <Button block tooltip="Default">Default tooltip</Button>
             <Button block no-bold tooltip="Default">No bold tooltip</Button>
@@ -134,8 +140,8 @@ export default {
     }
   },
   methods: {
-    test(value) {
-      console.log('Testing:', value)
+    reportClipboardSuccess(value) {
+      console.log('Copy function was:', value)
     },
     getChildByName(name) {
       return this.target.children.find(item => {
