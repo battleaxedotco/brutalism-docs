@@ -6,20 +6,20 @@
   { label: "Disabled Route 1", name: "Route 1" },
   { label: "Disabled Route 2", name: "Route 2" }
 ]' />
-<Tabs invert :routes='[
+<Tabs flat invert :routes='[
   { label: "Invert Route 1", name: "Route 1" },
   { label: "Invert Route 2", name: "Route 2" }
 ]' />
-<Tabs delay="200ms" :routes='[
+<Tabs flat delay="2000ms" :routes='[
   { label: "Delay Route 1", path: "/" },
   { label: "Delay Route 2", path: "/Route2" }
 ]' />
-<Tabs duration="1000ms" :routes='[
+<Tabs flat duration="1000ms" :routes='[
   { label: "Duration Route 1", path: "/" },
   { label: "Duration Route 2", path: "/Route2" }
 ]' />
-<Tabs 
-  timing="cubic-bezier(0.48, 0.04, 0.52, 0.96)" 
+<Tabs flat 
+  timing="cubic-bezier(0.9, 0.04, 0.52, 0.96)" 
   :routes='[
     { label: "Timing Route 1", path: "/" },
     { label: "Timing Route 2", path: "/Route2" }

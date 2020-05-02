@@ -8,10 +8,10 @@
           { label: "Default Route 3", name: "about" }
         ]' />
         <div class="spacer"></div>
-        <Tabs dummy filled :routes='[
-          { label: "Filled Route 1", name: "home" },
-          { label: "Filled Route 2", name: "about" },
-          { label: "Filled Route 3", name: "settings" }
+        <Tabs dummy flat :routes='[
+          { label: "Flat Route 1", name: "home" },
+          { label: "Flat Route 2", name: "about" },
+          { label: "Flat Route 3", name: "settings" }
         ]' />
       </Display>
       <UIFold>
@@ -31,24 +31,24 @@
           { label: "Disabled Route 2", name: "Route 2" }
         ]' />
         <div class="spacer"></div>
-        <Tabs invert dummy :routes='[
+        <Tabs invert dummy flat :routes='[
           { label: "Invert Route 1", name: "Route 1" },
           { label: "Invert Route 2", name: "Route 2" }
         ]' />
         <div class="spacer"></div>
-        <Tabs delay="200ms" dummy :routes='[
+        <Tabs delay="200ms" dummy flat :routes='[
           { label: "Delay Route 1", path: "/" },
           { label: "Delay Route 2", path: "/Route2" }
         ]' />
         <div class="spacer"></div>
-        <Tabs duration="1000ms" dummy :routes='[
+        <Tabs duration="1000ms" dummy flat :routes='[
           { label: "Duration Route 1", path: "/" },
           { label: "Duration Route 2", path: "/Route2" }
         ]' />
         <div class="spacer"></div>
         <Tabs 
           timing="cubic-bezier(0.48, 0.04, 0.52, 0.96)" 
-          dummy 
+          dummy flat 
           :routes='[
             { label: "Timing Route 1", path: "/" },
             { label: "Timing Route 2", path: "/Route2" }
