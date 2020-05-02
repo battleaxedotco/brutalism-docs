@@ -15,7 +15,7 @@
       <Table :content="tableData.menus" />
 
       <h2>Examples</h2>
-      <Markdown-Snippet content='Menus contain only `Launch Localhost` and `Reload Panel`:
+      <Markdown-Snippet content='Menus contain only `Copy debug URL` and `Refresh Panel`:
 
 ```html
   <Menus refresh debug />

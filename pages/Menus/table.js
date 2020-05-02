@@ -17,18 +17,18 @@ export default {
         property: 'debug',
         type: 'Boolean',
         default: 'false',
-        description: 'Append a "Launch debug" option for the current debugging port'
+        description: 'Append a "Copy debug URL" option for current debugging port'
       },
       {
         property: 'context',
         type: 'Array',
-        default: '[]',
+        default: '[ ]',
         description: 'An Array of Objects to construct the context menu'
       },
       {
         property: 'flyout',
         type: 'Array',
-        default: '[]',
+        default: '[ ]',
         description: 'An Array of Objects to construct the flyout menu'
       },
       {
@@ -80,7 +80,7 @@ export default {
       {
         property: 'menu',
         type: 'Array',
-        default: '[]',
+        default: '[ ]',
         description: 'Context only, provides infinitely nesting menus'
       },
       {

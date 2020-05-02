@@ -8,10 +8,10 @@ export default {
     ],
     data: [
       {
-        property: 'filled',
+        property: 'flat',
         type: 'Boolean',
         default: 'false',
-        description: 'No active line animation, adapts to host app UI'
+        description: 'Active line animation, transparent idle bg'
       },
     ]
   },
