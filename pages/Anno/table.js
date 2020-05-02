@@ -52,7 +52,6 @@ export default {
         type: 'String',
         default: '',
         description: 'Inner text if not using slot',
-        todo: true
       },
       {
         property: 'color',

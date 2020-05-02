@@ -8,12 +8,27 @@ export default {
     ],
     data: [
       {
-        property: 'name',
+        property: 'ba',
         type: 'String',
-        default: 'home',
+        default: '',
+        description: 'Name of Battleaxe icon',
+        todo: true
+      },
+      {
+        property: 'mdi',
+        type: 'String',
+        default: '',
+        description: 'The mdi-[name] for Material Design icon',
+        todo: true,
+      },
+      {
+        property: 'fa',
+        type: 'String',
+        default: '',
         description: 'The fa-[name] for Font Awesome icon',
         todo: true
       },
+
     ]
   },
   properties: {
@@ -29,7 +44,6 @@ export default {
         type: 'String',
         default: 'home',
         description: 'The mdi-[name] for Material Design icon',
-        todo: true
       },
       {
         property: 'color',

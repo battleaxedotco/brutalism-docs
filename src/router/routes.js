@@ -35,6 +35,11 @@ export default [
       component: () => import("@/views/multi/Fold.vue")
     },
     {
+      path: "/Grid",
+      name: "Grid",
+      component: () => import("@/views/multi/Grid.vue")
+    },
+    {
       path: "/Icon",
       name: "Icon",
       component: () => import("@/views/multi/Icon.vue")

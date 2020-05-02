@@ -20,6 +20,7 @@ export default {
   /* width: calc(100% - 40px); */
   box-sizing: border-box;
   user-select: none;
+  /* min-height: 200px; */
 }
 
 .brutalism-wrapper .annotation {
@@ -28,8 +29,8 @@ export default {
 }
 
 .brutalism-wrapper .divider {
-  height: 1.5px;
-  background-color: var(--color-default); 
+  height: 2px;
+  background-color: var(--divider-dark); 
   opacity: .5;
   border-width: 0px;
   /* height: 0px; */
@@ -44,6 +45,7 @@ export default {
   color: var(--color-default) !important;
   padding: 10px 20px;
   width: 100%;
+  /* min-height: 200px; */
 }
 
 .display-header {

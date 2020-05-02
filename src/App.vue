@@ -131,7 +131,15 @@ pre {
   margin-bottom: 2em;
 }
 
-
+.placeholder {
+  border: 2px solid var(--color-border);
+  background: var(--color-header);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  padding: 10px 20px;
+}
 
 /* Markdown specific */
 h2 {

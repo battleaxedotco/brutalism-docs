@@ -46,6 +46,13 @@ export default {
         type: 'String',
         default: '',
         description: 'Padding assigned between parent and slot'
+      },
+      {
+        property: 'prefs-id',
+        type: 'String',
+        default: '',
+        description: 'Auto syncs with window.localStorage',
+        todo: true
       }
     ]
   },

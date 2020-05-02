@@ -1,19 +1,22 @@
 <template>
-  <div class="table-container">
-    <div class="table-wrapper">
-      <div class="table-column" v-for="(field, i) in realFields" :key="i">
-        <div :class="[ 'table-column-label', field.toLowerCase(), i == realFields.length - 1 ? 'last' : '' ]" >
-          {{field}}
-        </div>
-        <div 
-          :class="[ 'table-column-cell', field.toLowerCase(), i == realFields.length - 1 ? 'last' : '' ]" 
-          v-for="(child, c) in getFieldsOf(field)" 
-          :key="c"
-        >
-          <span :class="field.toLowerCase()">{{child}}</span>
+  <div style="position: relative;">
+    <div class="table-container">
+      <div class="table-wrapper">
+        <div class="table-column" v-for="(field, i) in realFields" :key="i">
+          <div :class="[ 'table-column-label', field.toLowerCase(), i == realFields.length - 1 ? 'last' : '' ]" >
+            {{field}}
+          </div>
+          <div 
+            v-for="(child, c) in getFieldsOf(field)" 
+            :key="c"
+            :class="[ 'table-column-cell', checkIfTodo(child, field, i, c), field.toLowerCase(), i == realFields.length - 1 ? 'last' : '' ]"
+          >
+            <span :class="[ field.toLowerCase() ]">{{child}}</span>
+          </div>
         </div>
       </div>
     </div>
+    <div v-if="hasTodos" class="todo-anno">Fields marked in red are planned but not supported</div>
   </div>
 </template>
 
@@ -31,10 +34,23 @@ export default {
       return this.content.fields;
     }
   },
+  data: () => ({
+    hasTodos: false,
+  }),
   mounted() {
-    // 
+    this.content.data.forEach(item => {
+      if (item.todo)
+        this.hasTodos = true;
+    })    
   },
   methods: {
+    checkIfTodo(child, field, i, c) {
+      let parent;
+      parent = this.content.data.find(item => {
+        return item[field.toLowerCase()] == child;
+      })
+      return parent.todo && field == 'Property' ? 'todo' : '';
+    },
     getFieldsOf(prop) {
       if (!this.content) return '';
       return this.content.data.map(item => {
@@ -42,14 +58,13 @@ export default {
       })
     }
   },
-  data: () => ({
-    
-  })
+  
 }
 </script>
 
 <style>
 .table-container {
+  position: relative;
   border: 2px solid #e0e4e6;
   box-sizing: border-box;
   width: 100%;
@@ -59,6 +74,14 @@ export default {
   cursor: default;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.todo-anno {
+  position: absolute;
+  bottom: -3ch;
+  padding: 0px 2ch;
+  font-style: italic;
+  opacity: 0.5;
 }
 
 .table-wrapper {
@@ -74,6 +97,8 @@ export default {
   border-style: solid;
   border-color: transparent;
 }
+
+
 
 
 .table-column-label {
@@ -111,6 +136,10 @@ export default {
 .table-column-cell.last {
   display: flex;
   /* justify-content: flex-end; */
+}
+
+.table-column-cell.todo {
+  background: rgba(200,0,0,0.1) !important;
 }
 
 .table-column-cell:nth-child(even) {

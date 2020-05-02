@@ -14,7 +14,7 @@
       <UIFold>
         <Coder :content="getChildByName('Styles').data" />
       </UIFold>
-      <!-- <Table :content="tableData.styles" /> -->
+      <Table :content="tableData.styles" />
 
       <h2>Props</h2>
       <Display>
