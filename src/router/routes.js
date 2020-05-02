@@ -65,6 +65,11 @@ export default [
       component: () => import("@/views/multi/Panel.vue")
     },
     {
+      path: "/Row",
+      name: "Row",
+      component: () => import("@/views/multi/Row.vue")
+    },
+    {
       path: "/Tabs",
       name: "Tabs",
       component: () => import("@/views/multi/Tabs.vue")

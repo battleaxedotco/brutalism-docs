@@ -1,11 +1,22 @@
 <template>
   <div class="left-drawer">
-    <div 
-      v-for="anchor in anchors" 
-      :key="anchor.name" 
-      :class="[ 'left-drawer-item', anchor.active ? 'active' : 'idle']" 
-    >
-      <span @click="toRoute(anchor)" class="left-drawer-item-label">{{anchor.name}}</span>
+    <div class="util-anchors">
+      <div 
+        v-for="anchor in utilAnchors" 
+        :key="anchor.name" 
+        :class="[ 'left-drawer-item', anchor.active ? 'active' : 'idle']" 
+      >
+        <span @click="toRoute(anchor)" class="left-drawer-item-label">{{anchor.name}}</span>
+      </div>
+    </div>
+    <div class="component-anchors">
+      <div 
+        v-for="anchor in componentAnchors" 
+        :key="anchor.name" 
+        :class="[ 'left-drawer-item', anchor.active ? 'active' : 'idle']" 
+      >
+        <span @click="toRoute(anchor)" class="left-drawer-item-label">{{anchor.name}}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -15,7 +26,8 @@ import routes from '@/router/routes.js'
 
 export default {
   data: () => ({
-    anchors: []
+    anchors: [],
+    utilRX: /home|utils/i
   }),
   mounted() {
     this.buildRoutes();
@@ -39,6 +51,16 @@ export default {
     correctAnchor() {
       return this.anchors.find(anchor => {
         return anchor.name == this.$route.name
+      })
+    },
+    componentAnchors() {
+      return this.anchors.filter(anchor => {
+        return !this.utilRX.test(anchor.name)
+      })
+    },
+    utilAnchors() {
+      return this.anchors.filter(anchor => {
+        return this.utilRX.test(anchor.name)
       })
     }
   },
@@ -66,6 +88,9 @@ export default {
 </script>
 
 <style>
+.left-drawer::-webkit-scrollbar {
+  width: 6px;
+}
 .left-drawer {
   min-width: 20px;
   min-height: 20px;
@@ -75,8 +100,16 @@ export default {
   z-index: 1;
   font-weight: bold;
   font-size: 1.5em;
-  /* width: 350px; */
   user-select: none;
+  max-height: calc(100% - 126px);
+  overflow-y: auto;
+  padding-right: 20px;
+}
+
+.util-anchors {
+  /* border-style: solid;
+  border-color: #e1e4e8;
+  border-width: 0px 0px 3px 0px; */
 }
 
 .left-drawer-item {

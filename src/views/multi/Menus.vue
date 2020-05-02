@@ -1,7 +1,6 @@
 <template>
   <Content>
-      <h2>Description</h2>
-      <h4>Menus is the only non-browser component. Check and run the sample repos to see it in action.</h4>
+      <Note>Menus is the only non-browser component. Check and run the sample repos to see it in action.</Note>
       <Markdown-Snippet content="Invisible component which reactively handles context and flyout menus. Supports multiple instances and will rebuild as the most recently mounted instance (in the event you need different menus per router page or other use case). Any changes to the `:context` or `:flyout` Arrays will trigger a full rebuild of the menu in real-time." />
 
       <h2>Props</h2>
@@ -139,7 +138,8 @@ export default {
     Display: require('@/components/Display.vue').default,
     Coder: require('@/components/Codeking.vue').default,
     Table: require('@/components/Table.vue').default,
-    "Markdown-Snippet": require('@/components/MarkdownSnippet.vue').default
+    "Markdown-Snippet": require('@/components/MarkdownSnippet.vue').default,
+    Note: require('@/components/Note.vue').default,
   }
 }
 </script>
