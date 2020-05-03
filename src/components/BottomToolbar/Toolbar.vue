@@ -26,7 +26,7 @@
         <!-- <div class="footer-anno">
           by Adam Plouff and Tom Scharstein
         </div> -->
-        <div class="footer-button" @click="goToHomepage" >
+        <div class="footer-button flat" @click="goToHomepage" >
           <Icon size="30px" name="github-circle" />
         </div>
       </div>
@@ -104,6 +104,10 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.footer-button:not(.flat) {
+  border: 2px solid rgba(55,55,55,0.2);
 }
 
 .floating {
