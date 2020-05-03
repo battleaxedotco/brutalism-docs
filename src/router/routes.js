@@ -65,6 +65,11 @@ export default [
       component: () => import("@/views/multi/Panel.vue")
     },
     {
+      path: "/Panelify",
+      name: "Panelify",
+      component: () => import("@/views/multi/Panelify.vue")
+    },
+    {
       path: "/Row",
       name: "Row",
       component: () => import("@/views/multi/Row.vue")

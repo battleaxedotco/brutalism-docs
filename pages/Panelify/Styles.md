@@ -1,0 +1,14 @@
+<Panelify 
+  name="brutalism-basic" 
+  app="ILST" 
+  theme="darkest"
+  url="https://frosty-mcclintock-6929d0.netlify.app/"
+/>
+<Panelify 
+  name="brutalism-router" 
+  app="AEFT" 
+  theme="gradient" 
+  :gradient="0"
+  url="https://keen-mcnulty-28a063.netlify.app/#"
+  route="/"
+/>

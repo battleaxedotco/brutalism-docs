@@ -39,20 +39,8 @@
       <UIFold>
         <Coder :content="getChildByName('Props').data" />
       </UIFold>
-      <!-- <Table :content="tableData.row" /> -->
+      <Table :content="tableData.properties" />
 
-      <h2>Events</h2>
-      <Display>
-        <Row>
-           <Icon name="home"/>
-           <Icon name="home"/>
-           <Icon name="home"/>
-           <Icon name="home"/>
-         </Row>
-      </Display>
-      <UIFold>
-        <Coder :content="getChildByName('Events').data" />
-      </UIFold>
       <!-- <Table :content="tableData.row" /> -->
 
   </Content>
@@ -62,13 +50,13 @@
 
 <script>
 import template from '@/template.json'
-// import tableData from '../../../pages/Row/table'
+import tableData from '../../../pages/Row/table'
 
 export default {
   computed: {
-    // tableData() {
-    //   return tableData;
-    // },
+    tableData() {
+      return tableData;
+    },
     target() {
       return template.find(item => {
         return item.name == this.$route.name;

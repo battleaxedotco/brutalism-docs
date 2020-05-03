@@ -8,34 +8,10 @@ export default {
     ],
     data: [
       {
-        property: 'bold',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Sets text to font-weight: 600',
-      },
-      {
-        property: 'italic',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Italicizes content',
-      },
-      {
-        property: 'underline',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Sets text-decoration: underline',
-      },
-      {
-        property: 'overline',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Sets text-decoration: overline',
-      },
-      {
-        property: 'strikethough',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Sets text-decoration: strikethrough',
+        property: '',
+        type: '',
+        default: '',
+        description: '',
       },
     ]
   },
@@ -48,60 +24,23 @@ export default {
     ],
     data: [
       {
-        property: 'text',
+        property: 'justify',
         type: 'String',
-        default: '',
-        description: 'Inner text if not using slot',
+        default: 'flex-start',
+        description: 'CSS value of justify-content',
       },
       {
-        property: 'color',
+        property: 'align',
         type: 'String',
-        default: 'var(--default-color)',
-        description: 'Valid CSS color value of content'
+        default: 'space-around',
+        description: 'CSS value of align-items',
       },
       {
-        property: 'uppercase',
-        type: 'Boolean',
-        default: 'false',
-        description: 'Sets text-transform: uppercase'
-      },
-      {
-        property: 'size',
+        property: 'wrap',
         type: 'String',
-        default: '14px',
-        description: 'Font size of content'
+        default: 'wrap',
+        description: 'CSS flex-wrap value',
       },
-      {
-        property: 'weight',
-        type: 'String',
-        default: '500',
-        description: 'Font-weight of content'
-      },
-      {
-        property: 'letter-spacing',
-        type: 'String',
-        default: 'normal',
-        description: 'Spacing between each letter'
-      },
-      {
-        property: 'word-spacing',
-        type: 'String',
-        default: 'normal',
-        description: 'Spacing between each word'
-      },
-      {
-        property: 'margin',
-        type: 'String',
-        default: '0px 0px 1ch 0px',
-        description: 'Margin value of component'
-      },
-      {
-        property: 'text-decoration',
-        type: 'String',
-        default: 'none',
-        description: 'Sets text decoration to value'
-      },
-
     ]
   }
 }
