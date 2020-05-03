@@ -184,14 +184,19 @@ export default {
   padding: 5px 50px 5px 10px;
   font-size: 18px;
   font-weight: bold;
+  cursor: pointer;
 }
 .drawer-anchor-item:hover, .drawer-route-item:hover {
   background: var(--code-inline-bg);
 }
 
 .drawer-anchor-item.idle, .drawer-route-item.idle {
-  color: var(--text-faded)
+  opacity: 0.4;
 }
+.drawer-anchor-item.idle:hover, .drawer-route-item.idle:hover {
+  opacity: 1;
+}
+
 
 .drawer-content {
   box-sizing: border-box;

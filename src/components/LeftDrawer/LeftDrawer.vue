@@ -4,18 +4,18 @@
       <div 
         v-for="anchor in utilAnchors" 
         :key="anchor.name" 
-        :class="[ 'left-drawer-item', anchor.active ? 'active' : 'idle']" 
+        :class="[ 'left-drawer-item']" 
       >
-        <span @click="toRoute(anchor)" class="left-drawer-item-label">{{anchor.name}}</span>
+        <span @click="toRoute(anchor)" :class="['left-drawer-item-label', anchor.active ? 'active' : 'idle']">{{anchor.name}}</span>
       </div>
     </div>
     <div class="component-anchors">
       <div 
         v-for="anchor in componentAnchors" 
         :key="anchor.name" 
-        :class="[ 'left-drawer-item', anchor.active ? 'active' : 'idle']" 
+        :class="[ 'left-drawer-item' ]" 
       >
-        <span @click="toRoute(anchor)" class="left-drawer-item-label">{{anchor.name}}</span>
+        <span @click="toRoute(anchor)" :class="['left-drawer-item-label', anchor.active ? 'active' : 'idle']">{{anchor.name}}</span>
       </div>
     </div>
   </div>
@@ -116,7 +116,7 @@ export default {
 .left-drawer-item {
   padding: 4px 0px;
   /* margin: 3px 0px; */
-  color: var(--text-faded);
+  color: var(--text);
   height: 40px;
   box-sizing: border-box;
 }
@@ -125,12 +125,12 @@ export default {
   transition: color 120ms var(--quint) 20ms;
 }
 
-.left-drawer-item.active {
-  color: var(--text);
+.left-drawer-item-label.idle:hover {
+  opacity: 1;
 }
 
-.left-drawer-item-label:hover {
-  color: var(--text);
+.left-drawer-item-label.idle {
+  opacity: 0.4;
 }
 
 .left-drawer-item-label {

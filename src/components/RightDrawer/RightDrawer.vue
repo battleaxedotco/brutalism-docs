@@ -1,6 +1,6 @@
 <template>
   <div class="right-drawer" v-if="isMounted">
-    <div v-for="anchor in anchors" :key="anchor.name" class="right-drawer-item" :style="checkItemStatus(anchor)">
+    <div v-for="anchor in anchors" :key="anchor.name" :class="['right-drawer-item', checkItemStatus(anchor) ? 'active' : 'idle' ]" :style="">
       <span v-scroll-to="{ el: `#${anchor.id}`, offset: 6 }" class="right-drawer-item-label">{{anchor.name}}</span>
     </div>
   </div>
@@ -101,7 +101,7 @@ export default {
       this.realPos = +value;
     },  
     checkItemStatus(item) {
-      if (item.active) return `color: var(--text)`
+      return item.active
     },
     getMiniScrollPos() {
       let style = '';
@@ -239,14 +239,21 @@ export default {
   border-width: 0px 0px 0px 4px;
   border-color: transparent;
   height: 40px;
-  color: var(--text-faded);
+  color: var(--text);
   transition: color 120ms var(--quint) 20ms;
-  border-style: solid;
-  
+  border-style: solid; 
+}
+
+.right-drawer-item.idle {
+  opacity: 0.4;
+}
+.right-drawer-item.idle:hover {
+  opacity: 1;
 }
 
 .right-drawer-item:hover {
-  color: var(--text);
+  /* color: var(--text); */
+  opacity: 1;
 }
 
 .right-drawer-item-label {

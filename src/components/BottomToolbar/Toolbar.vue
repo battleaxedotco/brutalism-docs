@@ -13,27 +13,31 @@
       </div> -->
       <div class="style-section">
         <div 
+          v-if="shouldThemeChange" 
           class="footer-button theme" 
           @mouseenter="hover = true" 
           @mouseleave="hover = false" 
           @click="open = true;">
           Change app theme
         </div>
+        <div v-else />
       </div>
       <div class="footer-message">
         <!-- <div class="footer-anno">
           by Adam Plouff and Tom Scharstein
         </div> -->
-        <div class="footer-button" >
+        <div class="footer-button" @click="goToHomepage" >
           <Icon size="30px" name="github-circle" />
         </div>
       </div>
       <Theme-Drawer v-click-outside="handleToggle" :open="open" />
+      <!-- <div></div> -->
     </div>
   </div>
 </template>
 
 <script>
+import { openURL } from 'brutalism'
 export default {
   data: () => ({
     open: false,
@@ -44,10 +48,18 @@ export default {
       // console.log(val)
     }
   },
+  computed: {
+    shouldThemeChange() {
+      return !/home|utils/i.test(this.$route.name)
+    }
+  },
   components: {
     "Theme-Drawer": require('./ThemeDrawer.vue').default
   },
   methods: {
+    goToHomepage() {
+      openURL('https://github.com/battleaxedotco/brutalism')
+    },
     handleToggle() {
       if (this.open && !this.hover) this.open = false;
     }

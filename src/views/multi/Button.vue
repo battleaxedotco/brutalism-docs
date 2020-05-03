@@ -29,17 +29,17 @@
       <h2>Props</h2>
       <Display>
         <Row>
-           <Button label="Button label" />
-           <Button bg="#46a0f2">bg="#389672"</Button>
-           <Button color="#46a0f2" label='color="#46a0f2"' />
-           <Button label='icon="mdi-account"' icon="mdi-account" />
-           <Button label='prefix-icon="mdi-account"' prefix-icon="mdi-account" />
-           <Button icon="mdi-settings" icon-size="10px" label='icon-size="10px"' />
-           <Button tooltip="I'm a tooltip">tooltip="I'm a tooltip"</Button>
+           <Button label="Label" />
+           <Button bg="#46a0f2">Custom bg</Button>
+           <Button color="#46a0f2" label='Custom color' />
+           <Button label='MDI icon' icon="mdi-account" />
+           <Button label='Prefix icon' prefix-icon="mdi-account" />
+           <Button icon="mdi-settings" icon-size="10px" label='Icon size' />
+           <Button tooltip="I'm a tooltip">With tooltip</Button>
            <Button uppercase label="uppercase" />
-           <Button goto="https://battleaxe.co" label='goto="https://battleaxe.co"'/>
-           <Button evalScript="someJSXFunction()" label='evalScript="someJSXFunction()"'/>
-           <Button copy="Copy this text on click" label='copy="Copy this text on click"'/>
+           <Button goto="https://battleaxe.co" label='Launch URL on click'/>
+           <Button evalScript="someJSXFunction()" label='evalScript on click'/>
+           <Button copy="Copy this text on click" label='Copy text on click'/>
            <Button block left>block left</Button>
            <Button block right>block right</Button>				
          </Row>
@@ -51,14 +51,14 @@
       <h2>Events</h2>
       <Display>
         <Button-Group grid column>
-          <Button @click="testClick" label='@click="testClick"' />
+          <Button @click="testClick" label='@click' />
           <Button evalScript="testEvalScript()" @evalScript="reportEval" label='@evalScript' />
           <Button 
             :evalScript="`testEvalScript('${ JSON.stringify({ msg: 'data' }) }')`" 
             @evalScript="reportEval" label='template literal evalScript' />
           <Button 
             copy="Copy this text on click" 
-            label='@clipboard="reportClipboardSuccess"'
+            label='@clipboard'
             @clipboard="reportClipboardSuccess"
           />
         </Button-Group>
@@ -91,29 +91,29 @@
             <Button block left
                 tooltip="cubic-bezier(0.48, 0.04, 0.52, 0.96)"
                 timing="var(--quad)"
-                >timing="var(--quad)"</Button
+                >Quad timing</Button
             >
             <Button block
                 tooltip="cubic-bezier(0.76, 0, 0.24, 1)"
                 timing="cubic-bezier(0.76, 0, 0.24, 1)"
-                >timing="cubic-bezier(0.76, 0, 0.24, 1)"</Button
+                >Custom timing</Button
             >
             <Button block right
                 tooltip="cubic-bezier(0.84, 0, 0.16, 1)"
                 timing="var(--quint)"
-                >timing="var(--quint)"</Button
+                >Quint timing</Button
             >
           </Button-Group>
           <Button-Group grid>
             <Button block left
                 tooltip="I'm slow to animate"
                 duration="1000ms"
-                >duration="1000ms"</Button
+                >Custom duration</Button
             >
             <Button block 
                 tooltip="I'm slow to respond" 
                 delay="1000ms"
-                >delay="1000ms"</Button
+                >Custom delay</Button
             >
         </Button-Group>
       </Display>
