@@ -27,7 +27,7 @@ import routes from '@/router/routes.js'
 export default {
   data: () => ({
     anchors: [],
-    utilRX: /home|utils/i
+    utilRX: /home|utils|colors/i
   }),
   mounted() {
     this.buildRoutes();

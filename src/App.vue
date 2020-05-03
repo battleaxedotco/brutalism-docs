@@ -16,14 +16,18 @@ export default {
   data: () => ({
     frames: [],
     anchors: [],
-    activeAnchor: null
+    activeAnchor: null,
+    colorSheet: null
   }),
   mounted() {
+    const self = this;
     window.scrollTo(0, 0);
-    // this.resetScroll();
-    // require('starlette').default.initAs('ILST', 'darkest');
     this.setCSS('color-scrollbar', 'rgba(44, 62, 80, 0.25)');
-    this.setCSS('color-scrollbar-thumb', 'rgba(44, 62, 80, 0.25)')
+    this.setCSS('color-scrollbar-thumb', 'rgba(44, 62, 80, 0.25)');
+    this.$nextTick(() => {
+      if (self.colorSheet)
+        self.colorSheet.createStylesheetValues();
+    })
   },
   watch: {
     '$route.path'() {

@@ -4,7 +4,7 @@
     :style="getStyle()">
     <div class="drawer-content">
       <div class="drawer-anchors">
-        <span class="drawer-anno">Anchors</span>
+        <span class="drawer-anno">This page</span>
         <div v-for="anchor in anchors" 
           @click="scrollTo(anchor)"
           :key="anchor.name" 
@@ -14,9 +14,19 @@
 
         </div>
       </div>
+      <div class="drawer-library">
+        <span class="drawer-anno">Misc</span>
+        <div v-for="route in pageRoutes" 
+          :key="route.name"
+          @click="goTo(route)" 
+          :class="[ 'drawer-route-item', $route.name == route.name ? 'active' : 'idle' ]"
+        >
+          {{route.name}}
+        </div>
+      </div>
       <div class="drawer-routes">
         <span class="drawer-anno">Components</span>
-        <div v-for="route in routes" 
+        <div v-for="route in componentRoutes" 
           :key="route.name"
           @click="goTo(route)" 
           :class="[ 'drawer-route-item', $route.name == route.name ? 'active' : 'idle' ]"
@@ -42,6 +52,7 @@ export default {
     isOpen: false,
     isMounted: false,
     routes: [],
+    utilRX: /home|utils|colors/i
   }),
   mounted() {
     this.isOpen = this.open;
@@ -49,6 +60,7 @@ export default {
     this.routes = routes.filter(item => {
       return item.name !== '404'
     });
+    console.log(this.componentRoutes)
   },
   computed: {
     app() {
@@ -56,6 +68,16 @@ export default {
     },
     anchors() {
       return this.app.anchors
+    },
+    componentRoutes() {
+      return this.routes.filter(item => {
+        return !this.utilRX.test(item.name)
+      }) 
+    },
+    pageRoutes() {
+      return this.routes.filter(item => {
+        return this.utilRX.test(item.name)
+      }) 
     }
   },
   watch: {
@@ -114,7 +136,7 @@ export default {
   width: 5px !important;
 }
 
-.drawer-routes {
+.drawer-routes, .drawer-library {
   margin-top: 15px;
 }
 
@@ -126,7 +148,7 @@ export default {
   color: var(--text-faded)
 }
 
-.drawer-anchors {
+.drawer-anchors, .drawer-library {
   border-style: solid;
   border-color: var(--border);
   border-width: 0px 0px 2px 0px;

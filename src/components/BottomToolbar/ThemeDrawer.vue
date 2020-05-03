@@ -239,7 +239,11 @@ export default {
       let child = app.values[index];
       this.resetActives()
       child.active = true;
-      starlette.initAs(appName, child.theme, child.gradient)
+      starlette.initAs(appName, child.theme, child.gradient);
+      // console.log(this.$root.$children[0].colorSheet)
+      if (this.$root.$children[0].colorSheet) {
+        this.$root.$children[0].colorSheet.createStylesheetValues()
+      }
     },
     resetActives() {
       this.themeAnchors.forEach(app => {

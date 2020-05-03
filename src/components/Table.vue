@@ -9,14 +9,15 @@
           <div 
             v-for="(child, c) in getFieldsOf(field)" 
             :key="c"
-            :class="[ 'table-column-cell', checkIfTodo(child, field, i, c), field.toLowerCase(), i == realFields.length - 1 ? 'last' : '' ]"
+            :class="[ 'table-column-cell', checkIfTodo(child, field, i, c), checkIfRequired(child, field, i, c), field.toLowerCase(), i == realFields.length - 1 ? 'last' : '' ]"
           >
-            <span :class="[ field.toLowerCase() ]">{{child}}</span>
+            <span :class="[ field.toLowerCase() ]">{{`${child} ${checkIfRequired(child, field, i, c) ? '*' : ''}`}}</span>
           </div>
         </div>
       </div>
     </div>
     <div v-if="hasTodos" class="todo-anno">Fields marked in red are planned but not supported</div>
+    <div v-if="hasRequireds" class="todo-anno">Fields with an asterisk are required</div>
   </div>
 </template>
 
@@ -36,11 +37,14 @@ export default {
   },
   data: () => ({
     hasTodos: false,
+    hasRequireds: false
   }),
   mounted() {
     this.content.data.forEach(item => {
       if (item.todo)
         this.hasTodos = true;
+      if (item.required)
+        this.hasRequireds = true
     })    
   },
   methods: {
@@ -50,6 +54,13 @@ export default {
         return item[field.toLowerCase()] == child;
       })
       return parent.todo && field == 'Property' ? 'todo' : '';
+    },
+    checkIfRequired(child, field, i, c) {
+      let parent;
+      parent = this.content.data.find(item => {
+        return item[field.toLowerCase()] == child;
+      })
+      return parent.required && field == 'param' ? 'required' : '';
     },
     getFieldsOf(prop) {
       if (!this.content) return '';
@@ -77,8 +88,9 @@ export default {
 }
 
 .todo-anno {
-  position: absolute;
-  bottom: -3ch;
+  /* position: absolute; */
+  /* bottom: -3ch; */
+  margin-top: -3ch;
   padding: 0px 2ch;
   font-style: italic;
   opacity: 0.5;

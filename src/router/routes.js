@@ -20,6 +20,11 @@ export default [
       component: () => import("@/views/multi/Button-Group.vue")
     },
     {
+      path: "/Colors",
+      name: "Colors",
+      component: () => import("@/views/multi/Colors.vue")
+    },
+    {
       path: "/Divider",
       name: "Divider",
       component: () => import("@/views/multi/Divider.vue")
@@ -35,9 +40,19 @@ export default [
       component: () => import("@/views/multi/Dropzone.vue")
     },
     {
+      path: "/File-Input",
+      name: "File-Input",
+      component: () => import("@/views/multi/File-Input.vue")
+    },
+    {
       path: "/Fold",
       name: "Fold",
       component: () => import("@/views/multi/Fold.vue")
+    },
+    {
+      path: "/Footer",
+      name: "Footer",
+      component: () => import("@/views/multi/Footer.vue")
     },
     {
       path: "/Grid",
@@ -93,6 +108,11 @@ export default [
       path: "/Toggle",
       name: "Toggle",
       component: () => import("@/views/multi/Toggle.vue")
+    },
+    {
+      path: "/Utils",
+      name: "Utils",
+      component: () => import("@/views/multi/Utils.vue")
     },
     {
       path: "/Wrapper",

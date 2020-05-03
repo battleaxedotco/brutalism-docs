@@ -41,7 +41,7 @@ export default {
   }),
   watch: {
     hover(val) {
-      console.log(val)
+      // console.log(val)
     }
   },
   components: {
