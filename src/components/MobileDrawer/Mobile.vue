@@ -1,5 +1,7 @@
 <template>
-  <div :class="[ 'mobile-drawer',  isOpen ? 'open' : 'closed' ]" :style="getStyle()">
+  <div 
+    :class="[ 'mobile-drawer',  isOpen ? 'open' : 'closed' ]" 
+    :style="getStyle()">
     <div class="drawer-content">
       <div class="drawer-anchors">
         <span class="drawer-anno">Anchors</span>
@@ -126,7 +128,7 @@ export default {
 
 .drawer-anchors {
   border-style: solid;
-  border-color: #e1e4e8;
+  border-color: var(--border);
   border-width: 0px 0px 2px 0px;
 }
 

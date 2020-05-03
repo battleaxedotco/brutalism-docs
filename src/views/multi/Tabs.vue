@@ -3,15 +3,15 @@
       <h2>Styles</h2>
       <Display>
         <Tabs dummy :routes='[
-          { label: "Default Route 1", name: "home" },
-          { label: "Default Route 2", name: "about" },
-          { label: "Default Route 3", name: "about" }
+          { label: "Default 1", name: "home" },
+          { label: "Default 2", name: "about" },
+          { label: "Default 3", name: "about" }
         ]' />
         <div class="spacer"></div>
         <Tabs dummy flat :routes='[
-          { label: "Flat Route 1", name: "home" },
-          { label: "Flat Route 2", name: "about" },
-          { label: "Flat Route 3", name: "settings" }
+          { label: "Flat 1", name: "home" },
+          { label: "Flat 2", name: "about" },
+          { label: "Flat 3", name: "settings" }
         ]' />
       </Display>
       <UIFold>

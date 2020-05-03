@@ -2,6 +2,7 @@
   <div id="app">
     <Toolbar />
     <router-view @mounted="refreshPrism"/>
+    <Bottom-Toolbar />
   </div>
 </template>
 
@@ -9,6 +10,8 @@
 export default {
   components: {
     'Toolbar': require('./components/Toolbar').default,
+    'Bottom-Toolbar': require('./components/BottomToolbar').default,
+
   },
   data: () => ({
     frames: [],
@@ -16,8 +19,9 @@ export default {
     activeAnchor: null
   }),
   mounted() {
+    window.scrollTo(0, 0);
     // this.resetScroll();
-    require('starlette').default.initAs('ILST', 'darkest');
+    // require('starlette').default.initAs('ILST', 'darkest');
     this.setCSS('color-scrollbar', 'rgba(44, 62, 80, 0.25)');
     this.setCSS('color-scrollbar-thumb', 'rgba(44, 62, 80, 0.25)')
   },
@@ -59,6 +63,7 @@ export default {
   --text: #2c3e50;
   --code-bg: #eaeeef;
   --code-inline-bg: rgba(0,0,0,0.075);
+  --border: #e1e4e8;
   color: var(--text) !important;
   font-size: 16px !important;
 }

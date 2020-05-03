@@ -20,6 +20,11 @@ export default [
       component: () => import("@/views/multi/Button-Group.vue")
     },
     {
+      path: "/Divider",
+      name: "Divider",
+      component: () => import("@/views/multi/Divider.vue")
+    },
+    {
       path: "/Dropdown",
       name: "Dropdown",
       component: () => import("@/views/multi/Dropdown.vue")
@@ -88,5 +93,10 @@ export default [
       path: "/Toggle",
       name: "Toggle",
       component: () => import("@/views/multi/Toggle.vue")
+    },
+    {
+      path: "/Wrapper",
+      name: "Wrapper",
+      component: () => import("@/views/multi/Wrapper.vue")
     }
 ]

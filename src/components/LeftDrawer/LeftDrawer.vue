@@ -92,6 +92,7 @@ export default {
   width: 6px;
 }
 .left-drawer {
+  /* background: green; */
   min-width: 20px;
   min-height: 20px;
   position: fixed;

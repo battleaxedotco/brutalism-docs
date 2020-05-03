@@ -2,14 +2,16 @@
   <Content>
       <h2>Styles</h2>
       <Display>
-        <Toggle label="default" />
-         <Toggle label="Radio" radio />
-         <Toggle label="Switch" switch />
-         <Toggle label="Custom" on-icon="eye" off-icon="eye-off" />
-         <Toggle @update="val => slotState = val" style="padding-top: 6px">
-           <div v-if="slotState">Click me! Slot content if true</div>
-           <div v-else>Click me! Slot content if false</div>
-         </Toggle>
+        <Wrapper>
+          <Toggle label="default" />
+          <Toggle label="Radio" radio />
+          <Toggle label="Switch" switch />
+          <Toggle label="Custom" on-icon="eye" off-icon="eye-off" />
+          <Toggle @update="val => slotState = val" style="padding-top: 6px">
+            <div v-if="slotState">Click me! Slot content if true</div>
+            <div v-else>Click me! Slot content if false</div>
+          </Toggle>
+        </Wrapper>
       </Display>
       <UIFold>
         <Coder :content="getChildByName('Styles').data" />

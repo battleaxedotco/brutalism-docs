@@ -30,7 +30,7 @@
       <Display>
         <Row>
            <Button label="Button label" />
-           <Button bg="#389672">bg="#389672"</Button>
+           <Button bg="#46a0f2">bg="#389672"</Button>
            <Button color="#46a0f2" label='color="#46a0f2"' />
            <Button label='icon="mdi-account"' icon="mdi-account" />
            <Button label='prefix-icon="mdi-account"' prefix-icon="mdi-account" />

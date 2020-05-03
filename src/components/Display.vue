@@ -3,7 +3,9 @@
     <div class="display-header"></div>
 
     <div class="brutalism-display">
+      <Wrapper>
       <slot />
+      </Wrapper>
     </div>
     <div class="display-footer"></div>
   </div>
@@ -20,6 +22,7 @@ export default {
   /* width: calc(100% - 40px); */
   box-sizing: border-box;
   user-select: none;
+  overflow: hidden;
   /* min-height: 200px; */
 }
 
@@ -66,7 +69,7 @@ export default {
   border: 2px solid red;
   background: var(--color-header);
   border-style: solid;
-  border-color: #000;
+  border-color: var(--divider-dark);
   border-width: 1.5px 0 0 0;
 }
 

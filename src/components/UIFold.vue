@@ -71,6 +71,7 @@ export default {
   position: absolute;
   top: 0px;
   box-sizing: border-box;
+  margin-top: 2px;
   /* border: 2px solid blue; */
   width: fit-content;
   padding: 0px 4px 0px 20px;
@@ -90,7 +91,7 @@ export default {
 
 .ui-fold-icon {
   float: right;
-	margin-top: 2px;
+	/* margin-top: 2px; */
 	fill: var(--color-icon);
 	height: 16px;
 	transform-origin: 50% 50%;
