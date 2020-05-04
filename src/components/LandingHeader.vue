@@ -51,6 +51,8 @@ export default {
   font-size: 48px;
   padding-bottom: 30px;
   font-weight: 600;
+  user-select: none;
+  cursor: default;
 }
 
 .landing-header {
@@ -72,12 +74,12 @@ export default {
   fill: none;
 }
 .battleaxe-logo-1 {
-  stroke: #231f20;
+  stroke: var(--text);
   stroke-miterlimit: 10;
   stroke-width: 3px;
 }
 .battleaxe-logo-2 {
-  fill: #231f20;
+  fill: var(--text);
 }
 .logo-wrapper-title {
   padding-top: 10px;
