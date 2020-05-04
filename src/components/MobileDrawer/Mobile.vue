@@ -114,7 +114,7 @@ export default {
     getStyle() {
       let style = "";
       if (this.isMounted) {
-        let pos = this.isOpen ? "0" : this.$el.offsetWidth * -1;
+        let pos = this.isOpen ? "0" : this.$el.offsetWidth * -1 + -2;
         style += `left: ${pos}px;`;
       }
       return style;

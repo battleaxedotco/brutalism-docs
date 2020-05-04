@@ -2,6 +2,7 @@
   <div class="home">
     <Title />
     <div class="home-title">
+      <Landing-Header />
       <div class="home-anno">
         <h2>Demo</h2>
       </div>
@@ -64,6 +65,7 @@ export default {
     "Markdown-Preview": require("../components/Markdown.vue").default,
     "Left-Drawer": require("../components/LeftDrawer").default,
     "Right-Drawer": require("../components/RightDrawer").default,
+    "Landing-Header": require("../components/LandingHeader.vue").default,
     Title: require("../components/Title.vue").default,
   },
   methods: {

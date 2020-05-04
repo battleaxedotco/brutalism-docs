@@ -71,6 +71,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: center;
+  user-select: none;
 }
 
 .bottom-toolbar {
@@ -96,6 +97,7 @@ export default {
 }
 
 .footer-button {
+  margin-left: 20px;
   padding: 0px 20px;
   cursor: pointer;
   border-radius: 5px;
@@ -105,8 +107,10 @@ export default {
   align-items: center;
 }
 
-.footer-button:not(.flat) {
-  border: 2px solid rgba(55, 55, 55, 0.2);
+.footer-button.theme {
+  border: 2px solid transparent;
+  background: var(--text);
+  color: #fff;
 }
 
 .floating {
@@ -115,8 +119,11 @@ export default {
   left: 30px;
 }
 
-.footer-button:hover {
-  background: rgba(55, 55, 55, 0.1);
+.footer-button:active {
+  /* background: rgba(55, 55, 55, 0.1); */
+  background: transparent;
+  border-color: var(--text);
+  color: var(--text);
 }
 
 .footer-button.theme {
