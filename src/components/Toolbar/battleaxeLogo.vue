@@ -1,7 +1,11 @@
 <template>
-  <div class="logo-wrapper">  
+  <div class="logo-wrapper">
     <a href="https://battleaxe.co" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 106" class="svg-wrapper">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 106 106"
+        class="svg-wrapper"
+      >
         <g>
           <circle class="battleaxe-logo-2" cx="7.75" cy="53" r="5" />
           <circle class="battleaxe-logo-2" cx="30.37" cy="30.37" r="5" />
@@ -18,16 +22,16 @@
           />
         </g>
       </svg>
-    </a>   
+    </a>
   </div>
 </template>
 
 <script>
 export default {
   data: () => ({
-    width: 50
-  })
-}
+    width: 50,
+  }),
+};
 </script>
 
 <style>
@@ -49,7 +53,7 @@ export default {
 }
 .logo-wrapper {
   padding-top: 10px;
-  padding-left: 20px;
+  padding-right: 20px;
   display: flex;
   justify-content: center;
   width: 50px;

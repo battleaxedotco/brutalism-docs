@@ -1,8 +1,6 @@
 <template>
   <div class="bottom-toolbar-wrapper">
-    
     <div class="bottom-toolbar">
-
       <!-- <div 
         class="footer-button theme floating" 
         id="floating-button"
@@ -12,12 +10,13 @@
         Select theme
       </div> -->
       <div class="style-section">
-        <div 
-          v-if="shouldThemeChange" 
-          class="footer-button theme" 
-          @mouseenter="hover = true" 
-          @mouseleave="hover = false" 
-          @click="open = true;">
+        <div
+          v-if="shouldThemeChange"
+          class="footer-button theme"
+          @mouseenter="hover = true"
+          @mouseleave="hover = false"
+          @click="open = true"
+        >
           Change app theme
         </div>
         <div v-else />
@@ -26,7 +25,7 @@
         <!-- <div class="footer-anno">
           by Adam Plouff and Tom Scharstein
         </div> -->
-        <div class="footer-button flat" @click="goToHomepage" >
+        <div class="footer-button flat" @click="goToHomepage">
           <Icon size="30px" name="github-circle" />
         </div>
       </div>
@@ -37,34 +36,34 @@
 </template>
 
 <script>
-import { openURL } from 'brutalism'
+import { openURL } from "brutalism";
 export default {
   data: () => ({
     open: false,
-    hover: false
+    hover: false,
   }),
   watch: {
     hover(val) {
       // console.log(val)
-    }
+    },
   },
   computed: {
     shouldThemeChange() {
-      return !/home|utils/i.test(this.$route.name)
-    }
+      return !/home|utils/i.test(this.$route.name);
+    },
   },
   components: {
-    "Theme-Drawer": require('./ThemeDrawer.vue').default
+    "Theme-Drawer": require("./ThemeDrawer.vue").default,
   },
   methods: {
     goToHomepage() {
-      openURL('https://github.com/battleaxedotco/brutalism')
+      openURL("https://github.com/battleaxedotco/brutalism");
     },
     handleToggle() {
       if (this.open && !this.hover) this.open = false;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
@@ -87,7 +86,7 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0px;
-  z-index: 3;
+  z-index: 14;
   /* background-color: red; */
 }
 .footer-message {
@@ -107,7 +106,7 @@ export default {
 }
 
 .footer-button:not(.flat) {
-  border: 2px solid rgba(55,55,55,0.2);
+  border: 2px solid rgba(55, 55, 55, 0.2);
 }
 
 .floating {
@@ -117,12 +116,12 @@ export default {
 }
 
 .footer-button:hover {
-  background: rgba(55,55,55,0.1);
+  background: rgba(55, 55, 55, 0.1);
 }
 
 .footer-button.theme {
   text-transform: uppercase;
-  letter-spacing: .25ch;
+  letter-spacing: 0.25ch;
   /* font-weight: bold; */
   /* color: var(--text-faded); */
 }

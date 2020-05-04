@@ -1,11 +1,10 @@
 <template>
   <div class="title-wrapper">
-    <h1 class="title">{{$route.name || 404}}</h1>
+    <h1 class="title">{{ $route.name || 404 }}</h1>
   </div>
 </template>
 
-<script>
-</script>
+<script></script>
 
 <style>
 .title-wrapper {
@@ -17,6 +16,7 @@
   position: absolute;
   max-width: 800px;
   width: 100%;
+  display: none;
 }
 
 .title {
@@ -24,7 +24,7 @@
   margin: 0px 0px 0px 30px;
   font-size: 60px;
   text-transform: uppercase;
-  letter-spacing: .25ch;
+  letter-spacing: 0.25ch;
   font-weight: 400;
 }
 

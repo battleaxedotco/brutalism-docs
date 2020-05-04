@@ -14,18 +14,18 @@
 <script>
 export default {
   components: {
-    Title: require('../components/Title.vue').default,
-    'Left-Drawer': require('../components/LeftDrawer').default,
-    'Right-Drawer': require('../components/RightDrawer').default,
+    Title: require("../components/Title.vue").default,
+    "Left-Drawer": require("../components/LeftDrawer").default,
+    "Right-Drawer": require("../components/RightDrawer").default,
   },
   mounted() {
     this.$nextTick(() => {
       this.replaceH2WithAnchors();
-    })
-    window.addEventListener('scroll', this.measureScrollEvents);  
+    });
+    window.addEventListener("scroll", this.measureScrollEvents);
   },
   beforeDestroy() {
-    window.removeEventListener('scroll', this.measureScrollEvents)
+    window.removeEventListener("scroll", this.measureScrollEvents);
   },
   methods: {
     measureScrollEvents() {
@@ -36,58 +36,61 @@ export default {
         window.requestAnimationFrame(function() {
           let temp = +last_known_scroll_position.toFixed();
           self.$refs.drawerR.checkScroll(temp);
-          if (self.$route.name == 'Button') self.checkAnchors(temp)
+          if (self.$route.name == "Button") self.checkAnchors(temp);
           ticking = false;
         });
         ticking = true;
       }
     },
     replaceH2WithAnchors(val) {
-      let targets = document.querySelectorAll('h2');
+      let targets = document.querySelectorAll("h2");
       let results = [];
-      targets.forEach(target => {
-        let sanitized = target.innerHTML.replace(/\s/g, '_');
+      targets.forEach((target) => {
+        let sanitized = target.innerHTML.replace(/\s/g, "_");
         results.push(encodeURI(sanitized));
-        target.outerHTML = `<a name="${encodeURI(sanitized)}" id="${encodeURI(sanitized)}" data-sourcepos="${target.dataset.sourcepos || null}" class="h2-mock">${target.innerHTML}</a>`;
+        target.outerHTML = `<a name="${encodeURI(sanitized)}" id="${encodeURI(
+          sanitized
+        )}" data-sourcepos="${target.dataset.sourcepos ||
+          null}" class="h2-mock">${target.innerHTML}</a>`;
       });
       this.$refs.drawerR.init(results);
     },
     checkAnchors() {
-      // 
-    }
-  }
-}
+      //
+    },
+  },
+};
 </script>
 
 <style>
 .api-wrapper {
   z-index: 2;
   box-sizing: border-box;
-  margin: 40px 0px 0px 0px;
+  /* margin: 40px 0px 0px 0px; */
   padding: 10px 20px;
   max-width: 800px;
   width: 100%;
   /* background: rgba(0,0,0,0.025); */
 }
 .api-content {
-  padding: 40px 0px 0px 0px;
+  padding: 5px 0px 0px 0px;
   box-sizing: border-box;
   max-width: 100vw;
 }
 
 #app::-webkit-scrollbar {
-	display: block;
+  display: block;
 }
 textarea::-webkit-scrollbar {
-	background-color: transparent !important;
+  background-color: transparent !important;
   width: 10px !important;
   height: 100% !important;
 }
 textarea::-webkit-scrollbar-thumb {
-	background: var(--color-scrollbar-thumb) !important;
-	border-radius: 15px;
+  background: var(--color-scrollbar-thumb) !important;
+  border-radius: 15px;
 }
 textarea::-webkit-scrollbar-thumb:hover {
-	background: var(--color-scrollbar-thumb-hover) !important;
+  background: var(--color-scrollbar-thumb-hover) !important;
 }
 </style>

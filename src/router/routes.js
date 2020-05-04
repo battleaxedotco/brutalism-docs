@@ -55,6 +55,11 @@ export default [
       component: () => import("@/views/multi/Footer.vue")
     },
     {
+      path: "/Functions",
+      name: "Functions",
+      component: () => import("@/views/multi/Functions.vue")
+    },
+    {
       path: "/Grid",
       name: "Grid",
       component: () => import("@/views/multi/Grid.vue")
@@ -108,11 +113,6 @@ export default [
       path: "/Toggle",
       name: "Toggle",
       component: () => import("@/views/multi/Toggle.vue")
-    },
-    {
-      path: "/Utils",
-      name: "Utils",
-      component: () => import("@/views/multi/Utils.vue")
     },
     {
       path: "/Wrapper",
