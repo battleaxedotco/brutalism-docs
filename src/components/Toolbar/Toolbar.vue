@@ -6,7 +6,7 @@
         This is a mess,
         quick fix to move theme button to top toolbar
       -->
-      <div class="style-section">
+      <div class="style-section" v-show="canDisplay">
         <div
           v-if="shouldThemeChange"
           class="footer-button theme desktop"
@@ -54,10 +54,15 @@ export default {
   data: () => ({
     open: false,
     themeOpen: false,
-    hover: false
+    hover: false,
+    canDisplay: false
   }),
   mounted() {
+    const self = this;
     // window.addEventListener('scroll', this.scrollFunction)
+    setTimeout(() => {
+      self.canDisplay = true;
+    }, 1000);
   },
   watch: {
     themeOpen(value) {
