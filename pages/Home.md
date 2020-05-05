@@ -18,7 +18,11 @@ Bombino includes various commands and utilities for ease of development -- you c
 
 ### Manual - Global components
 
-> ***NOTE:*** Components rely on the [starlette utility](https://github.com/Inventsable/starlette) for themes and color. If not using a template, you must use the Panel component or install starlette and run `require('starlette').default.init()` on panel launch.
+```bash
+npm install brutalism
+```
+
+> **_NOTE:_** Components rely on the [starlette utility](https://github.com/Inventsable/starlette) for themes and color. If not using a template, you must use the Panel component or install starlette and run `require('starlette').default.init()` on panel launch.
 
 #### Within `./src/main.js` (to use anywhere in project with no need to import per component file):
 
@@ -32,8 +36,8 @@ Vue.use("Menus", Menus);
 
 // Be sure to do so before instantiating Vue:
 new Vue({
-	router,
-	render: h => h(App)
+  router,
+  render: (h) => h(App),
 }).$mount("#app");
 ```
 
@@ -43,15 +47,15 @@ new Vue({
 
 ```html
 <script>
-// Import as many or few components as you need
-import { Panel, Menus } from 'brutalism';
+  // Import as many or few components as you need
+  import { Panel, Menus } from "brutalism";
 
-export default {
-  components: {
-    Panel,
-    Menus
-  }
-}
+  export default {
+    components: {
+      Panel,
+      Menus,
+    },
+  };
 </script>
 ```
 

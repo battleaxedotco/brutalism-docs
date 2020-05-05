@@ -8,8 +8,8 @@
         @mouseleave="hover = false" 
         @click="open = true;">
         Select theme
-      </div> -->
-      <div class="style-section">
+      </div>-->
+      <!-- <div class="style-section">
         <div
           v-if="shouldThemeChange"
           class="footer-button theme"
@@ -20,16 +20,16 @@
           Change app theme
         </div>
         <div v-else />
-      </div>
+      </div>-->
       <div class="footer-message">
         <!-- <div class="footer-anno">
           by Adam Plouff and Tom Scharstein
-        </div> -->
+        </div>-->
         <div class="footer-button flat" @click="goToHomepage">
           <Icon size="30px" name="github-circle" />
         </div>
       </div>
-      <Theme-Drawer v-click-outside="handleToggle" :open="open" />
+      <!-- <Theme-Drawer v-click-outside="handleToggle" :open="open" /> -->
       <!-- <div></div> -->
     </div>
   </div>
@@ -40,29 +40,26 @@ import { openURL } from "brutalism";
 export default {
   data: () => ({
     open: false,
-    hover: false,
+    hover: false
   }),
   watch: {
     hover(val) {
       // console.log(val)
-    },
+    }
   },
   computed: {
-    shouldThemeChange() {
-      return !/home|utils/i.test(this.$route.name);
-    },
+    // shouldThemeChange() {
+    //   return !/home|utils/i.test(this.$route.name);
+    // }
   },
   components: {
-    "Theme-Drawer": require("./ThemeDrawer.vue").default,
+    "Theme-Drawer": require("./ThemeDrawer.vue").default
   },
   methods: {
     goToHomepage() {
       openURL("https://github.com/battleaxedotco/brutalism");
-    },
-    handleToggle() {
-      if (this.open && !this.hover) this.open = false;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -84,53 +81,16 @@ export default {
   display: flex;
   /* position: fixed; */
   bottom: 0px;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 0px;
-  z-index: 14;
+  /* z-index: 14; */
   /* background-color: red; */
 }
 .footer-message {
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
-}
-
-.footer-button {
-  margin-left: 20px;
-  padding: 0px 20px;
-  cursor: pointer;
-  border-radius: 5px;
-  height: 35px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.footer-button.theme {
-  border: 2px solid transparent;
-  background: var(--text);
-  color: #fff;
-}
-
-.floating {
-  position: fixed;
-  bottom: 7px !important;
-  left: 30px;
-}
-
-.footer-button:active {
-  /* background: rgba(55, 55, 55, 0.1); */
-  background: transparent;
-  border-color: var(--text);
-  color: var(--text);
-}
-
-.footer-button.theme {
-  text-transform: uppercase;
-  letter-spacing: 0.25ch;
-  /* font-weight: bold; */
-  /* color: var(--text-faded); */
 }
 
 .footer-anno {

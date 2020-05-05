@@ -1,8 +1,5 @@
 <template>
-  <div
-    :class="['mobile-drawer', 'flip', isOpen ? 'open' : 'closed']"
-    :style="getStyle()"
-  >
+  <div :class="['mobile-drawer', 'flip', isOpen ? 'open' : 'closed']" :style="getStyle()">
     <div class="drawer-content unflip">
       <div class="drawer-anchors">
         <span class="drawer-anno">This page</span>
@@ -11,12 +8,10 @@
           @click="scrollTo(anchor)"
           :key="anchor.name"
           :class="['drawer-anchor-item', anchor.active ? 'active' : 'idle']"
-        >
-          {{ anchor.name }}
-        </div>
+        >{{ anchor.name }}</div>
       </div>
       <div class="drawer-library">
-        <span class="drawer-anno">Misc</span>
+        <span class="drawer-anno">Library</span>
         <div
           v-for="route in pageRoutes"
           :key="route.name"
@@ -25,9 +20,7 @@
             'drawer-route-item',
             $route.name == route.name ? 'active' : 'idle',
           ]"
-        >
-          {{ route.name }}
-        </div>
+        >{{ route.name }}</div>
       </div>
       <div class="drawer-routes">
         <span class="drawer-anno">Components</span>
@@ -39,9 +32,7 @@
             'drawer-route-item',
             $route.name == route.name ? 'active' : 'idle',
           ]"
-        >
-          {{ route.name }}
-        </div>
+        >{{ route.name }}</div>
       </div>
     </div>
   </div>
@@ -54,19 +45,19 @@ export default {
   props: {
     open: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data: () => ({
     isOpen: false,
     isMounted: false,
     routes: [],
-    utilRX: /home|utils|functions|colors/i,
+    utilRX: /home|utils|functions|colors/i
   }),
   mounted() {
     this.isOpen = this.open;
     this.isMounted = true;
-    this.routes = routes.filter((item) => {
+    this.routes = routes.filter(item => {
       return item.name !== "404";
     });
     this.$el.addEventListener("scroll", this.handleScroll);
@@ -79,20 +70,20 @@ export default {
       return this.app.anchors;
     },
     componentRoutes() {
-      return this.routes.filter((item) => {
+      return this.routes.filter(item => {
         return !this.utilRX.test(item.name);
       });
     },
     pageRoutes() {
-      return this.routes.filter((item) => {
+      return this.routes.filter(item => {
         return this.utilRX.test(item.name);
       });
-    },
+    }
   },
   watch: {
     open(val) {
       this.isOpen = val;
-    },
+    }
   },
   methods: {
     scrollTo(anchor) {
@@ -103,7 +94,7 @@ export default {
         force: true,
         cancelable: true,
         x: false,
-        y: true,
+        y: true
       };
       this.$scrollTo(elt, 500, opts);
     },
@@ -118,8 +109,8 @@ export default {
         style += `left: ${pos}px;`;
       }
       return style;
-    },
-  },
+    }
+  }
 };
 </script>
 
