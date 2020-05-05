@@ -9,7 +9,7 @@ npx bombino
 # Input name of panel, select app, and choose one of the brutalism templates below
 
 cd [name of panel]
-npm run start
+npm run serve
 
 # Open host app and find in Windows > Extensions > [name of panel]
 ```
