@@ -82,7 +82,7 @@ export default {
         icon: "xml",
         text: "component library"
       },
-      { icon: "adobe", text: "any extension" }
+      { icon: "adobe", text: "any host app" }
     ]
   })
 };
