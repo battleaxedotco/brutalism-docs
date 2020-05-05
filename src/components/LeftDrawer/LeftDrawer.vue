@@ -1,29 +1,19 @@
 <template>
   <div class="left-drawer">
     <div class="util-anchors">
-      <div
-        v-for="anchor in utilAnchors"
-        :key="anchor.name"
-        :class="['left-drawer-item']"
-      >
+      <div v-for="anchor in utilAnchors" :key="anchor.name" :class="['left-drawer-item']">
         <span
           @click="toRoute(anchor)"
           :class="['left-drawer-item-label', anchor.active ? 'active' : 'idle']"
-          >{{ anchor.name }}</span
-        >
+        >{{ anchor.name }}</span>
       </div>
     </div>
     <div class="component-anchors">
-      <div
-        v-for="anchor in componentAnchors"
-        :key="anchor.name"
-        :class="['left-drawer-item']"
-      >
+      <div v-for="anchor in componentAnchors" :key="anchor.name" :class="['left-drawer-item']">
         <span
           @click="toRoute(anchor)"
           :class="['left-drawer-item-label', anchor.active ? 'active' : 'idle']"
-          >{{ anchor.name }}</span
-        >
+        >{{ anchor.name }}</span>
       </div>
     </div>
   </div>
@@ -35,7 +25,7 @@ import routes from "@/router/routes.js";
 export default {
   data: () => ({
     anchors: [],
-    utilRX: /home|utils|colors|functions/i,
+    utilRX: /home|utils|colors|functions/i
   }),
   mounted() {
     this.buildRoutes();
@@ -44,31 +34,31 @@ export default {
   computed: {
     activeAnchor: {
       get() {
-        return this.anchors.find((anchor) => {
+        return this.anchors.find(anchor => {
           return anchor.active;
         });
       },
       set(val) {
-        this.anchors.forEach((anchor) => {
+        this.anchors.forEach(anchor => {
           anchor.active = anchor !== val ? false : true;
         });
-      },
+      }
     },
     correctAnchor() {
-      return this.anchors.find((anchor) => {
+      return this.anchors.find(anchor => {
         return anchor.name == this.$route.name;
       });
     },
     componentAnchors() {
-      return this.anchors.filter((anchor) => {
+      return this.anchors.filter(anchor => {
         return !this.utilRX.test(anchor.name);
       });
     },
     utilAnchors() {
-      return this.anchors.filter((anchor) => {
+      return this.anchors.filter(anchor => {
         return this.utilRX.test(anchor.name);
       });
-    },
+    }
   },
   methods: {
     checkRoutes() {
@@ -76,11 +66,11 @@ export default {
     },
     buildRoutes() {
       this.anchors = [];
-      routes.forEach((route) => {
+      routes.forEach(route => {
         if (route.name !== "404")
           this.anchors.push({
             name: route.name,
-            active: this.$route.name == route.name,
+            active: this.$route.name == route.name
           });
       });
     },
@@ -88,8 +78,8 @@ export default {
       this.$router.push({ name: anchor.name }, () => {
         window.scrollTo(0, 0);
       });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -110,10 +100,9 @@ export default {
   font-size: 1.5em;
   user-select: none;
   max-height: 100%;
-  max-height: calc(100% - 80px);
+  max-height: calc(100%);
   overflow-y: auto;
-  margin: 40px 0px;
-  padding: 10px 40px 10px 20px;
+  padding: 51px 40px 50px 20px;
 }
 
 .util-anchors {
