@@ -9,11 +9,12 @@
   :state="realState" 
   @update="val => realState = val"
 />
-<Toggle label='color="#46a0f2"' color="#46a0f2" />
+<Toggle label='custom color' color="#46a0f2" />
+<Toggle label='auto-save' prefs-id="togglePropsExample" />
 <Toggle label="disabled" :state="true" disabled />
 <Toggle 
-  label='on-icon="alarm" off-icon="alarm-off"' 
+  label='custom on/off icons' 
   on-icon="alarm" 
   off-icon="alarm-off"
 />
-<Toggle label='size="32px"' size="32px" />
+<Toggle label='custom icon size' size="32px" />

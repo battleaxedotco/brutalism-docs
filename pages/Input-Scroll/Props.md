@@ -1,27 +1,28 @@
 <Input-Scroll label="default" />
-<Input-Scroll label=':value="100"' :value="100" />
+<Input-Scroll label='set value' :value="100" />
+<Input-Scroll label="auto-save" prefs-id="inputScrollProp" />
 <Input-Scroll
-  label=':min="-100" :max="100"'
+  label='min/max values'
   :min="-100"
   :max="100"
 />
-<Input-Scroll label='color="#ff0000"' color="red" />
+<Input-Scroll label='custom color' color="red" />
 <Input-Scroll label="disabled" :value="20" disabled />
-<Input-Scroll label=':step="2"' :step="2" />
+<Input-Scroll label='custom value increment' :step="2" />
 <Input-Scroll
-  label=':steps="[2, 5, 25]"'
+  label='custom increments per modifier key'
   :steps="[2, 5, 25]"
 />
 <Input-Scroll
-  label=':toFixed="3"'
+  label='specify decimal point'
   :value="100.125"
   :toFixed="3"
 />
 <Input-Scroll
-  label=':reset-value="100"'
+  label='reset value if empty'
   :value="446"
   :reset-value="100"
 />
-<Input-Scroll label="lazy" lazy :value="29.97" suffix="fps" />
-<Input-Scroll label='suffix="px"' suffix="px" />
-<Input-Scroll label='prefix="page"' prefix="page" />
+<Input-Scroll label="no validation" lazy :value="29.97" suffix="fps" />
+<Input-Scroll label='suffix' suffix="px" />
+<Input-Scroll label='prefix' prefix="$" />

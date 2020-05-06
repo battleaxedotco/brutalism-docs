@@ -1,6 +1,7 @@
 <Input value="@change" @change="message" />
 <Input value="@update" @update="message" />
 <Input value="@submit" @submit="message" />
+<Input value="@prefs" @prefs="message" prefs-id="inputEventExample" />
 <Input
   value="@focus/blur"
   @focus="message('Focused!')"

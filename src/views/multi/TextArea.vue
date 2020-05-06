@@ -24,31 +24,33 @@
       <h2>Props</h2>
       <Display>
         <TextArea label='I am a label' />
-         <TextArea
-           label='placeholder="Display if no value"'
-           placeholder="Display if no value"
-         />
-         <TextArea placeholder="disabled" disabled />
-         <TextArea value='color="red"' color="red" flat />
-         <TextArea 
-           value="This text is automatically selected on focus" 
-           label="auto-select" 
-           auto-select 
-         />
-         <TextArea spellcheck value="Warn of mispelings" label='spellcheck' />
-         <TextArea placeholder=':rows="5"' :rows="5" />
-         <TextArea placeholder="truncate" value='Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris.' color="red" />
-         <TextArea
-           placeholder='underline-size="2px" left'
-           underline-size="2px"
-           flat
-           left
-         />
-         <TextArea
-           filled
-           prepend-icon="magnify"
-           placeholder='prepend-icon="magnify"'
-         />
+        <TextArea
+          label='placeholder="Display if no value"'
+          placeholder="Display if no value"
+        />
+        <TextArea placeholder="auto-save" prefs-id="textAreaProps" value="I autosave on update" />
+        <TextArea placeholder="disabled" disabled />
+        <TextArea value='custom color' color="red" flat />
+        <TextArea 
+          value="This text is automatically selected on focus" 
+          label="auto-select" 
+          auto-select 
+        />
+        <Input value="Warn of mispelings" label='spellcheck' :spellcheck="true" />
+        <TextArea placeholder='custom row count' :rows="5" />
+        <TextArea placeholder="truncate" value='Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris.' color="red" />
+        <TextArea wrap="off" placeholder='wrap="off"' value='Like soft but changes appearance to white-space: pre so line segments exceeding cols are not wrapped and the <textarea> becomes horizontally scrollable.' />
+        <TextArea
+          placeholder='underline size and direction'
+          underline-size="2px"
+          flat
+          left
+        />
+        <TextArea
+          filled
+          prepend-icon="magnify"
+          placeholder='prepend icon'
+        />
       </Display>
       <UI-Fold>
         <Coder :content="getChildByName('Props').data" />
@@ -57,13 +59,14 @@
       <h2>Events</h2>
       <Display>
         <TextArea value="@change" @change="message" />
-         <TextArea value="@update" @update="message" />
-         <TextArea value="@submit" @submit="message" />
-         <TextArea
-           value="@focus/blur"
-           @focus="message('Focused!')"
-           @blur="message('Blur!')"
-         />
+        <TextArea value="@update" @update="message" />
+        <TextArea value="@submit" @submit="message" />
+        <TextArea value="@prefs" @prefs="testPrefs" prefs-id="exampleTextAreaEvent" />
+        <TextArea
+          value="@focus/blur"
+          @focus="message('Focused!')"
+          @blur="message('Blur!')"
+        />
       </Display>
       <UI-Fold>
         <Coder :content="getChildByName('Events').data" />
@@ -96,6 +99,9 @@ export default {
     },
     message(value) {
       console.log(value)
+    },
+    testPrefs(value) {
+      console.log('Last prefs:', value)
     }
   },
   components: {

@@ -1,7 +1,8 @@
-<Input-Scroll label="@Change" @change="changeVal" />
-<Input-Scroll label="@Update" @update="updateVal" />
+<Input-Scroll label="@change" @change="changeVal" />
+<Input-Scroll label="@update" @update="updateVal" />
+<Input-Scroll label="@prefs" @prefs="testPrefs" prefs-id="exampleEvent" />
 <Input-Scroll
-  label="@Focus/@Blur"
+  label="@focus/@blur"
   @focus="message('Focus!')"
   @blur="message('Blur!')"
 />

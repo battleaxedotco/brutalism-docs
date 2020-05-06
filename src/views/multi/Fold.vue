@@ -15,15 +15,20 @@
 
       <h2>Props</h2>
       <Display>
-        <Fold label=':open="true"' :open="true">
+        <Fold label='mount as open' :open="true">
           <Button label="Slot content" />
         </Fold>
-        <Fold label=':persistent="false"' :persistent="false">
+        <Fold prefs-id="exampleID" label="auto-save state">
           <Button label="Slot content" />
         </Fold>
-        <Fold label='inner-padding="30px"' inner-padding="30px">
+        <Fold label='persistent' :persistent="false">
           <Button label="Slot content" />
         </Fold>
+        <Fold label='inner-padding' inner-padding="30px">
+          <Button label="Slot content" />
+        </Fold>
+
+
       </Display>
       <UIFold>
         <Coder :content="getChildByName('Props').data" />
@@ -32,9 +37,12 @@
 
       <h2>Events</h2>
       <Display>
-        <Fold label=':open="true"' :open="true" @click="testClick">
-           <Button label="Slot content" />
-         </Fold>
+        <Fold label='@click' :open="true" @click="testClick">
+          <Button label="Slot content" />
+        </Fold>
+        <Fold label='@prefs' :open="true" prefs-id="foldExampleEvent" @prefs="testPrefs">
+          <Button label="Slot content" />
+        </Fold>
       </Display>
       <UIFold>
         <Coder :content="getChildByName('Events').data" />
@@ -66,6 +74,9 @@ export default {
       return this.target.children.find(item => {
         return item.name == name;
       })
+    },
+    testPrefs(value) {
+      console.log('Last prefs:', value)
     },
     testClick() {
       console.log('Clicked!')

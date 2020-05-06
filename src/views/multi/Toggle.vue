@@ -20,27 +20,25 @@
       <h2>Props</h2>
       <Display>
         <Row>
-           <Toggle on-icon="lock" off-icon="lock-open-variant" />
-           <Toggle on-icon="bell" off-icon="bell-off" />
-           <Toggle on-icon="account" off-icon="account-off" />
-           <Toggle 
-             on-icon="video-check" 
-             off-icon="video-minus" 
-           />
-         </Row>
-         <Toggle 
-           :label='dynamicState' 
-           :state="realState" 
-           @update="val => realState = val"
-         />
-         <Toggle label='color="#46a0f2"' color="#46a0f2" />
-         <Toggle label="disabled" :state="true" disabled />
-         <Toggle 
-           label='on-icon="alarm" off-icon="alarm-off"' 
-           on-icon="alarm" 
-           off-icon="alarm-off"
-         />
-         <Toggle label='size="32px"' size="32px" />
+          <Toggle on-icon="lock" off-icon="lock-open-variant" />
+          <Toggle on-icon="bell" off-icon="bell-off" />
+          <Toggle on-icon="account" off-icon="account-off" />
+          <Toggle on-icon="video-check" off-icon="video-minus" />
+        </Row>
+        <Toggle 
+          :label='dynamicState' 
+          :state="realState" 
+          @update="val => realState = val"
+        />
+        <Toggle label='custom color' color="#46a0f2" />
+        <Toggle label='auto-save' prefs-id="togglePropsExample" />
+        <Toggle label="disabled" :state="true" disabled />
+        <Toggle 
+          label='custom on/off icons' 
+          on-icon="alarm" 
+          off-icon="alarm-off"
+        />
+        <Toggle label='custom icon size' size="32px" />
       </Display>
       <UIFold>
         <Coder :content="getChildByName('Props').data" />
@@ -49,12 +47,13 @@
       <h2>Events</h2>
       <Display>
         <Toggle label="@click" @click="showClick"/>
-         <Toggle label='@update' @update="showState" />
-         <Toggle 
-           label='@mouseEnter/@mouseExit' 
-           @mouseenter="showEnter" 
-           @mouseleave="showExit" 
-         />
+        <Toggle label='@update' @update="showState" />
+        <Toggle label='@prefs' @prefs="testPrefs" prefs-id="toggleEventExample" />
+        <Toggle 
+          label='@mouseEnter/@mouseExit' 
+          @mouseenter="showEnter" 
+          @mouseleave="showExit" 
+        />
       </Display>
       <UIFold>
         <Coder :content="getChildByName('Events').data" />
@@ -92,6 +91,9 @@ export default {
       return this.target.children.find(item => {
         return item.name == name;
       })
+    },
+    testPrefs(value) {
+      console.log('Last prefs:', value)
     },
     showEnter() {
       console.log('Enter')
