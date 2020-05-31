@@ -14,7 +14,6 @@
 <Input value="Warn of mispelings" label='spellcheck' :spellcheck="true" />
 <TextArea placeholder='custom row count' :rows="5" />
 <TextArea placeholder="truncate" value='Zombie ipsum reversus ab viral inferno, nam rick grimes malum cerebro. De carne lumbering animata corpora quaeritis. Summus brains sit​​, morbo vel maleficia? De apocalypsi gorger omero undead survivor dictum mauris.' color="red" />
-<TextArea wrap="off" placeholder='wrap="off"' value='Like soft but changes appearance to white-space: pre so line segments exceeding cols are not wrapped and the <textarea> becomes horizontally scrollable.' />
 <TextArea
   placeholder='underline size and direction'
   underline-size="2px"
