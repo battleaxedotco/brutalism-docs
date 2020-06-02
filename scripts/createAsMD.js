@@ -103,14 +103,15 @@ async function init() {
   const docsFolder = `${path.resolve("./")}/docs`;
 
   result.forEach((item, i) => {
-    let fullFile = `# ${item.name}\r\n\r\n`;
+    if (!/colors|functions/i.test(item.name)) {
+      let fullFile = `# ${item.name}\r\n\r\n`;
 
-    // console.log(item, i);
-    if (item.children && item.children.length) {
-      if (i == 1) {
+      console.log(item.name, i);
+      if (item.children && item.children.length) {
+        // if (i == 1) {
         // console.log(item);
         item.children.forEach((child) => {
-          let block = `## ${child.name} \r\n\r\n\`\`\`js\r\n`;
+          let block = `## ${child.name} \r\n\r\n\`\`\`html\r\n`;
           block += "  " + child.data;
           block += `\r\n\`\`\`\r\n\r\n`;
           block += createTableFromChild(item, child.name);
@@ -118,9 +119,13 @@ async function init() {
           fullFile += block;
         });
         // console.log(fullFile);
+        // }
       }
+      if (!fs.existsSync(`${docsFolder}/${item.name}`)) {
+        fs.mkdirSync(`${docsFolder}/${item.name}`);
+      }
+      fs.writeFileSync(`${docsFolder}/${item.name}/README.md`, fullFile);
     }
-    fs.writeFileSync(`${docsFolder}/${item.name}.md`, fullFile);
   });
   console.log("");
   console.log(`${chalk.black.bgGreen(` ALL DONE `)}`);
@@ -196,7 +201,13 @@ async function init() {
 function createTableFromChild(item, name) {
   let str = "";
   if (/props/i.test(name)) name = "Properties";
-  let table = item.table[name.toLowerCase()];
+  let table = null;
+  if (
+    !Object.keys(item).includes("table") ||
+    !Object.keys(item.table).includes(name.toLowerCase())
+  )
+    return "";
+  if (item.table[name.toLowerCase()]) table = item.table[name.toLowerCase()];
   if (!table) {
     console.log(`Problem with > ${name}`);
     console.log(item);

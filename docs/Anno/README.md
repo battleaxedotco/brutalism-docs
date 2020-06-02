@@ -2,7 +2,7 @@
 
 ## Styles 
 
-```js
+```html
   <Anno>Default</Anno>
   <Anno bold>bold</Anno>
   <Anno italic>italic</Anno>
@@ -21,7 +21,7 @@
 
 ## Props 
 
-```js
+```html
   <Anno text='text="Text here"' />
   <Anno size="20px">size="20px"</Anno>
   <Anno uppercase>uppercase</Anno>

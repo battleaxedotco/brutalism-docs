@@ -1,10 +1,9 @@
 <template>
   <div class="brutalism-wrapper">
     <div class="display-header"></div>
-
     <div class="brutalism-display">
       <Wrapper>
-      <slot />
+        <slot />
       </Wrapper>
     </div>
     <div class="display-footer"></div>
@@ -12,18 +11,14 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style>
 .brutalism-wrapper {
-  /* width: calc(100% - 40px); */
   box-sizing: border-box;
   user-select: none;
   overflow: hidden;
-  /* min-height: 200px; */
 }
 
 .brutalism-wrapper .annotation {
@@ -33,10 +28,9 @@ export default {
 
 .brutalism-wrapper .divider {
   height: 2px;
-  background-color: var(--divider-dark); 
-  opacity: .5;
+  background-color: var(--divider-dark);
+  opacity: 0.5;
   border-width: 0px;
-  /* height: 0px; */
   padding: 0;
   margin: 10px 0px 15px 0px;
 }
@@ -48,7 +42,6 @@ export default {
   color: var(--color-default) !important;
   padding: 10px 20px;
   width: 100%;
-  /* min-height: 200px; */
 }
 
 .display-header {
@@ -60,7 +53,6 @@ export default {
   border-color: transparent;
   border-width: 0 0 1.5px 0;
   border-radius: 3px 3px 0 0;
-  /* border: 2px solid red; */
 }
 
 .display-footer {
@@ -72,5 +64,4 @@ export default {
   border-color: var(--divider-dark);
   border-width: 1.5px 0 0 0;
 }
-
 </style>
