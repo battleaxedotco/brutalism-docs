@@ -7,6 +7,7 @@
     "build": "vue-cli-service build",
     "gh-pages-deploy": "node scripts/gh-pages-deploy.js",
     "convert": "node scripts/convert.js",
+    "markdown": "node scripts/createAsMD.js",
     "generate": "node scripts/generate.js"
   },
   "dependencies": {
