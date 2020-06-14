@@ -68,6 +68,12 @@ export default {
         description: "If true, input cannot be focused",
       },
       {
+        property: "read-only",
+        type: "Boolean",
+        default: "false",
+        description: "Blocks user interaction",
+      },
+      {
         property: "truncate",
         type: "Boolean",
         default: "false",

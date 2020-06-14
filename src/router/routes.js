@@ -40,9 +40,9 @@ export default [
       component: () => import("@/views/multi/Dropzone.vue")
     },
     {
-      path: "/File-Input",
-      name: "File-Input",
-      component: () => import("@/views/multi/File-Input.vue")
+      path: "/File-Picker",
+      name: "File-Picker",
+      component: () => import("@/views/multi/File-Picker.vue")
     },
     {
       path: "/Fold",

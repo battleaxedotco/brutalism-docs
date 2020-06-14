@@ -1,10 +1,10 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-const VueScrollTo = require('vue-scrollto');
+const VueScrollTo = require("vue-scrollto");
 Vue.use(VueScrollTo, {
   container: "body",
   duration: 500,
@@ -16,11 +16,11 @@ Vue.use(VueScrollTo, {
   onDone: false,
   onCancel: false,
   x: false,
-  y: true
-})
+  y: true,
+});
 
-import vOutsideEvents from 'vue-outside-events'
-Vue.use(vOutsideEvents)
+import vOutsideEvents from "vue-outside-events";
+Vue.use(vOutsideEvents);
 
 import {
   Alert,
@@ -43,6 +43,8 @@ import {
   PanelInfo,
   Panel,
   Panelify,
+  FilePicker,
+  ColorPicker,
   Row,
   Tabs,
   TextArea,
@@ -60,6 +62,9 @@ Vue.component("Divider", Divider);
 Vue.component("Dropdown", Dropdown);
 Vue.component("Dropzone", Dropzone);
 Vue.component("File-Input", FileInput);
+Vue.component("File-Picker", FilePicker);
+Vue.component("Color-Picker", ColorPicker);
+
 Vue.component("Fold", Fold);
 Vue.component("Footer", Footer);
 Vue.component("Grid", Grid);
@@ -80,5 +85,5 @@ Vue.component("Wrapper", Wrapper);
 
 new Vue({
   router,
-  render: h => h(App)
-}).$mount('#app')
+  render: (h) => h(App),
+}).$mount("#app");

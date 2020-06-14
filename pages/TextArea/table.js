@@ -68,6 +68,12 @@ export default {
         description: "If true, input cannot be focused",
       },
       {
+        property: "read-only",
+        type: "Boolean",
+        default: "false",
+        description: "Blocks user interaction",
+      },
+      {
         property: "truncate",
         type: "Boolean",
         default: "false",
@@ -84,12 +90,6 @@ export default {
         type: "Boolean",
         default: "false",
         description: "Flat line animation starts at right",
-      },
-      {
-        property: "uppercase",
-        type: "Boolean",
-        default: "false",
-        description: "Sets transform-text to uppercase",
       },
       {
         property: "prepend-icon",
