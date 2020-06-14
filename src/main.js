@@ -28,10 +28,12 @@ import {
   ButtonGroup,
   Button,
   Col,
+  ColorPicker,
   Divider,
   Dropdown,
   Dropzone,
   FileInput,
+  FilePicker,
   Fold,
   Footer,
   Grid,
@@ -43,14 +45,11 @@ import {
   PanelInfo,
   Panel,
   Panelify,
-  FilePicker,
-  ColorPicker,
   Row,
   Tabs,
   TextArea,
   Toggle,
   Wrapper,
-  Autofocus,
 } from "brutalism";
 
 Vue.component("Alert", Alert);
@@ -64,11 +63,9 @@ Vue.component("Dropzone", Dropzone);
 Vue.component("File-Input", FileInput);
 Vue.component("File-Picker", FilePicker);
 Vue.component("Color-Picker", ColorPicker);
-
 Vue.component("Fold", Fold);
 Vue.component("Footer", Footer);
 Vue.component("Grid", Grid);
-
 Vue.component("Icon", Icon);
 Vue.component("Input-Scroll", InputScroll);
 Vue.component("Input", Input);

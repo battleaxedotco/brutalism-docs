@@ -6,6 +6,11 @@
   { label: "Disabled Route 1", name: "Route 1" },
   { label: "Disabled Route 2", name: "Route 2" }
 ]' />
+<Tabs :routes='[
+  { label: "Enabled", path: "/" },
+  { label: "Disabled", path: "/Route1", disabled: true },
+  { label: "Enabled", path: "/Route2" }
+]' />
 <Tabs flat invert :routes='[
   { label: "Invert Route 1", name: "Route 1" },
   { label: "Invert Route 2", name: "Route 2" }
