@@ -155,6 +155,12 @@ export default {
         description: "Default columns of TextArea when using multiple prop",
       },
       {
+        property: "rows",
+        type: "Number",
+        default: "2",
+        description: "Default rows of TextArea when using multiple prop",
+      },
+      {
         property: "resizeable",
         type: "Boolean",
         default: "true",
