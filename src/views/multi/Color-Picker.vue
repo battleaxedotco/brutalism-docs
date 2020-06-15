@@ -11,6 +11,8 @@
         >Below has an editable Input component for hex value:</Anno
       >
       <Color-Picker editable ref="test1" />
+      <Color-Picker editable filled />
+      <Color-Picker editable flat />
       <Color-Picker>
         <Button>I'm slot content that prompts the picker on click</Button>
       </Color-Picker>
@@ -27,7 +29,7 @@
       <Color-Picker label="Custom label" />
       <Color-Picker v-model="example" label="v-model sync" />
       <Color-Picker prefs-id="colorpickerpref" label="Autosave data" />
-      <Color-Picker placeholder="NONE" label="Custom placeholder" />
+      <Color-Picker placeholder="NONE" editable />
       <Color-Picker show-value ref="test2" />
       <Color-Picker uppercase label="uppercase" ref="test3" />
     </Display>
