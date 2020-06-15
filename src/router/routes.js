@@ -25,6 +25,11 @@ export default [
       component: () => import("@/views/multi/Colors.vue")
     },
     {
+      path: "/Color-Picker",
+      name: "Color-Picker",
+      component: () => import("@/views/multi/Color-Picker.vue")
+    },
+    {
       path: "/Divider",
       name: "Divider",
       component: () => import("@/views/multi/Divider.vue")

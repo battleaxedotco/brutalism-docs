@@ -98,10 +98,17 @@ export default {
         description: "Flat line animation starts at right",
       },
       {
-        property: "uppercase",
-        type: "Boolean",
-        default: "false",
-        description: "Sets transform-text to uppercase",
+        property: "max-length",
+        type: "Number",
+        default: "null",
+        description: "Limits length of content by char count",
+      },
+      {
+        property: "prefix",
+        type: "String",
+        default: "",
+        description: "Prepends string before editable value",
+        todo: true,
       },
       {
         property: "prepend-icon",
