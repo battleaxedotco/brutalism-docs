@@ -71,7 +71,7 @@ Vue.component("Input-Scroll", InputScroll);
 Vue.component("Input", Input);
 Vue.component("Link", Link);
 Vue.component("Menus", Menus);
-Vue.component("Panelify", Panel);
+Vue.component("Panelify", Panelify);
 Vue.component("Panel-Info", PanelInfo);
 Vue.component("Panel", Panel);
 Vue.component("Row", Row);
