@@ -26,6 +26,12 @@ export default {
         description: "The checked value of the element",
       },
       {
+        property: "v-model",
+        type: "Boolean",
+        default: "false",
+        description: "Two-way binding for :state property",
+      },
+      {
         property: "prefs-id",
         type: "String",
         default: "",

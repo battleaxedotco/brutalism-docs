@@ -105,6 +105,11 @@ export default [
       component: () => import("@/views/multi/Row.vue")
     },
     {
+      path: "/Select",
+      name: "Select",
+      component: () => import("@/views/multi/Select.vue")
+    },
+    {
       path: "/Tabs",
       name: "Tabs",
       component: () => import("@/views/multi/Tabs.vue")

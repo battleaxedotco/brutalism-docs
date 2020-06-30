@@ -32,6 +32,12 @@ export default {
         description: "Current value within input",
       },
       {
+        property: "v-model",
+        type: "Boolean",
+        default: "false",
+        description: "Two-way binding for value property",
+      },
+      {
         property: "prefs-id",
         type: "String",
         default: "",

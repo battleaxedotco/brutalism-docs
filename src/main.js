@@ -23,37 +23,38 @@ import vOutsideEvents from "vue-outside-events";
 Vue.use(vOutsideEvents);
 
 import {
-  Alert,
   Anno,
+  Alert,
   ButtonGroup,
   Button,
   Col,
-  ColorPicker,
   Divider,
   Dropdown,
   Dropzone,
   FileInput,
-  FilePicker,
   Fold,
   Footer,
+  Link,
   Grid,
   Icon,
   InputScroll,
   Input,
-  Link,
   Menus,
   PanelInfo,
   Panel,
-  Panelify,
   Row,
+  Select,
   Tabs,
   TextArea,
   Toggle,
   Wrapper,
+  WrapNode,
+  FilePicker,
+  ColorPicker,
 } from "brutalism";
 
-Vue.component("Alert", Alert);
 Vue.component("Anno", Anno);
+Vue.component("Alert", Alert);
 Vue.component("Button-Group", ButtonGroup);
 Vue.component("Button", Button);
 Vue.component("Col", Col);
@@ -71,14 +72,15 @@ Vue.component("Input-Scroll", InputScroll);
 Vue.component("Input", Input);
 Vue.component("Link", Link);
 Vue.component("Menus", Menus);
-Vue.component("Panelify", Panelify);
 Vue.component("Panel-Info", PanelInfo);
 Vue.component("Panel", Panel);
 Vue.component("Row", Row);
+Vue.component("Select", Select);
 Vue.component("Tabs", Tabs);
 Vue.component("TextArea", TextArea);
 Vue.component("Toggle", Toggle);
 Vue.component("Wrapper", Wrapper);
+Vue.component("wrap-node", WrapNode);
 
 new Vue({
   router,
