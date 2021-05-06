@@ -14,7 +14,7 @@
     "brutalism": "^2.2.2",
     "commonmark": "^0.29.1",
     "core-js": "^3.6.4",
-    "sanitize-html": "^1.23.0",
+    "sanitize-html": "^2.3.2",
     "starlette": "^1.0.3",
     "vue": "^2.6.11",
     "vue-outside-events": "^1.1.3",
